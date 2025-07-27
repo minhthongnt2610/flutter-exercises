@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "161595444791",
+    "project_id": "to-do-list-thongnt",
+    "storage_bucket": "to-do-list-thongnt.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161595444791:android:debeeba7fb2fe57214f9b2",
+        "android_client_info": {
+          "package_name": "com.example.lesson_5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX7j4u9-FI8Sl64LVQ_fASvo1kTgNxeUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
