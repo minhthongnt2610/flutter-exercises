@@ -6,8 +6,8 @@ app.use(express.json()); // Cho phép đọc body JSON
 
 // Dữ liệu giả lưu trong RAM
 let users = [
-  { id: 1, name: "Nguyễn Minh Thông", birthdate: "26-10-2004" },
-  { id: 2, name: "Trần Thị B", birthdate: "22-05-2004" }
+  { id: 1, name: "Nguyễn Minh Thông", birthdate: "2004-10-26" },
+  { id: 2, name: "Trần Thị B", birthdate: "2004-05-22" }
 ];
 
 // Hàm tính tuổi
