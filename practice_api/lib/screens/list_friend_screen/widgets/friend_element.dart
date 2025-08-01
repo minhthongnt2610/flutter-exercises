@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_api/screens/list_friend_screen/widgets/info_friend_widgets.dart';
 
 class FriendElement extends StatefulWidget
 {
@@ -32,13 +33,7 @@ class _FriendElementState extends State<FriendElement>
                         children: [
                             Row(
                                 children: [
-                                    Text(
-                                        'Full name',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.black,
-                                        ),
-                                    ),
+                                    InfoFriendWidgets(title: 'Full name'),
                                     SizedBox(width: 15, 
                                         child: Text(' :', 
                                             style: 
@@ -47,25 +42,13 @@ class _FriendElementState extends State<FriendElement>
                                             ),
                                         ),
                                     ),
-                                    Text(
-                                        'Thông NT',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.black,
-                                        ),
-                                    ),
+                                    InfoFriendWidgets(title: 'Thong NT'),
                                 ],
                             ),
                             Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                    Text(
-                                        'Birthday',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.black,
-                                        ),
-                                    ),
+                                    InfoFriendWidgets(title: 'Birthday'),
                                     SizedBox(width: 15,
                                         child: Text(' :',
                                             style:
@@ -74,25 +57,13 @@ class _FriendElementState extends State<FriendElement>
                                             ),
                                         ),
                                     ),
-                                    Text(
-                                        '26-10-2004',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.black,
-                                        ),
-                                    ),
+                                    InfoFriendWidgets(title: '26-10-2004'),
                                 ],
                             ),
                             Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                    Text(
-                                        'Age',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.black,
-                                        ),
-                                    ),
+                                    InfoFriendWidgets(title: 'Age'),
                                     SizedBox(width: 15,
                                         child: Text(' :',
                                             style:
@@ -101,13 +72,7 @@ class _FriendElementState extends State<FriendElement>
                                             ),
                                         ),
                                     ),
-                                    Text(
-                                        '20',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.black,
-                                        ),
-                                    ),
+                                    InfoFriendWidgets(title: '20'),
                                 ],
                             ),
                         ],

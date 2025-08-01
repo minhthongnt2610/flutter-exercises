@@ -31,16 +31,26 @@ app.get('/api/users', (req, res) => {
 
 // ✅ GET one user by id
 app.get('/api/users/:id', (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = Number(req.params.id);
+  if (isNaN(id)) return res.status(400).json({ error: "Invalid ID" });
+
   const user = users.find(u => u.id === id);
   if (!user) return res.status(404).json({ error: "User not found" });
+
   res.json({ ...user, age: calculateAge(user.birthdate) });
 });
 
 // ✅ POST create new user
 app.post('/api/users', (req, res) => {
   const { name, birthdate } = req.body;
-  if (!name || !birthdate) return res.status(400).json({ error: "Missing name or birthdate" });
+  if (!name || !birthdate) {
+    return res.status(400).json({ error: "Missing name or birthdate" });
+  }
+
+  const birthDateObj = new Date(birthdate);
+  if (isNaN(birthDateObj.getTime())) {
+    return res.status(400).json({ error: "Invalid birthdate format" });
+  }
 
   const newUser = {
     id: users.length ? users[users.length - 1].id + 1 : 1,
@@ -53,27 +63,36 @@ app.post('/api/users', (req, res) => {
 
 // ✅ PUT update user
 app.put('/api/users/:id', (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = Number(req.params.id);
   const { name, birthdate } = req.body;
+
   const user = users.find(u => u.id === id);
   if (!user) return res.status(404).json({ error: "User not found" });
 
-  if (name) user.name = name;
-  if (birthdate) user.birthdate = birthdate;
+  if (name !== undefined) user.name = name;
+
+  if (birthdate !== undefined) {
+    const birthDateObj = new Date(birthdate);
+    if (isNaN(birthDateObj.getTime())) {
+      return res.status(400).json({ error: "Invalid birthdate format" });
+    }
+    user.birthdate = birthdate;
+  }
+
   res.json(user);
 });
 
 // ✅ DELETE user
 app.delete('/api/users/:id', (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = Number(req.params.id);
   const index = users.findIndex(u => u.id === id);
   if (index === -1) return res.status(404).json({ error: "User not found" });
 
-  users.splice(index, 1);
-  res.json({ message: "User deleted" });
+  const deletedUser = users.splice(index, 1);
+  res.json({ message: "User deleted", user: deletedUser[0] });
 });
 
 // ✅ Start server
 app.listen(port, () => {
-  console.log(`REST API đang chạy tại: http://localhost:${port}/api/users`);
+  console.log(`✅ API đang chạy tại: http://192.168.1.80:${port}/api/users`);
 });
