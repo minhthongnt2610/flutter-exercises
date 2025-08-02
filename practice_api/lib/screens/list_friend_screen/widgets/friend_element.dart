@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:practice_api/screens/list_friend_screen/models/friend_model.dart';
 import 'package:practice_api/screens/list_friend_screen/widgets/info_friend_widgets.dart';
 
-class FriendElement extends StatefulWidget
+class FriendElement extends StatelessWidget
 {
-    const FriendElement({super.key});
-
-    @override
-    State<FriendElement> createState() => _FriendElementState();
-}
-
-class _FriendElementState extends State<FriendElement>
-{
+    const FriendElement({
+        super.key, 
+        required this.friend,
+        required this.onTap,
+        required this.onStatusChange,
+    });
+    final FriendModel friend;
+    final VoidCallback onTap;
+    final ValueChanged<bool> onStatusChange;
     @override
     Widget build(BuildContext context)
     {
         final height = MediaQuery.sizeOf(context).height;
         final width = MediaQuery.sizeOf(context).width;
         return GestureDetector(
-            onTap: ()
-            {
-            },
+            onTap: onTap,
             child: Container(
                 width: 850 * width / 868,
                 height: 100 * height / 868,
@@ -34,15 +34,15 @@ class _FriendElementState extends State<FriendElement>
                             Row(
                                 children: [
                                     InfoFriendWidgets(title: 'Full name'),
-                                    SizedBox(width: 15, 
-                                        child: Text(' :', 
-                                            style: 
+                                    SizedBox(width: 15,
+                                        child: Text(' :',
+                                            style:
                                             TextStyle(
                                                 color: Colors.black,
                                             ),
                                         ),
                                     ),
-                                    InfoFriendWidgets(title: 'Thong NT'),
+                                    InfoFriendWidgets(title: friend.name),
                                 ],
                             ),
                             Row(
@@ -57,7 +57,7 @@ class _FriendElementState extends State<FriendElement>
                                             ),
                                         ),
                                     ),
-                                    InfoFriendWidgets(title: '26-10-2004'),
+                                    InfoFriendWidgets(title: friend.birthdate.toString()),
                                 ],
                             ),
                             Row(
@@ -72,7 +72,7 @@ class _FriendElementState extends State<FriendElement>
                                             ),
                                         ),
                                     ),
-                                    InfoFriendWidgets(title: '20'),
+                                    InfoFriendWidgets(title: friend.age.toString()),
                                 ],
                             ),
                         ],
