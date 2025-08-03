@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_api/screens/create_and_edit_screen/widgets/input_date_time_field.dart';
 import 'package:practice_api/screens/list_friend_screen/widgets/friend_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +32,7 @@ class ListFriendScreenBody extends StatelessWidget
             ),
             body: Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Placeholder(),
+                child: InputDateTimeField(),
 
             ),
             floatingActionButton: FloatingActionButton(

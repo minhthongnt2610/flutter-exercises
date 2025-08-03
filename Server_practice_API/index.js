@@ -94,5 +94,5 @@ app.delete('/api/users/:id', (req, res) => {
 
 // ✅ Start server
 app.listen(port, () => {
-  console.log(`✅ API đang chạy tại: http://192.168.1.80:${port}/api/users`);
+  console.log(`✅ API đang chạy tại: http://192.168.1.110:${port}/api/users`);
 });
