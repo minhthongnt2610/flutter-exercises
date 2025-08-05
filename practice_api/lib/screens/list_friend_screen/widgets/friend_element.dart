@@ -18,67 +18,70 @@ class FriendElement extends StatelessWidget
     {
         final height = MediaQuery.sizeOf(context).height;
         final width = MediaQuery.sizeOf(context).width;
-        return GestureDetector(
-            onTap: onTap,
-            child: Container(
-                width: 850 * width / 868,
-                height: 100 * height / 868,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white54
-                ),
-                child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                        children: [
-                            Row(
-                                children: [
-                                    InfoFriendWidgets(title: 'Full name'),
-                                    SizedBox(width: 15,
-                                        child: Text(' :',
-                                            style:
-                                            TextStyle(
-                                                color: Colors.black,
-                                            ),
-                                        ),
-                                    ),
-                                    InfoFriendWidgets(title: friend.name),
-                                ],
-                            ),
-                            Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                    InfoFriendWidgets(title: 'Birthday'),
-                                    SizedBox(width: 15,
-                                        child: Text(' :',
-                                            style:
-                                            TextStyle(
-                                                color: Colors.black,
-                                            ),
-                                        ),
-                                    ),
-                                    InfoFriendWidgets(title: friend.birthdate.toString()),
-                                ],
-                            ),
-                            Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                    InfoFriendWidgets(title: 'Age'),
-                                    SizedBox(width: 15,
-                                        child: Text(' :',
-                                            style:
-                                            TextStyle(
-                                                color: Colors.black,
-                                            ),
-                                        ),
-                                    ),
-                                    InfoFriendWidgets(title: friend.age.toString()),
-                                ],
-                            ),
-                        ],
-                    ),
-                ),
-            ),
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GestureDetector(
+              onTap: onTap,
+              child: Container(
+                  width: 850 * width / 868,
+                  height: 100 * height / 868,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white54
+                  ),
+                  child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                          children: [
+                              Row(
+                                  children: [
+                                      InfoFriendWidgets(title: 'Full name'),
+                                      SizedBox(width: 15,
+                                          child: Text(' :',
+                                              style:
+                                              TextStyle(
+                                                  color: Colors.black,
+                                              ),
+                                          ),
+                                      ),
+                                      InfoFriendWidgets(title: friend.name),
+                                  ],
+                              ),
+                              Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                      InfoFriendWidgets(title: 'Birthday'),
+                                      SizedBox(width: 15,
+                                          child: Text(' :',
+                                              style:
+                                              TextStyle(
+                                                  color: Colors.black,
+                                              ),
+                                          ),
+                                      ),
+                                      InfoFriendWidgets(title: friend.birthdate.toString()),
+                                  ],
+                              ),
+                              Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                      InfoFriendWidgets(title: 'Age'),
+                                      SizedBox(width: 15,
+                                          child: Text(' :',
+                                              style:
+                                              TextStyle(
+                                                  color: Colors.black,
+                                              ),
+                                          ),
+                                      ),
+                                      InfoFriendWidgets(title: friend.age.toString()),
+                                  ],
+                              ),
+                          ],
+                      ),
+                  ),
+              ),
+          ),
         );
     }
 }

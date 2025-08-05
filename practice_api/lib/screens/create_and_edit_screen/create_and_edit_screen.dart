@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:practice_api/screens/create_and_edit_screen/widgets/delete_button.dart';
+import 'package:practice_api/screens/create_and_edit_screen/widgets/input_date_time_field.dart';
 import 'package:practice_api/screens/create_and_edit_screen/widgets/input_field.dart';
+import 'package:practice_api/screens/create_and_edit_screen/widgets/primary_button.dart';
 class CreateAndEditScreen extends StatefulWidget
 {
     const CreateAndEditScreen({super.key});
@@ -24,18 +27,17 @@ class _CreateAndEditScreenState extends State<CreateAndEditScreen>
                 child: Column(
                     children: [
                         InputField(
-                            hintText: "enter in field", 
+                            hintText: "Enter in field",
                             onChanged: (value)
                             {
                             },
                             maxLines: 3, initialValue: null),
                         SizedBox(height: 16,),
-                        InputField(
-                            hintText: "enter in field", 
-                            onChanged: (value)
-                            {
-                            }, 
-                            maxLines: 2, initialValue: null)
+                        InputDateTimeField(selectedDate: null),
+                        SizedBox(height: 16,),
+                        PrimaryButton(title: "Create", onTap: (){}),
+                        SizedBox(height: 16,),
+                        DeleteButton(title: "Delete", onTap: (){}),
                     ]
                 )
 

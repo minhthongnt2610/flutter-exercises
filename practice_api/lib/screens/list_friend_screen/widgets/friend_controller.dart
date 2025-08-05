@@ -8,23 +8,25 @@ import '../models/requests/update_friend_request.dart';
 class FriendController extends ChangeNotifier
 {
     final _listFriendService = ListFriendServiceImpl();
-    List<FriendModel>? _friends;
     String? error;
     bool isLoading = false;
-
+    List<FriendModel>? friends;
     Future<void> getListFriend() async
     {
         try
         {
             isLoading = true;
             final friends = await _listFriendService.getListFriend();
-            _friends = friends;
             error = null;
-            for (final friend in friends)
-            {
-                debugPrint(friend.toJson().toString());
+            this.friends = friends;
+
+            if(friends.isNotEmpty){
+                for (final friend in friends)
+                {
+                    debugPrint(friend.toJson().toString());
+                }
             }
-            notifyListeners();
+            // notifyListeners();
         }
         catch(e)
         {
@@ -44,8 +46,8 @@ class FriendController extends ChangeNotifier
         {
             isLoading = true;
             final friend = await _listFriendService.getFriendById(id);
-            _friends = [friend];
             error = null;
+
             debugPrint(friend.toJson().toString());
             notifyListeners();
         }
