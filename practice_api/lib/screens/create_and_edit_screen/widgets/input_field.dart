@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class InputField extends StatefulWidget
+import '../../list_friend_screen/widgets/friend_controller.dart';
+
+class InputField extends StatelessWidget
 {
     const InputField({
         super.key,
@@ -15,31 +18,19 @@ class InputField extends StatefulWidget
     final String? initialValue;
 
     @override
-    State<InputField> createState() => _InputFieldState();
-}
-
-class _InputFieldState extends State<InputField>
-{
-    late TextEditingController _controller;
-    @override
-    void initState()
-    {
-        super.initState();
-        _controller = TextEditingController(text: widget.initialValue);
-    }
-
-    @override
     Widget build(BuildContext context)
     {
+        final _textController = TextEditingController();
+        // final controller = Provider.of<FriendController>(context, listen: true);
         return TextFormField(
-            controller: _controller,
+            controller: _textController,
             style:
             const TextStyle(
                 color: Colors.white54,
                 fontSize: 16,
             ),
             decoration: InputDecoration(
-                hintText: widget.hintText,
+                hintText: hintText,
                 hintStyle: const TextStyle(
                     color: Colors.white30,
                     fontSize: 16,
@@ -51,9 +42,10 @@ class _InputFieldState extends State<InputField>
                 fillColor: Colors.white12,
             ),
 
-            onChanged: widget.onChanged,
-            maxLines: widget.maxLines,
-            initialValue: widget.initialValue,
+            onChanged: onChanged,
+            maxLines: maxLines,
+            initialValue: initialValue,
         );
     }
 }
+

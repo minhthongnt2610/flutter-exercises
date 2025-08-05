@@ -7,7 +7,10 @@ app.use(express.json()); // Cho phép đọc body JSON
 // Dữ liệu giả lưu trong RAM
 let users = [
   { id: 1, name: "Nguyễn Minh Thông", birthdate: "2004-10-26" },
-  { id: 2, name: "Trần Thị B", birthdate: "2004-05-22" }
+  { id: 2, name: "Trần Thị B", birthdate: "2004-05-22" },
+  { id: 3, name: "Lê Văn C", birthdate: "2003-12-15" },
+  { id: 4, name: "Phạm Thị D", birthdate: "2002-08-30" },
+  { id: 5, name: "Ngô Văn E", birthdate: "2001-01-01" }
 ];
 
 // Hàm tính tuổi
@@ -94,5 +97,5 @@ app.delete('/api/users/:id', (req, res) => {
 
 // ✅ Start server
 app.listen(port, () => {
-  console.log(`✅ API đang chạy tại: http://192.168.1.133:${port}/api/users`);
+  console.log(`✅ API đang chạy tại: http://192.168.1.140:${port}/api/users`);
 });

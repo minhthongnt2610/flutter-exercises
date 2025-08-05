@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:practice_api/screens/list_friend_screen/widgets/friend_controller.dart';
 import 'package:practice_api/screens/list_friend_screen/widgets/friend_element.dart';
+import 'package:provider/provider.dart';
 
 class BuildBodyWidget extends StatelessWidget
 {
     const BuildBodyWidget({
         super.key,
-
-        required this.controller
     });
-    final FriendController controller;
+
     @override
     Widget build(BuildContext context)
     {
+        final controller = Provider.of<FriendController>(context, listen: true);
+
         if (controller.error != null && controller.error!.isNotEmpty)
         {
             return Center(
@@ -28,25 +29,42 @@ class BuildBodyWidget extends StatelessWidget
         {
             return Container();
         }
-        else if (controller.friends!.isEmpty) 
+        else if (controller.friends!.isEmpty)
         {
-            return const Center(
-                child: Text('No Data'),
+            return Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                        Text('No data'),
+                        ElevatedButton(
+                            onPressed: () async
+                            {
+                                await controller.getListFriend();
+                            },
+                            child: const Text('Reload'),
+                        ),
+                    ],
+                ),
             );
         }
-        else 
+        else
         {
             return ListView.builder(
                 itemCount: controller.friends!.length,
 
                 itemBuilder: (context, index)
                 {
-                   final friend = controller.friends![index];
-                   return FriendElement(
-                       friend: friend,
-                       onTap: (){},
-                       onStatusChange: (value){},
-                   );
+                    final friend = controller.friends![index];
+                    return FriendElement(
+                        friend: friend,
+                        onTap: ()
+                        {
+
+                        },
+                        onStatusChange: (value)
+                        {
+                        },
+                    );
                 }
             );
         }

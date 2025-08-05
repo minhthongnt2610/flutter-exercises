@@ -16,27 +16,28 @@ class FriendController extends ChangeNotifier
         try
         {
             isLoading = true;
-            final friends = await _listFriendService.getListFriend();
             error = null;
+            notifyListeners(); // Thông báo ngay từ đầu khi bắt đầu loading
+
+            final friends = await _listFriendService.getListFriend();
             this.friends = friends;
 
-            if(friends.isNotEmpty){
+            if (friends.isNotEmpty) 
+            {
                 for (final friend in friends)
                 {
                     debugPrint(friend.toJson().toString());
                 }
             }
-            // notifyListeners();
         }
-        catch(e)
+        catch (e)
         {
             error = e.toString();
-            notifyListeners();
         }
         finally
         {
             isLoading = false;
-            notifyListeners();
+            notifyListeners(); // Chỉ thông báo khi đã xử lý xong toàn bộ logic
         }
     }
 
@@ -47,14 +48,11 @@ class FriendController extends ChangeNotifier
             isLoading = true;
             final friend = await _listFriendService.getFriendById(id);
             error = null;
-
             debugPrint(friend.toJson().toString());
-            notifyListeners();
         }
         catch(e)
         {
             error = e.toString();
-            notifyListeners();
         }
         finally
         {
@@ -75,12 +73,10 @@ class FriendController extends ChangeNotifier
             final friend = await _listFriendService.addFriend(request);
             error = null;
             debugPrint(friend.toJson().toString());
-            notifyListeners();
         }
         catch(e)
         {
             error = e.toString();
-            notifyListeners();
         }
         finally
         {
@@ -99,12 +95,10 @@ class FriendController extends ChangeNotifier
             final friend = await _listFriendService.deleteFriend(id);
             error = null;
             debugPrint(friend.toJson().toString());
-            notifyListeners();
         }
         catch(e)
         {
             error = e.toString();
-            notifyListeners();
         }
         finally
         {
@@ -127,12 +121,10 @@ class FriendController extends ChangeNotifier
             final friend = await _listFriendService.updateFriend(request);
             error = null;
             debugPrint(friend.toJson().toString());
-            notifyListeners();
         }
         catch(e)
         {
             error = e.toString();
-            notifyListeners();
         }
         finally
         {

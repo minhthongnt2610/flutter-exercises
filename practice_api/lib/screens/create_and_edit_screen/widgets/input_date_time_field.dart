@@ -1,26 +1,16 @@
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-class InputDateTimeField extends StatefulWidget
+
+class InputDateTimeField extends StatelessWidget
 {
     const InputDateTimeField({
         super.key,
-        required this.selectedDate
+        required this.selectedDate,
+        required this.onChanged
     });
-    final DateTime? selectedDate;
-    @override
-    State<InputDateTimeField> createState() => _InputDateTimeFieldState();
-}
-
-class _InputDateTimeFieldState extends State<InputDateTimeField>
-{
-    DateTime? selectedDate;
-    @override
-    void initState() 
-    {
-        super.initState();
-        selectedDate = widget.selectedDate;
-    }
+    final DateTime selectedDate;
+    final ValueChanged<DateTime?> onChanged;
     @override
     Widget build(BuildContext context) 
     {
@@ -40,14 +30,8 @@ class _InputDateTimeFieldState extends State<InputDateTimeField>
             dateFormat: DateFormat.yMd(),
             mode: DateTimeFieldPickerMode.date,
             initialPickerDateTime: DateTime(2001, 11, 20),
-            onChanged: (DateTime? value)
-            {
-                setState(()
-                    {
-                        selectedDate = value;
-                    }
-                );
-            },
+            onChanged: onChanged,
         );
     }
 }
+
