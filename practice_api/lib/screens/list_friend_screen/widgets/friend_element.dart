@@ -30,7 +30,7 @@ class FriendElement extends StatelessWidget
                       color: Colors.white54
                   ),
                   child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(7.0 ),
                       child: Column(
                           children: [
                               Row(

@@ -30,9 +30,17 @@ class CreateAndEditScreenBody extends StatelessWidget
         final controller = Provider.of<FriendController>(context, listen: true);
 
         return Scaffold(
+            backgroundColor: Color(0xFF212121),
             appBar: AppBar(
-                title: const Text('Create and Edit'),
+                title: const Text('Create and Edit',
+                style:
+                    TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                    )
+                  ,),
                 centerTitle: true,
+                backgroundColor: Color(0xFF212121),
             ),
             body:
             Padding(padding: 

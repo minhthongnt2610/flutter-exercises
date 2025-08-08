@@ -29,9 +29,14 @@ class ListFriendScreenBody extends StatelessWidget
         final controller = Provider.of<FriendController>(context, listen: true); // Sử dụng listen: false nếu chỉ gọi phương thức
 
         return Scaffold(
+            backgroundColor: Color(0xFF212121),
             appBar: AppBar(
-                title: const Text('List Friend'),
+                title:  Text('List Friend',style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                ),),
                 centerTitle: true,
+                backgroundColor: Color(0xFF212121),
             ),
             body: Padding(
                 padding: const EdgeInsets.all(10.0),
