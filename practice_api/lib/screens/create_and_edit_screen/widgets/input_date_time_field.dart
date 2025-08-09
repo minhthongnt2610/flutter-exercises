@@ -9,7 +9,7 @@ class InputDateTimeField extends StatelessWidget
         required this.selectedDate,
         required this.onChanged
     });
-    final DateTime selectedDate;
+    final DateTime? selectedDate;
     final ValueChanged<DateTime?> onChanged;
     @override
     Widget build(BuildContext context) 

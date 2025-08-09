@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:practice_api/screens/create_and_edit_screen/widgets/delete_button.dart';
-import 'package:practice_api/screens/create_and_edit_screen/widgets/input_date_time_field.dart';
-import 'package:practice_api/screens/create_and_edit_screen/widgets/input_field.dart';
-import 'package:practice_api/screens/create_and_edit_screen/widgets/primary_button.dart';
+import 'package:practice_api/screens/create_and_edit_screen/widgets/build_detail_body_widget.dart';
+import 'package:practice_api/screens/list_friend_screen/models/friend_model.dart';
 import 'package:practice_api/screens/list_friend_screen/widgets/friend_controller.dart';
 import 'package:provider/provider.dart';
 
 class CreateAndEditScreen extends StatelessWidget
 {
-    const CreateAndEditScreen({super.key});
+    const CreateAndEditScreen({super.key, this.friendModel});
     static const routeName = '/create-and-edit';
+    final FriendModel? friendModel;
     @override
     Widget build(BuildContext context)
     {
@@ -22,12 +21,11 @@ class CreateAndEditScreen extends StatelessWidget
 
 class CreateAndEditScreenBody extends StatelessWidget
 {
-    const CreateAndEditScreenBody({super.key});
-
+    const CreateAndEditScreenBody({super.key, this.friendModel});
+    final FriendModel? friendModel;
     @override
     Widget build(BuildContext context)
     {
-        final controller = Provider.of<FriendController>(context, listen: true);
 
         return Scaffold(
             backgroundColor: Color(0xFF212121),
@@ -43,34 +41,7 @@ class CreateAndEditScreenBody extends StatelessWidget
                 backgroundColor: Color(0xFF212121),
             ),
             body:
-            Padding(padding: 
-                const EdgeInsets.all(20),
-                child: Column(
-                    children: [
-                        InputField(
-                            hintText: "Enter in field",
-                            onChanged: (value)
-                            {
-                            },
-                            maxLines: 3, initialValue: null),
-                        SizedBox(height: 16,),
-                        InputDateTimeField(selectedDate: DateTime.now(), onChanged: (DateTime? value) {
-
-                        },),
-                        SizedBox(height: 16,),
-                        PrimaryButton(title: "Create", onTap: ()
-                            {
-                            }
-                        ),
-                        SizedBox(height: 16,),
-                        DeleteButton(title: "Delete", onTap: ()
-                            {
-                            }
-                        ),
-                    ]
-                )
-
-            ),
+           BuildDetailBodyWidget(friendModel: friendModel)
         );
     }
 }

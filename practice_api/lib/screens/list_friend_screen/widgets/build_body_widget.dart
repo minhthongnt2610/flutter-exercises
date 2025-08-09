@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:practice_api/screens/list_friend_screen/models/friend_model.dart';
 import 'package:practice_api/screens/list_friend_screen/widgets/friend_controller.dart';
 import 'package:practice_api/screens/list_friend_screen/widgets/friend_element.dart';
 import 'package:provider/provider.dart';
+
+import '../../create_and_edit_screen/create_and_edit_screen.dart';
 
 class BuildBodyWidget extends StatelessWidget
 {
@@ -59,7 +62,7 @@ class BuildBodyWidget extends StatelessWidget
                         friend: friend,
                         onTap: ()
                         {
-
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => CreateAndEditScreen(friendModel: friend)));
                         },
                         onStatusChange: (value)
                         {

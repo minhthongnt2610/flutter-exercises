@@ -11,6 +11,33 @@ class FriendController extends ChangeNotifier
     String? error;
     bool isLoading = false;
     List<FriendModel>? friends;
+
+    String? editName;
+    DateTime? editBirthdate;
+
+    void initState([FriendModel? friend]){
+        if(friend != null){
+            //update
+            editName = friend.name;
+            editBirthdate = friend.birthdate;
+        }
+        else{
+            //create
+            editName = null;
+            editBirthdate = DateTime.now();
+        }
+    }
+
+    void updateName(String name){
+        editName = name;
+        notifyListeners();
+    }
+    void updateBirthdate(DateTime? birthdate){
+        editBirthdate = birthdate;
+        notifyListeners();
+    }
+
+
     Future<void> getListFriend() async
     {
         try

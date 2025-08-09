@@ -20,10 +20,9 @@ class InputField extends StatelessWidget
     @override
     Widget build(BuildContext context)
     {
-        final _textController = TextEditingController();
+
         // final controller = Provider.of<FriendController>(context, listen: true);
         return TextFormField(
-            controller: _textController,
             style:
             const TextStyle(
                 color: Colors.white54,
