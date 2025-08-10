@@ -21,7 +21,7 @@ abstract class ListFriendService
 
 class ListFriendServiceImpl implements ListFriendService
 {
-    final baseUrl = "http://192.168.1.44:3000/api/users";
+    final baseUrl = "http://192.168.1.52:3000/api/users";
 
     @override
     Future<List<FriendModel>> getListFriend() async
