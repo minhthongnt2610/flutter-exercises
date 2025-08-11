@@ -62,7 +62,11 @@ class BuildBodyWidget extends StatelessWidget
                         friend: friend,
                         onTap: ()
                         {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => CreateAndEditScreen(friendModel: friend)));
+                            Navigator.pushNamed(
+                                context,
+                                CreateAndEditScreen.routeName,
+                                arguments: friend,
+                            );
                         },
                         onStatusChange: (value)
                         {

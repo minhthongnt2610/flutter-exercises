@@ -99,6 +99,8 @@ class FriendController extends ChangeNotifier
             final request = CreateFriendRequest(name: name, birthdate: birthdate);
             final friend = await _listFriendService.addFriend(request);
             error = null;
+            friends?.add(friend);
+            await getListFriend();
             debugPrint(friend.toJson().toString());
         }
         catch(e)
@@ -121,6 +123,8 @@ class FriendController extends ChangeNotifier
             isLoading = true;
             final friend = await _listFriendService.deleteFriend(id);
             error = null;
+            friends?.removeWhere((element) => element.id == id);
+            await getListFriend();
             debugPrint(friend.toJson().toString());
         }
         catch(e)
@@ -147,6 +151,10 @@ class FriendController extends ChangeNotifier
             final request = UpdateFriendRequest(id: id, name: name, birthdate: birthdate,);
             final friend = await _listFriendService.updateFriend(request);
             error = null;
+            friends?.removeWhere((element) => element.id == id);
+            friends?.add(friend);
+            await getListFriend();
+
             debugPrint(friend.toJson().toString());
         }
         catch(e)

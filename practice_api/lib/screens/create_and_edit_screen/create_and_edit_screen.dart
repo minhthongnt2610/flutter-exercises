@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 class CreateAndEditScreen extends StatelessWidget
 {
-    const CreateAndEditScreen({super.key, this.friendModel});
+    const CreateAndEditScreen({super.key, this.friendModel,});
     static const routeName = '/create-and-edit';
     final FriendModel? friendModel;
     @override
@@ -14,7 +14,7 @@ class CreateAndEditScreen extends StatelessWidget
     {
         return ChangeNotifierProvider(
             create: (_) => FriendController(),
-            child: const CreateAndEditScreenBody(),
+            child: CreateAndEditScreenBody( friendModel: friendModel,),
         );
     }
 }
