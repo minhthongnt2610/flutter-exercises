@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:practice_api/screens/list_friend_screen/models/friend_model.dart';
 import 'package:practice_api/screens/list_friend_screen/widgets/friend_controller.dart';
 import 'package:practice_api/screens/list_friend_screen/widgets/friend_element.dart';
 import 'package:provider/provider.dart';
@@ -61,12 +60,16 @@ class BuildBodyWidget extends StatelessWidget
                     return FriendElement(
                         friend: friend,
                         onTap: ()
-                        {
-                            Navigator.pushNamed(
+                        async {
+                          final result = await  Navigator.pushNamed(
                                 context,
                                 CreateAndEditScreen.routeName,
                                 arguments: friend,
                             );
+                          if (result == true)
+                          {
+                            await controller.getListFriend();
+                          }
                         },
                         onStatusChange: (value)
                         {
