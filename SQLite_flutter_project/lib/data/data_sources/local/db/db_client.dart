@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqlite_flutter_project/data/data_sources/local/db/db.table.dart';
@@ -26,18 +27,9 @@ class DbClient {
     _database = await openDatabase(
       dbPath,
       version: dbVersion,
+      onCreate: _onCreate,
       onConfigure: _onConfigure,
       onUpgrade: _onUpgrade,
-      onCreate: (db, version) async {
-        await db.execute('''
-          CREATE TABLE ${DbTableName.friend} (
-            ${DbFriendTableFields.id} INTEGER PRIMARY KEY AUTOINCREMENT,
-            ${DbFriendTableFields.name} TEXT NOT NULL,
-            ${DbFriendTableFields.phone} TEXT NOT NULL,
-            ${DbFriendTableFields.email} TEXT NOT NULL
-          )
-        ''');
-      },
     );
     return _database!;
   }
@@ -72,7 +64,22 @@ class DbClient {
     await db.execute('PRAGMA foreign_keys = ON');
   }
 
-  Future<int?> insert({required DbFriendModel model}) async {}
+  Future<int?> insert({required DbFriendModel dbFriendmodel}) async {
+    try {
+      final json = dbFriendmodel.toJson();
+
+      final id = (await database).insert(
+        dbName,
+        json,
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+      debugPrint('Insert success with id: $id');
+      return id;
+    } catch (e) {
+      debugPrint('Insert failed with error: $e');
+      return null;
+    }
+  }
 
   Future<int?> update({required DbFriendModel model}) async {}
 
