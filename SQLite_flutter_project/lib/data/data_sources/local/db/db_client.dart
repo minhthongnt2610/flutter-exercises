@@ -76,7 +76,7 @@ class DbClient {
       final json = dbFriendmodel.toJson();
 
       final id = (await database).insert(
-        dbName,
+        DbTableName.friend,
         json,
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
@@ -93,7 +93,7 @@ class DbClient {
       final json = dbFriendmodel.toJson();
 
       final id = (await database).update(
-        dbName,
+        DbTableName.friend,
         json,
         where: '${DbFriendTableFields.id} = ?',
         whereArgs: [dbFriendmodel.id],
@@ -106,5 +106,19 @@ class DbClient {
     }
   }
 
-  Future<int?> delete({required DbFriendModel dbFriendmodel}) async {}
+  Future<int?> delete({required int id}) async {
+    try {
+      final count = (await database).delete(
+        DbTableName.friend,
+        where: '${DbFriendTableFields.id} = ?',
+        whereArgs: [id],
+      );
+
+      debugPrint('Delete success with count: $count');
+      return count;
+    } catch (e) {
+      debugPrint('Delete failed with error: $e');
+      return null;
+    }
+  }
 }
