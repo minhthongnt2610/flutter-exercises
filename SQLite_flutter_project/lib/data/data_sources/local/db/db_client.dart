@@ -110,7 +110,7 @@ class DbClient {
     try {
       final count = (await database).delete(
         DbTableName.friend,
-        where: '${DbFriendTableFields.id} = ?',
+        where: 'id = ?',
         whereArgs: [id],
       );
 
