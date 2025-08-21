@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sqlite_flutter_project/screens/detail_screen/detail_screen.dart';
 import 'package:sqlite_flutter_project/screens/home_screen/widgets/friend_element.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,9 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: FriendElement(onTap: () {}),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed(DetailScreen.routeName);
-        },
+        onPressed: () {},
         child: Icon(Icons.add),
       ),
     );
