@@ -64,6 +64,13 @@ class DbClient {
     await db.execute('PRAGMA foreign_keys = ON');
   }
 
+  // Các phương thức truy vấn dữ liệu
+  // Lay ra tat ca cac friend
+  Future<List<DbFriendModel>> getAllFriends() async {
+    final maps = await (await database).query(DbTableName.friend);
+    return maps.map((map) => DbFriendModel.fromJson(map)).toList();
+  }
+
   Future<int?> insert({required DbFriendModel dbFriendmodel}) async {
     try {
       final json = dbFriendmodel.toJson();
