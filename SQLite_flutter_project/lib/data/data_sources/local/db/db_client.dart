@@ -88,7 +88,23 @@ class DbClient {
     }
   }
 
-  Future<int?> update({required DbFriendModel model}) async {}
+  Future<int?> update({required DbFriendModel dbFriendmodel}) async {
+    try {
+      final json = dbFriendmodel.toJson();
 
-  Future<int?> delete({required DbFriendModel model}) async {}
+      final id = (await database).update(
+        dbName,
+        json,
+        where: '${DbFriendTableFields.id} = ?',
+        whereArgs: [dbFriendmodel.id],
+      );
+      debugPrint('Update success with id: $id');
+      return id;
+    } catch (e) {
+      debugPrint('Update failed with error: $e');
+      return null;
+    }
+  }
+
+  Future<int?> delete({required DbFriendModel dbFriendmodel}) async {}
 }
