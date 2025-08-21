@@ -5,7 +5,7 @@ import 'package:sqlite_flutter_project/screens/detail_screen/widgets/build_detai
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key, this.friendModel});
 
-  static const routeName = "/detail";
+  // static const routeName = "/detail";
   final FriendModel? friendModel;
 
   @override

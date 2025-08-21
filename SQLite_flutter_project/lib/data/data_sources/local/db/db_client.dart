@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqlite_flutter_project/data/data_sources/local/db/db.table.dart';
@@ -26,18 +27,9 @@ class DbClient {
     _database = await openDatabase(
       dbPath,
       version: dbVersion,
+      onCreate: _onCreate,
       onConfigure: _onConfigure,
       onUpgrade: _onUpgrade,
-      onCreate: (db, version) async {
-        await db.execute('''
-          CREATE TABLE ${DbTableName.friend} (
-            ${DbFriendTableFields.id} INTEGER PRIMARY KEY AUTOINCREMENT,
-            ${DbFriendTableFields.name} TEXT NOT NULL,
-            ${DbFriendTableFields.phone} TEXT NOT NULL,
-            ${DbFriendTableFields.email} TEXT NOT NULL
-          )
-        ''');
-      },
     );
     return _database!;
   }
@@ -72,9 +64,61 @@ class DbClient {
     await db.execute('PRAGMA foreign_keys = ON');
   }
 
-  Future<int?> insert({required DbFriendModel model}) async {}
+  // Các phương thức truy vấn dữ liệu
+  // Lay ra tat ca cac friend
+  Future<List<DbFriendModel>> getAllFriends() async {
+    final maps = await (await database).query(DbTableName.friend);
+    return maps.map((map) => DbFriendModel.fromJson(map)).toList();
+  }
 
-  Future<int?> update({required DbFriendModel model}) async {}
+  Future<int?> insert({required DbFriendModel dbFriendmodel}) async {
+    try {
+      final json = dbFriendmodel.toJson();
 
-  Future<int?> delete({required DbFriendModel model}) async {}
+      final id = (await database).insert(
+        DbTableName.friend,
+        json,
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+      debugPrint('Insert success with id: $id');
+      return id;
+    } catch (e) {
+      debugPrint('Insert failed with error: $e');
+      return null;
+    }
+  }
+
+  Future<int?> update({required DbFriendModel dbFriendmodel}) async {
+    try {
+      final json = dbFriendmodel.toJson();
+
+      final id = (await database).update(
+        DbTableName.friend,
+        json,
+        where: '${DbFriendTableFields.id} = ?',
+        whereArgs: [dbFriendmodel.id],
+      );
+      debugPrint('Update success with id: $id');
+      return id;
+    } catch (e) {
+      debugPrint('Update failed with error: $e');
+      return null;
+    }
+  }
+
+  Future<int?> delete({required int id}) async {
+    try {
+      final count = (await database).delete(
+        DbTableName.friend,
+        where: '${DbFriendTableFields.id} = ?',
+        whereArgs: [id],
+      );
+
+      debugPrint('Delete success with count: $count');
+      return count;
+    } catch (e) {
+      debugPrint('Delete failed with error: $e');
+      return null;
+    }
+  }
 }
