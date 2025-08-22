@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sqlite_flutter_project/data/data_sources/local/db/db_client.dart';
+import 'package:sqlite_flutter_project/data/data_sources/local/db/db_controller.dart';
 import 'package:sqlite_flutter_project/data/models/friend_model.dart';
 import 'package:sqlite_flutter_project/screens/detail_screen/widgets/build_detail_body_widget.dart';
 
@@ -13,7 +13,7 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => DbClient(),
+      create: (_) => DbController(),
       child: DetailScreenBody(friendModel: friendModel),
     );
   }

@@ -3,51 +3,14 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqlite_flutter_project/data/data_sources/local/db/db.table.dart';
 import 'package:sqlite_flutter_project/data/models/db/db_friend_model.dart';
-import 'package:sqlite_flutter_project/data/models/friend_model.dart';
 
-class DbClient extends ChangeNotifier {
+class DbClient {
   DbClient();
 
   static const String dbName = 'friend_managerment.db'; // tên db
   static const int dbVersion = 1; // phiên bản db
 
   Database? _database; // biến lưu trữ database
-
-  String? editName;
-  String? editPhone;
-  String? editEmail;
-
-  //state danh sach ban be
-  List<DbFriendModel> _friendList = [];
-
-  List<DbFriendModel> get friendList => _friendList;
-
-  void initState([FriendModel? friendModel]) {
-    if (friendModel != null) {
-      editName = friendModel.name;
-      editPhone = friendModel.phone;
-      editEmail = friendModel.email;
-    } else {
-      editName = null;
-      editPhone = null;
-      editEmail = null;
-    }
-  }
-
-  void updateName(String name) {
-    editName = name;
-    notifyListeners();
-  }
-
-  void updatePhone(String phone) {
-    editPhone = phone;
-    notifyListeners();
-  }
-
-  void updateEmail(String email) {
-    editEmail = email;
-    notifyListeners();
-  }
 
   Future<Database> get database async {
     if (_database != null) {
@@ -68,7 +31,6 @@ class DbClient extends ChangeNotifier {
       onConfigure: _onConfigure,
       onUpgrade: _onUpgrade,
     );
-    await fetchFriend();
     return _database!;
   }
 
@@ -104,16 +66,9 @@ class DbClient extends ChangeNotifier {
 
   // Các phương thức truy vấn dữ liệu
   // Lay ra tat ca cac friend
-  // Future<List<DbFriendModel>> getAllFriends() async {
-  //   final maps = await (await database).query(DbTableName.friend);
-  //   return maps.map((map) => DbFriendModel.fromJson(map)).toList();
-  //   notifyListeners();
-  // }
-
-  Future<void> fetchFriend() async {
+  Future<List<DbFriendModel>> getAllFriends() async {
     final maps = await (await database).query(DbTableName.friend);
-    _friendList = maps.map((map) => DbFriendModel.fromJson(map)).toList();
-    notifyListeners();
+    return maps.map((map) => DbFriendModel.fromJson(map)).toList();
   }
 
   Future<int?> insert({required DbFriendModel dbFriendmodel}) async {
@@ -126,7 +81,6 @@ class DbClient extends ChangeNotifier {
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
       debugPrint('Insert success with id: $id');
-      await fetchFriend();
       return id;
     } catch (e) {
       debugPrint('Insert failed with error: $e');
@@ -145,7 +99,6 @@ class DbClient extends ChangeNotifier {
         whereArgs: [dbFriendmodel.id],
       );
       debugPrint('Update success with id: $id');
-      await fetchFriend();
       return id;
     } catch (e) {
       debugPrint('Update failed with error: $e');
@@ -162,7 +115,6 @@ class DbClient extends ChangeNotifier {
       );
 
       debugPrint('Delete success with count: $count');
-      await fetchFriend();
       return count;
     } catch (e) {
       debugPrint('Delete failed with error: $e');
