@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sqlite_flutter_project/data/models/friend_model.dart';
+import 'package:sqlite_flutter_project/screens/detail_screen/detail_screen.dart';
 import 'package:sqlite_flutter_project/screens/home_screen/home_screen.dart';
 
 class MyApp extends StatelessWidget {
@@ -14,11 +16,11 @@ class MyApp extends StatelessWidget {
         switch (settings.name) {
           case HomeScreen.routeName:
             return MaterialPageRoute(builder: (context) => const HomeScreen());
-          // case CreateAndEditScreen.routeName:
-          //   final friendModel = settings.arguments as FriendModel?;
-          //   return MaterialPageRoute(
-          //     builder: (context) => CreateAndEditScreen(friendModel: friendModel),
-          //   );
+          case DetailScreen.routeName:
+            final friendModel = settings.arguments as FriendModel?;
+            return MaterialPageRoute(
+              builder: (context) => DetailScreen(friendModel: friendModel),
+            );
         }
         return null;
       },

@@ -17,6 +17,11 @@ class DbClient extends ChangeNotifier {
   String? editPhone;
   String? editEmail;
 
+  //state danh sach ban be
+  List<DbFriendModel> _friendList = [];
+
+  List<DbFriendModel> get friendList => _friendList;
+
   void initState([FriendModel? friendModel]) {
     if (friendModel != null) {
       editName = friendModel.name;
@@ -98,9 +103,16 @@ class DbClient extends ChangeNotifier {
 
   // Các phương thức truy vấn dữ liệu
   // Lay ra tat ca cac friend
-  Future<List<DbFriendModel>> getAllFriends() async {
+  // Future<List<DbFriendModel>> getAllFriends() async {
+  //   final maps = await (await database).query(DbTableName.friend);
+  //   return maps.map((map) => DbFriendModel.fromJson(map)).toList();
+  //   notifyListeners();
+  // }
+
+  Future<void> fetchFriend() async {
     final maps = await (await database).query(DbTableName.friend);
-    return maps.map((map) => DbFriendModel.fromJson(map)).toList();
+    _friendList = maps.map((map) => DbFriendModel.fromJson(map)).toList();
+    notifyListeners();
   }
 
   Future<int?> insert({required DbFriendModel dbFriendmodel}) async {
