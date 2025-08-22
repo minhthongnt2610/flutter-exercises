@@ -68,6 +68,7 @@ class DbClient extends ChangeNotifier {
       onConfigure: _onConfigure,
       onUpgrade: _onUpgrade,
     );
+    await fetchFriend();
     return _database!;
   }
 
@@ -125,6 +126,7 @@ class DbClient extends ChangeNotifier {
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
       debugPrint('Insert success with id: $id');
+      await fetchFriend();
       return id;
     } catch (e) {
       debugPrint('Insert failed with error: $e');
@@ -143,6 +145,7 @@ class DbClient extends ChangeNotifier {
         whereArgs: [dbFriendmodel.id],
       );
       debugPrint('Update success with id: $id');
+      await fetchFriend();
       return id;
     } catch (e) {
       debugPrint('Update failed with error: $e');
@@ -159,6 +162,7 @@ class DbClient extends ChangeNotifier {
       );
 
       debugPrint('Delete success with count: $count');
+      await fetchFriend();
       return count;
     } catch (e) {
       debugPrint('Delete failed with error: $e');
