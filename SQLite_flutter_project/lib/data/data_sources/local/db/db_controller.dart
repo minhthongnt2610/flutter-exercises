@@ -45,4 +45,33 @@ class DbController extends ChangeNotifier {
     _friendList = friendList;
     notifyListeners();
   }
+
+  Future<void> insertFriend({
+    required String name,
+    required String phone,
+    required String email,
+  }) async {
+    final friendModel = FriendModel(name: name, phone: phone, email: email);
+    DbFriendModel dbFriendModel;
+    dbFriendModel = friendModel.toDbFriendModel();
+    await DbClient().insert(dbFriendmodel: dbFriendModel);
+    await fetchFriend();
+  }
+
+  Future<void> updateFriend({
+    required String name,
+    required String phone,
+    required String email,
+  }) async {
+    final friendModel = FriendModel(name: name, phone: phone, email: email);
+    DbFriendModel dbFriendModel;
+    dbFriendModel = friendModel.toDbFriendModel();
+    await DbClient().update(dbFriendmodel: dbFriendModel);
+    await fetchFriend();
+  }
+
+  Future<void> deleteFriend({required int id}) async {
+    await DbClient().delete(id: id);
+    await fetchFriend();
+  }
 }
