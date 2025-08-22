@@ -3,14 +3,46 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqlite_flutter_project/data/data_sources/local/db/db.table.dart';
 import 'package:sqlite_flutter_project/data/models/db/db_friend_model.dart';
+import 'package:sqlite_flutter_project/data/models/friend_model.dart';
 
-class DbClient {
+class DbClient extends ChangeNotifier {
   DbClient();
 
   static const String dbName = 'friend_managerment.db'; // tên db
   static const int dbVersion = 1; // phiên bản db
 
   Database? _database; // biến lưu trữ database
+
+  String? editName;
+  String? editPhone;
+  String? editEmail;
+
+  void initState([FriendModel? friendModel]) {
+    if (friendModel != null) {
+      editName = friendModel.name;
+      editPhone = friendModel.phone;
+      editEmail = friendModel.email;
+    } else {
+      editName = null;
+      editPhone = null;
+      editEmail = null;
+    }
+  }
+
+  void updateName(String name) {
+    editName = name;
+    notifyListeners();
+  }
+
+  void updatePhone(String phone) {
+    editPhone = phone;
+    notifyListeners();
+  }
+
+  void updateEmail(String email) {
+    editEmail = email;
+    notifyListeners();
+  }
 
   Future<Database> get database async {
     if (_database != null) {

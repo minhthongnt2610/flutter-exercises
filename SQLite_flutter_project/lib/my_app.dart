@@ -9,7 +9,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: HomeScreen(),
+      initialRoute: HomeScreen.routeName,
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case HomeScreen.routeName:
+            return MaterialPageRoute(builder: (context) => const HomeScreen());
+          // case CreateAndEditScreen.routeName:
+          //   final friendModel = settings.arguments as FriendModel?;
+          //   return MaterialPageRoute(
+          //     builder: (context) => CreateAndEditScreen(friendModel: friendModel),
+          //   );
+        }
+        return null;
+      },
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
     );
