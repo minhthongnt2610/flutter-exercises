@@ -14,50 +14,53 @@ class FriendElement extends StatelessWidget {
     final width = MediaQuery.sizeOf(context).width;
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        width: 850 * width / 868,
-        height: 100 * height / 868,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white30,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(7.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  InfoFriendWidgets(title: 'Full name'),
-                  SizedBox(
-                    width: 15,
-                    child: Text(' :', style: TextStyle(color: Colors.white)),
-                  ),
-                  InfoFriendWidgets(title: friend.name),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  InfoFriendWidgets(title: 'Phone'),
-                  SizedBox(
-                    width: 15,
-                    child: Text(' :', style: TextStyle(color: Colors.white)),
-                  ),
-                  InfoFriendWidgets(title: friend.phone),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  InfoFriendWidgets(title: 'Email'),
-                  SizedBox(
-                    width: 15,
-                    child: Text(' :', style: TextStyle(color: Colors.white)),
-                  ),
-                  InfoFriendWidgets(title: friend.email),
-                ],
-              ),
-            ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          width: 850 * width / 868,
+          height: 100 * height / 868,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white30,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(7.0),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    InfoFriendWidgets(title: 'Full name'),
+                    SizedBox(
+                      width: 15,
+                      child: Text(' :', style: TextStyle(color: Colors.white)),
+                    ),
+                    InfoFriendWidgets(title: friend.name),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InfoFriendWidgets(title: 'Phone'),
+                    SizedBox(
+                      width: 15,
+                      child: Text(' :', style: TextStyle(color: Colors.white)),
+                    ),
+                    InfoFriendWidgets(title: friend.phone),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InfoFriendWidgets(title: 'Email'),
+                    SizedBox(
+                      width: 15,
+                      child: Text(' :', style: TextStyle(color: Colors.white)),
+                    ),
+                    InfoFriendWidgets(title: friend.email),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -56,6 +56,7 @@ class DbController extends ChangeNotifier {
     DbFriendModel dbFriendModel;
     dbFriendModel = friendModel.toDbFriendModel();
     await DbClient().insert(dbFriendModel: dbFriendModel);
+
     await fetchFriend();
   }
 
@@ -69,6 +70,9 @@ class DbController extends ChangeNotifier {
     final friendModel = FriendModel(name: name, phone: phone, email: email);
     DbFriendModel dbFriendModel;
     dbFriendModel = friendModel.toDbFriendModel();
+    dbFriendModel = dbFriendModel.copyWith(
+      id: id,
+    ); // cập nhật lại id của friendModel để update
     await DbClient().update(dbFriendModel: dbFriendModel);
     await fetchFriend();
   }

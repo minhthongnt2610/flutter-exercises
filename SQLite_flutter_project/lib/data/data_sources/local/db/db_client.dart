@@ -115,6 +115,8 @@ class DbClient {
       );
 
       debugPrint('Delete success with count: $count');
+      debugPrint('Delete success with id: $id');
+
       return count;
     } catch (e) {
       debugPrint('Delete failed with error: $e');
