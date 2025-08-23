@@ -51,6 +51,7 @@ class DbController extends ChangeNotifier {
     required String phone,
     required String email,
   }) async {
+    // ignore: missing_required_param
     final friendModel = FriendModel(name: name, phone: phone, email: email);
     DbFriendModel dbFriendModel;
     dbFriendModel = friendModel.toDbFriendModel();
@@ -63,6 +64,7 @@ class DbController extends ChangeNotifier {
     required String phone,
     required String email,
   }) async {
+    // ignore: missing_required_param
     final friendModel = FriendModel(name: name, phone: phone, email: email);
     DbFriendModel dbFriendModel;
     dbFriendModel = friendModel.toDbFriendModel();
