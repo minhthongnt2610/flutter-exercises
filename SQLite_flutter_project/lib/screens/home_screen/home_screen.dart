@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // //CACH 1
   // late DbController _controller;
   //
   // @override
@@ -31,7 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
   //   _controller.dispose();
   //   super.dispose();
   // }
-
+  //
+  //
+  //
   // @override
   // Widget build(BuildContext context) {
   //   return ChangeNotifierProvider.value(
@@ -55,6 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
   //     ),
   //   );
   // }
+
+  //CACH 2 (uu tien cach nay)
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
