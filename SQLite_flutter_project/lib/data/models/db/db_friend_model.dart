@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:sqlite_flutter_project/data/data_sources/local/db/db.table.dart';
 import 'package:sqlite_flutter_project/data/models/friend_model.dart';
 
 class DbFriendModel {
-  const DbFriendModel({
-    @required this.id,
+  DbFriendModel({
+    required this.id,
     required this.name,
     required this.phone,
     required this.email,

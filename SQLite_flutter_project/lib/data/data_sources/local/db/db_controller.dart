@@ -51,10 +51,12 @@ class DbController extends ChangeNotifier {
     required String phone,
     required String email,
   }) async {
+    // ignore: missing_required_param
     final friendModel = FriendModel(name: name, phone: phone, email: email);
     DbFriendModel dbFriendModel;
     dbFriendModel = friendModel.toDbFriendModel();
-    await DbClient().insert(dbFriendmodel: dbFriendModel);
+    await DbClient().insert(dbFriendModel: dbFriendModel);
+
     await fetchFriend();
   }
 
@@ -62,11 +64,16 @@ class DbController extends ChangeNotifier {
     required String name,
     required String phone,
     required String email,
+    required int id,
   }) async {
+    // ignore: missing_required_param
     final friendModel = FriendModel(name: name, phone: phone, email: email);
     DbFriendModel dbFriendModel;
     dbFriendModel = friendModel.toDbFriendModel();
-    await DbClient().update(dbFriendmodel: dbFriendModel);
+    dbFriendModel = dbFriendModel.copyWith(
+      id: id,
+    ); // cập nhật lại id của friendModel để update
+    await DbClient().update(dbFriendModel: dbFriendModel);
     await fetchFriend();
   }
 
