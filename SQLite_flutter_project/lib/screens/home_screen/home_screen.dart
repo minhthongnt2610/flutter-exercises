@@ -71,13 +71,27 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, controller, child) {
           return Scaffold(
             appBar: AppBar(title: const Text("Home Screen"), centerTitle: true),
-            body: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: BuildBodyWidget(),
+            body: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  await controller.fetchFriend();
+                },
+                child: const Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Stack(children: [BuildBodyWidget()]),
+                ),
+              ),
             ),
             floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(DetailScreen.routeName);
+              onPressed: () async {
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DetailScreen()),
+                );
+                if (result == true) {
+                  await controller.fetchFriend();
+                }
               },
               child: const Icon(Icons.add),
             ),

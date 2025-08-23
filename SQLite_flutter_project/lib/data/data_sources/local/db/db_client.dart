@@ -71,11 +71,11 @@ class DbClient {
     return maps.map((map) => DbFriendModel.fromJson(map)).toList();
   }
 
-  Future<int?> insert({required DbFriendModel dbFriendmodel}) async {
+  Future<int?> insert({required DbFriendModel dbFriendModel}) async {
     try {
-      final json = dbFriendmodel.toJson();
+      final json = dbFriendModel.toJson();
 
-      final id = (await database).insert(
+      final id = await (await database).insert(
         DbTableName.friend,
         json,
         conflictAlgorithm: ConflictAlgorithm.replace,
@@ -88,15 +88,15 @@ class DbClient {
     }
   }
 
-  Future<int?> update({required DbFriendModel dbFriendmodel}) async {
+  Future<int?> update({required DbFriendModel dbFriendModel}) async {
     try {
-      final json = dbFriendmodel.toJson();
+      final json = dbFriendModel.toJson();
 
-      final id = (await database).update(
+      final id = await (await database).update(
         DbTableName.friend,
         json,
         where: '${DbFriendTableFields.id} = ?',
-        whereArgs: [dbFriendmodel.id],
+        whereArgs: [dbFriendModel.id],
       );
       debugPrint('Update success with id: $id');
       return id;
@@ -108,7 +108,7 @@ class DbClient {
 
   Future<int?> delete({required int id}) async {
     try {
-      final count = (await database).delete(
+      final count = await (await database).delete(
         DbTableName.friend,
         where: '${DbFriendTableFields.id} = ?',
         whereArgs: [id],

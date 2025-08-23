@@ -17,6 +17,7 @@ class BuildBodyWidget extends StatelessWidget {
       );
     } else {
       return ListView.builder(
+        itemCount: controller.friendList.length,
         itemBuilder: (context, index) {
           final friend = controller.friendList[index].toFriendModel();
           return FriendElement(

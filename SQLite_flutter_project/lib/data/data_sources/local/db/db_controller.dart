@@ -55,7 +55,7 @@ class DbController extends ChangeNotifier {
     final friendModel = FriendModel(name: name, phone: phone, email: email);
     DbFriendModel dbFriendModel;
     dbFriendModel = friendModel.toDbFriendModel();
-    await DbClient().insert(dbFriendmodel: dbFriendModel);
+    await DbClient().insert(dbFriendModel: dbFriendModel);
     await fetchFriend();
   }
 
@@ -63,12 +63,13 @@ class DbController extends ChangeNotifier {
     required String name,
     required String phone,
     required String email,
+    required int id,
   }) async {
     // ignore: missing_required_param
     final friendModel = FriendModel(name: name, phone: phone, email: email);
     DbFriendModel dbFriendModel;
     dbFriendModel = friendModel.toDbFriendModel();
-    await DbClient().update(dbFriendmodel: dbFriendModel);
+    await DbClient().update(dbFriendModel: dbFriendModel);
     await fetchFriend();
   }
 
