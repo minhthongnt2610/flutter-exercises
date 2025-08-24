@@ -9,7 +9,6 @@ class MyApp extends StatelessWidget {
       title: 'Practice_Firebase',
       debugShowCheckedModeBanner: false,
       home: const StartScreen(),
-      debugShowMaterialGrid: true,
     );
   }
 }
