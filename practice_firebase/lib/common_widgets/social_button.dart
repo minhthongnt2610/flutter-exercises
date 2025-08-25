@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 class SocialButton extends StatelessWidget {
-  const SocialButton({super.key, required this.url, required this.onPressed});
+  const SocialButton({super.key, required this.icon, required this.onPressed});
 
-  final String url;
+  final Icon icon;
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     int width = MediaQuery.of(context).size.width.toInt();
     int height = MediaQuery.of(context).size.height.toInt();
     return Container(
-      height: 50 * height / 928,
+      width: 150 * width / 428,
+      height: 58 * height / 928,
       margin: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -24,11 +25,7 @@ class SocialButton extends StatelessWidget {
         ],
       ),
       child: IconButton(
-        icon: Image.network(
-          url,
-          width: 24,
-          height: 24,
-        ),
+        icon: icon,
         onPressed: onPressed,
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/login_sign_up_screen/widgets/filed_widget.dart';
 
 import '../../common_widgets/login_button.dart';
+import '../../common_widgets/social_button.dart';
 import '../../contants/app_colors.dart';
 
 class LoginSignUp extends StatefulWidget {
@@ -82,6 +83,37 @@ class _LoginSignUpState extends State<LoginSignUp> {
               Text(
                 "--------------- Or Login with ---------------",
                 style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
+              SizedBox(height: 20 * height / 928),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  SocialButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.g_mobiledata, color: Colors.red, size: 30),
+                  ),
+                  SocialButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.facebook, color: Colors.blue, size: 30),
+                  ),
+                ],
+              ),
+              SizedBox(height: 120 * height / 928),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don't have an account?",
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Sign Up now.",
+                      style: TextStyle(color: Colors.white, fontSize: 17),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
