@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/login_sign_up_screen/widgets/filed_widget.dart';
 
+import '../../common_widgets/login_button.dart';
 import '../../contants/app_colors.dart';
-
 
 class LoginSignUp extends StatefulWidget {
   const LoginSignUp({super.key});
@@ -32,40 +32,56 @@ class _LoginSignUpState extends State<LoginSignUp> {
           child: Column(
             children: [
               SizedBox(height: 150 * height / 928),
-             Column(
-               children: [
-                 Text(
-                   "Welcome",
-                   style: TextStyle(
-                     color: Colors.white,
-                     fontSize: 40,
-                     fontWeight: FontWeight.bold,
-                   ),
-                 ),
-                 Text(
-                   "Scorpion to see you!",
-                   style: TextStyle(
-                     color: Colors.white,
-                     fontSize: 26,
-                     fontWeight: FontWeight.bold,
-                   ),
-                 ),
-               ],
-             ),
+              Column(
+                children: [
+                  Text(
+                    "Welcome",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "Scorpion to see you!",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
               SizedBox(height: 30 * height / 928),
               FiledWidget(
                 labelText: 'Email address',
-                hintText: 'Enter your email', 
+                hintText: 'Enter your email',
                 isPassword: false,
-                suffixIcon: Icon(Icons.email,color: Colors.white,),
+                suffixIcon: Icon(Icons.email, color: Colors.white),
               ),
-              SizedBox(height: 40 * height / 928),
+              SizedBox(height: 20 * height / 928),
               FiledWidget(
                 labelText: 'Password',
                 hintText: 'Enter your password',
                 isPassword: true,
                 suffixIcon: Icon(Icons.remove_red_eye),
-
+              ),
+              Container(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20 * height / 928),
+              LoginButton(title: 'Login', isColor: true),
+              SizedBox(height: 40 * height / 928),
+              Text(
+                "--------------- Or Login with ---------------",
+                style: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ],
           ),
