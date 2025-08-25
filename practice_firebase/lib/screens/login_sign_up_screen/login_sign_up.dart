@@ -18,13 +18,13 @@ class _LoginSignUpState extends State<LoginSignUp> {
     int height = MediaQuery.of(context).size.height.toInt();
     return Scaffold(
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [AppColor.hex53A6D8, AppColor.hexBCE6FF],
+            colors: [AppColor.hex1F4F70, AppColor.hex8FC9F0],
           ),
         ),
         child: Padding(
@@ -32,23 +32,37 @@ class _LoginSignUpState extends State<LoginSignUp> {
           child: Column(
             children: [
               SizedBox(height: 150 * height / 928),
-              Text(
-                "Welcome",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10 * height / 928),
+             Column(
+               children: [
+                 Text(
+                   "Welcome",
+                   style: TextStyle(
+                     color: Colors.white,
+                     fontSize: 40,
+                     fontWeight: FontWeight.bold,
+                   ),
+                 ),
+                 Text(
+                   "Scorpion to see you!",
+                   style: TextStyle(
+                     color: Colors.white,
+                     fontSize: 26,
+                     fontWeight: FontWeight.bold,
+                   ),
+                 ),
+               ],
+             ),
+              SizedBox(height: 30 * height / 928),
               FiledWidget(
                 labelText: 'Email address',
-                hintText: 'Enter your email',
+                hintText: 'Enter your email', 
+                isPassword: false,
               ),
-              SizedBox(height: 10 * height / 928),
+              SizedBox(height: 40 * height / 928),
               FiledWidget(
                 labelText: 'Password',
                 hintText: 'Enter your password',
+                isPassword: true,
               ),
             ],
           ),
