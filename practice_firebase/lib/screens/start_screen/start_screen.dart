@@ -18,7 +18,7 @@ class StartScreen extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [AppColor.hex53A6D8, AppColor.hexBCE6FF],
+                colors: [AppColor.hex1F4F70, AppColor.hex8FC9F0],
               ),
             ),
           ),
