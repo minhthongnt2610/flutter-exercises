@@ -57,7 +57,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
                 labelText: 'Email address',
                 hintText: 'Enter your email', 
                 isPassword: false,
-                suffixIcon: Icon(Icons.email),
+                suffixIcon: Icon(Icons.email,color: Colors.white,),
               ),
               SizedBox(height: 40 * height / 928),
               FiledWidget(
@@ -65,6 +65,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
                 hintText: 'Enter your password',
                 isPassword: true,
                 suffixIcon: Icon(Icons.remove_red_eye),
+
               ),
             ],
           ),

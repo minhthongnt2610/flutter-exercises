@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
 class FiledWidget extends StatefulWidget {
-  const FiledWidget({
+  FiledWidget({
     super.key,
     required this.labelText,
     required this.hintText,
-    required this.isPassword,
+    this.isPassword = false,
     required this.suffixIcon,
   });
   final String labelText;
@@ -16,28 +17,39 @@ class FiledWidget extends StatefulWidget {
 }
 
 class _FiledWidgetState extends State<FiledWidget> {
+  bool _isPassword = false;
 
-    @override
-    Widget build(BuildContext context) {
-      return TextFormField(
-        cursorColor: Colors.white,
-        obscureText: widget.isPassword,
-        decoration: InputDecoration(
-          suffixIcon: widget.suffixIcon,
-          filled: true,
-          fillColor: Colors.white.withOpacity(0.3),
-          border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white, width: 2),
-            borderRadius: BorderRadius.circular(10),
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      cursorColor: Colors.white,
+      obscureText: widget.isPassword ? !_isPassword : false,
+      decoration: InputDecoration(
+        suffixIcon: widget.isPassword
+            ? IconButton(
+          icon: Icon(
+            _isPassword ? Icons.visibility_off : Icons.visibility,
+            color: Colors.white,
           ),
-          labelText: widget.labelText,
-          hintText: widget.hintText,
-          labelStyle: TextStyle(color: Colors.white),
-          hintStyle: TextStyle(color: Colors.white),
-
+          onPressed: () {
+            setState(() {
+              _isPassword = !_isPassword;
+            });
+          },
+        )
+            : widget.suffixIcon,
+        filled: true,
+        fillColor: Colors.white.withOpacity(0.3),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white, width: 2),
+          borderRadius: BorderRadius.circular(10),
         ),
-        style: TextStyle(color: Colors.white),
-      );
-    }
+        labelText: widget.labelText,
+        hintText: widget.hintText,
+        labelStyle: TextStyle(color: Colors.white),
+        hintStyle: TextStyle(color: Colors.white),
+      ),
+      style: TextStyle(color: Colors.white),
+    );
   }
-
+}
