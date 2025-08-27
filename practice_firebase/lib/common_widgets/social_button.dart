@@ -24,10 +24,7 @@ class SocialButton extends StatelessWidget {
           ),
         ],
       ),
-      child: IconButton(
-        icon: icon,
-        onPressed: onPressed,
-      ),
+      child: IconButton(icon: icon, onPressed: onPressed),
     );
   }
 }

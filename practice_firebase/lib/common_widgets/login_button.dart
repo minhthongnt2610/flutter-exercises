@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({super.key, required this.title, required this.isColor});
+  const LoginButton({
+    super.key,
+    required this.title,
+    required this.isColor,
+    required this.onPressed,
+  });
 
   final String title;
   final bool isColor;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class LoginButton extends StatelessWidget {
           elevation: MaterialStateProperty.all(0),
           mouseCursor: null,
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           title,
           style: TextStyle(

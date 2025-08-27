@@ -5,15 +5,15 @@ import '../../common_widgets/login_button.dart';
 import '../../common_widgets/social_button.dart';
 import '../../contants/app_colors.dart';
 
-class LoginSignUp extends StatefulWidget {
-  const LoginSignUp({super.key});
-  static const String routeName = '/login_sign_up';
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
+  static const String routeName = '/sign_up';
 
   @override
-  State<LoginSignUp> createState() => _LoginSignUpState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginSignUpState extends State<LoginSignUp> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
@@ -41,7 +41,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
                   Column(
                     children: [
                       Text(
-                        "Welcome",
+                        "Create Account",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 40,
@@ -49,7 +49,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
                         ),
                       ),
                       Text(
-                        "Scorpion to see you!",
+                        "To get started now!",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 26,
@@ -72,6 +72,13 @@ class _LoginSignUpState extends State<LoginSignUp> {
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
                   ),
+                  SizedBox(height: 20 * height / 928),
+                  FiledWidget(
+                    labelText: 'Confirm Password',
+                    hintText: 'Confirm password',
+                    isPassword: true,
+                    suffixIcon: Icon(Icons.remove_red_eye),
+                  ),
                   Container(
                     alignment: Alignment.centerRight,
                     child: TextButton(
@@ -86,10 +93,10 @@ class _LoginSignUpState extends State<LoginSignUp> {
                   LoginButton(title: 'Login', isColor: true, onPressed: () {  },),
                   SizedBox(height: 40 * height / 928),
                   Text(
-                    "-------------------- Or Login with --------------------",
+                    "-------------------- Or Sign Up with --------------------",
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
-                  SizedBox(height: 60 * height / 928),
+                  SizedBox(height: 20 * height / 928),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -103,18 +110,18 @@ class _LoginSignUpState extends State<LoginSignUp> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 120 * height / 928),
+                  SizedBox(height: 80 * height / 928),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't have an account?",
+                        "Already have an account?",
                         style: TextStyle(color: Colors.black, fontSize: 16),
                       ),
                       TextButton(
                         onPressed: () {},
                         child: Text(
-                          "Sign Up now.",
+                          "Login Now.",
                           style: TextStyle(color: Colors.white, fontSize: 17),
                         ),
                       ),
