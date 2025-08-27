@@ -1,16 +1,19 @@
-# sqlite_flutter_project
+# 📱 sqlite_flutter_project
 
-This project is practice sqlite of flutter
+A simple Flutter application to manage **Friends**, using **SQLite** for local data storage and **Provider** for state management.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 📋 Display a list of friends  
+- ➕ Add a new friend  
+- ✏️ Edit friend information  
+- ❌ Delete a friend  
+- 💾 Store data with **SQLite**  
+- 🔄 Manage state with **Provider**  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
