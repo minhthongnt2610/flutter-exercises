@@ -89,7 +89,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
                     "-------------------- Or Login with --------------------",
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
-                  SizedBox(height: 20 * height / 928),
+                  SizedBox(height: 60 * height / 928),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [

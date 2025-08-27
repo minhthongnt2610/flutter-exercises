@@ -41,7 +41,7 @@ class _SignUpState extends State<SignUp> {
                   Column(
                     children: [
                       Text(
-                        "Welcome",
+                        "Create Account",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 40,
@@ -49,7 +49,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                       Text(
-                        "Scorpion to see you!",
+                        "To get started now!",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 26,
@@ -72,6 +72,13 @@ class _SignUpState extends State<SignUp> {
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
                   ),
+                  SizedBox(height: 20 * height / 928),
+                  FiledWidget(
+                    labelText: 'Confirm Password',
+                    hintText: 'Confirm password',
+                    isPassword: true,
+                    suffixIcon: Icon(Icons.remove_red_eye),
+                  ),
                   Container(
                     alignment: Alignment.centerRight,
                     child: TextButton(
@@ -86,7 +93,7 @@ class _SignUpState extends State<SignUp> {
                   LoginButton(title: 'Login', isColor: true, onPressed: () {  },),
                   SizedBox(height: 40 * height / 928),
                   Text(
-                    "-------------------- Or Login with --------------------",
+                    "-------------------- Or Sign Up with --------------------",
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                   SizedBox(height: 20 * height / 928),
@@ -103,18 +110,18 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 120 * height / 928),
+                  SizedBox(height: 80 * height / 928),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't have an account?",
+                        "Already have an account?",
                         style: TextStyle(color: Colors.black, fontSize: 16),
                       ),
                       TextButton(
                         onPressed: () {},
                         child: Text(
-                          "Sign Up now.",
+                          "Login Now.",
                           style: TextStyle(color: Colors.white, fontSize: 17),
                         ),
                       ),
