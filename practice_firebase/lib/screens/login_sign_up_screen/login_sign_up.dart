@@ -20,6 +20,9 @@ class _LoginSignUpState extends State<LoginSignUp> {
     int height = MediaQuery.of(context).size.height.toInt();
     return Scaffold(
       body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
         child: Container(
           width: double.infinity,
           height: double.infinity,
