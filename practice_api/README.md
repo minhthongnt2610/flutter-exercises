@@ -1,16 +1,28 @@
-# practice_api
+# Practice API (Flutter + Provider)
 
-This project is created to practice calling api
+## 📌 Introduction
+**Practice API** is a simple Flutter application designed to practice working with:
+- **Provider** for state management.
+- **RESTful API** from `server_practice_API` to store and synchronize data.
+- **CRUD** (Create - Read - Update - Delete) functionalities on a list of friends.
 
-## Getting Started
+This app is suitable for learning and getting familiar with structuring Flutter code following the **UI - Logic - Service** separation pattern.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Main Features
+- **Friends List** displayed from API.
+- **Add New Friend** with basic information.
+- **Edit Friend** details.
+- **Delete Friend** from the list.
+- Synchronize data with the server through API calls.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Technologies Used
+- [Flutter](https://flutter.dev/) (UI framework)
+- [Provider](https://pub.dev/packages/provider) (state management)
+- [Dio](https://pub.dev/packages/dio) (API requests, can be replaced with `http`)
+- `server_practice_API` (mock backend for API testing)
+
+---
