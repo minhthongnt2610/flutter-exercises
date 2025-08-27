@@ -9,7 +9,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Practice_Firebase',
       debugShowCheckedModeBanner: false,
-      home: const LoginSignUp(),
+      initialRoute: StartScreen.routeName,
+      onGenerateRoute: (settings){
+        switch(settings.name){
+          case StartScreen.routeName:
+            return MaterialPageRoute(builder: (context) => const StartScreen());
+          case LoginSignUp.routeName:
+            return MaterialPageRoute(builder: (context) => const LoginSignUp());
+        }
+      }
+      ,
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../common_widgets/login_button.dart';
+import '../../login_sign_up_screen/login_sign_up.dart';
 
 class ItemDecoration extends StatelessWidget {
   const ItemDecoration({super.key});
@@ -53,9 +54,11 @@ class ItemDecoration extends StatelessWidget {
               ),
             ),
             SizedBox(height: 140 * height / 928),
-            LoginButton(title: 'Login', isColor: true),
+            LoginButton(title: 'Login', isColor: true, onPressed: () {
+              Navigator.pushNamed(context, LoginSignUp.routeName);
+            }),
             SizedBox(height: 20 * height / 928),
-            LoginButton(title: 'Sign Up', isColor: false),
+            LoginButton(title: 'Sign Up', isColor: false, onPressed: () {}),
           ],
         ),
       ),

@@ -5,6 +5,7 @@ import '../../contants/app_colors.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
+  static const String routeName = '/start_screen';
 
   @override
   Widget build(BuildContext context) {
