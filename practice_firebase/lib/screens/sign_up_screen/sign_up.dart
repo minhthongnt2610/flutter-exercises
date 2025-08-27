@@ -5,15 +5,15 @@ import '../../common_widgets/login_button.dart';
 import '../../common_widgets/social_button.dart';
 import '../../contants/app_colors.dart';
 
-class LoginSignUp extends StatefulWidget {
-  const LoginSignUp({super.key});
-  static const String routeName = '/login_sign_up';
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
+  static const String routeName = '/sign_up';
 
   @override
-  State<LoginSignUp> createState() => _LoginSignUpState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginSignUpState extends State<LoginSignUp> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
