@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/screens/home/widgets/friend_elements.dart';
 
 import '../../contants/app_colors.dart';
+import '../../models/friend_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,7 +39,16 @@ class _HomeScreenState extends State<HomeScreen> {
             colors: [AppColor.hex1F4F70, AppColor.hex8FC9F0],
           ),
         ),
-        child: Container(),
+        child: FriendElement(
+          friend: FriendModel(
+            id: 1,
+            name: 'name',
+            birthdate: DateTime.now(),
+            email: 'email',
+          ),
+          onTap: () {},
+          onStatusChange: (bool value) {},
+        ),
       ),
     );
   }

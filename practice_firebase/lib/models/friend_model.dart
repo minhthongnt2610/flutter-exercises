@@ -4,20 +4,20 @@ class FriendModel
   int id;
   String name;
   DateTime birthdate;
-  int age;
+  String email;
 
   FriendModel({
     required this.id,
     required this.name,
     required this.birthdate,
-    required this.age,
+    required this.email,
   });
 
   factory FriendModel.fromJson(Map<String, dynamic> json) => FriendModel(
     id: json["id"],
     name: json["name"],
     birthdate: DateTime.parse(json["birthdate"]),
-    age: json["age"] ,
+    email: json["email"],
   );
 
   Map<String, dynamic> toJson() =>
@@ -25,6 +25,6 @@ class FriendModel
         "id": id,
         "name": name,
         "birthdate": "${birthdate.year.toString().padLeft(4, '0')}-${birthdate.month.toString().padLeft(2, '0')}-${birthdate.day.toString().padLeft(2, '0')}",
-        "age": age,
+        "email": email,
       };
 }

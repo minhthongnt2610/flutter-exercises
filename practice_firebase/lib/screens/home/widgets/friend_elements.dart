@@ -15,8 +15,6 @@ class FriendElement extends StatelessWidget {
   final ValueChanged<bool> onStatusChange;
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
-    final width = MediaQuery.sizeOf(context).width;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
@@ -56,12 +54,12 @@ class FriendElement extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    InfoFriendWidgets(title: 'Age'),
+                    InfoFriendWidgets(title: 'Email'),
                     SizedBox(
                       width: 15,
                       child: Text(' :', style: TextStyle(color: Colors.black)),
                     ),
-                    InfoFriendWidgets(title: friend.age.toString()),
+                    InfoFriendWidgets(title: friend.email),
                   ],
                 ),
               ],
