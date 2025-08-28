@@ -39,15 +39,18 @@ class _HomeScreenState extends State<HomeScreen> {
             colors: [AppColor.hex1F4F70, AppColor.hex8FC9F0],
           ),
         ),
-        child: FriendElement(
-          friend: FriendModel(
-            id: 1,
-            name: 'name',
-            birthdate: DateTime.now(),
-            email: 'email',
+
+        child: Padding(
+          padding: const EdgeInsets.only(top: kToolbarHeight + 70),
+          child: FriendElement(
+            friend: FriendModel(
+              id: 1,
+              name: 'name',
+              birthdate: DateTime.now(),
+              email: 'email',
+            ),
+            onTap: () {},
           ),
-          onTap: () {},
-          onStatusChange: (bool value) {},
         ),
       ),
     );

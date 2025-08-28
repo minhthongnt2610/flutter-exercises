@@ -8,20 +8,20 @@ class FriendElement extends StatelessWidget {
     super.key,
     required this.friend,
     required this.onTap,
-    required this.onStatusChange,
   });
   final FriendModel friend;
   final VoidCallback onTap;
-  final ValueChanged<bool> onStatusChange;
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
+    final width = MediaQuery.sizeOf(context).width;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          width: double.infinity,
-          height: double.infinity,
+          width: 850 * width / 868,
+          height: 100 * height / 868,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.white54,
