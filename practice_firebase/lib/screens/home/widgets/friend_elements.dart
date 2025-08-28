@@ -13,15 +13,15 @@ class FriendElement extends StatelessWidget {
   final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
-    final width = MediaQuery.sizeOf(context).width;
+    final size = MediaQuery.of(context).size;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          width: 850 * width / 868,
-          height: 100 * height / 868,
+          width: size.width * 0.95,
+          height: size.height * 0.12,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.white54,
