@@ -55,13 +55,21 @@ class ItemDecoration extends StatelessWidget {
               ),
             ),
             SizedBox(height: 140 * height / 928),
-            LoginButton(title: 'Login', isColor: true, onPressed: () {
-              Navigator.pushNamed(context, LoginSignUp.routeName);
-            }),
+            LoginButton(
+              title: 'Login',
+              isColor: true,
+              onPressed: () {
+                Navigator.pushNamed(context, LoginSignUp.routeName);
+              },
+            ),
             SizedBox(height: 20 * height / 928),
-            LoginButton(title: 'Sign Up', isColor: false, onPressed: () {
-              Navigator.pushNamed(context, SignUp.routeName);
-            }),
+            LoginButton(
+              title: 'Sign Up',
+              isColor: false,
+              onPressed: () {
+                Navigator.pushNamed(context, SignUp.routeName);
+              },
+            ),
           ],
         ),
       ),

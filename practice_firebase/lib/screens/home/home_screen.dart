@@ -7,6 +7,8 @@ import '../../models/friend_model.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  static const String routeName = '/home';
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
