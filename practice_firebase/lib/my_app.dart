@@ -4,6 +4,8 @@ import 'package:practice_firebase/screens/login_sign_up_screen/login_sign_up.dar
 import 'package:practice_firebase/screens/sign_up_screen/sign_up.dart';
 import 'package:practice_firebase/screens/start_screen/start_screen.dart';
 
+import 'animations/screen_transitions/slide_transition_page.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -12,19 +14,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Practice_Firebase',
       debugShowCheckedModeBanner: false,
-      // initialRoute: StartScreen.routeName,
-      // onGenerateRoute: (settings) {
-      //   switch (settings.name) {
-      //     case StartScreen.routeName:
-      //       return MaterialPageRoute(builder: (context) => const StartScreen());
-      //     case LoginSignUp.routeName:
-      //       return MaterialPageRoute(builder: (context) => const LoginSignUp());
-      //     case SignUp.routeName:
-      //       return MaterialPageRoute(builder: (context) => const SignUp());
-      //   }
-      //   return null;
-      // },
-      home: const HomeScreen(),
+      initialRoute: StartScreen.routeName,
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case StartScreen.routeName:
+            return MaterialPageRoute(builder: (context) => const StartScreen());
+          case LoginSignUp.routeName:
+            return SlideTransitionPage(page: const LoginSignUp());
+          case SignUp.routeName:
+            return SlideTransitionPage(page: const SignUp());
+          case HomeScreen.routeName:
+            return MaterialPageRoute(builder: (context) => const HomeScreen());
+        }
+        return null;
+      },
     );
   }
 }

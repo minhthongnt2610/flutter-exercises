@@ -20,10 +20,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -89,7 +86,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
                     ),
                   ),
                   SizedBox(height: 20 * height / 928),
-                  LoginButton(title: 'Login', isColor: true, onPressed: () {  },),
+                  LoginButton(title: 'Login', isColor: true, onPressed: () {}),
                   SizedBox(height: 40 * height / 928),
                   Text(
                     "-------------------- Or Login with --------------------",
@@ -99,13 +96,15 @@ class _LoginSignUpState extends State<LoginSignUp> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      SocialButton(onPressed: () {}, icon: null, isIcon: false),
                       SocialButton(
                         onPressed: () {},
-                        icon: Icon(Icons.g_mobiledata, color: Colors.red, size: 30),
-                      ),
-                      SocialButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.facebook, color: Colors.blue, size: 30),
+                        icon: Icon(
+                          Icons.facebook,
+                          color: Colors.blue,
+                          size: 30,
+                        ),
+                        isIcon: true,
                       ),
                     ],
                   ),

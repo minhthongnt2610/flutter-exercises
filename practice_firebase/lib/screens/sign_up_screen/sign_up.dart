@@ -107,11 +107,13 @@ class _SignUpState extends State<SignUp> {
                     children: [
                       SocialButton(
                         onPressed: () {},
-                        icon: Icon(Icons.g_mobiledata, color: Colors.red, size: 30),
+                        icon: null,
+                        isIcon: false,
                       ),
                       SocialButton(
                         onPressed: () {},
                         icon: Icon(Icons.facebook, color: Colors.blue, size: 30),
+                        isIcon: true,
                       ),
                     ],
                   ),
