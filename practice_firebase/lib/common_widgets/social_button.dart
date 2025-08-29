@@ -8,7 +8,7 @@ class SocialButton extends StatelessWidget {
     required this.isIcon,
   });
 
-  final Icon icon;
+  final Icon? icon;
   final VoidCallback onPressed;
   final bool isIcon;
   @override
