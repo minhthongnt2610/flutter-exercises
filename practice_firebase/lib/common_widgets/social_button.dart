@@ -33,9 +33,7 @@ class SocialButton extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
           shape: WidgetStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
           backgroundColor: WidgetStateProperty.all(Colors.transparent),
           elevation: WidgetStateProperty.all(0),
