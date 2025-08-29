@@ -4,6 +4,8 @@ import 'package:practice_firebase/screens/login_sign_up_screen/login_sign_up.dar
 import 'package:practice_firebase/screens/sign_up_screen/sign_up.dart';
 import 'package:practice_firebase/screens/start_screen/start_screen.dart';
 
+import 'animations/screen_transitions/slide_transition_page.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -18,9 +20,9 @@ class MyApp extends StatelessWidget {
           case StartScreen.routeName:
             return MaterialPageRoute(builder: (context) => const StartScreen());
           case LoginSignUp.routeName:
-            return MaterialPageRoute(builder: (context) => const LoginSignUp());
+            return SlideTransitionPage(page: const LoginSignUp());
           case SignUp.routeName:
-            return MaterialPageRoute(builder: (context) => const SignUp());
+            return SlideTransitionPage(page: const SignUp());
             case HomeScreen.routeName:
             return MaterialPageRoute(builder: (context) => const HomeScreen());
         }

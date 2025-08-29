@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/animations/screen_transitions/slide_transition_page.dart';
 import 'package:practice_firebase/screens/sign_up_screen/sign_up.dart';
 
 import '../../../common_widgets/login_button.dart';
