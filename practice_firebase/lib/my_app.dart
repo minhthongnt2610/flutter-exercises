@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             return SlideTransitionPage(page: const LoginSignUp());
           case SignUp.routeName:
             return SlideTransitionPage(page: const SignUp());
-            case HomeScreen.routeName:
+          case HomeScreen.routeName:
             return MaterialPageRoute(builder: (context) => const HomeScreen());
         }
         return null;

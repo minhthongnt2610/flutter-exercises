@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class SocialButton extends StatelessWidget {
-  const SocialButton({super.key, required this.icon, required this.onPressed});
+  const SocialButton({
+    super.key,
+    required this.icon,
+    required this.onPressed,
+    required this.isIcon,
+  });
 
   final Icon icon;
   final VoidCallback onPressed;
+  final bool isIcon;
   @override
   Widget build(BuildContext context) {
     int width = MediaQuery.of(context).size.width.toInt();
@@ -24,7 +30,26 @@ class SocialButton extends StatelessWidget {
           ),
         ],
       ),
-      child: IconButton(icon: icon, onPressed: onPressed),
+      child: ElevatedButton(
+        style: ButtonStyle(
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          backgroundColor: WidgetStateProperty.all(Colors.transparent),
+          elevation: WidgetStateProperty.all(0),
+          mouseCursor: null,
+        ),
+        onPressed: onPressed,
+        child: isIcon
+            ? icon
+            : Image.network(
+                'https://th.bing.com/th/id/R.0fa3fe04edf6c0202970f2088edea9e7?rik=joOK76LOMJlBPw&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fgoogle-logo-png-open-2000.png&ehk=0PJJlqaIxYmJ9eOIp9mYVPA4KwkGo5Zob552JPltDMw%3d&risl=&pid=ImgRaw&r=0',
+                width: 25,
+                height: 25,
+              ),
+      ),
     );
   }
 }
