@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/sign_up_screen/sign_up.dart';
 
-import '../../../common_widgets/login_button.dart';
+import '../../../common_widgets/primary_button.dart';
 import '../../login_sign_up_screen/login_sign_up.dart';
 
 class ItemDecoration extends StatelessWidget {

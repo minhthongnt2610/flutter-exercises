@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/login_sign_up_screen/widgets/filed_widget.dart';
 
-import '../../common_widgets/login_button.dart';
+import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
 import '../../contants/app_colors.dart';
 
