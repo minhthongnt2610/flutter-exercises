@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/screens/%C4%91etail_screen/detail_screen.dart';
 import 'package:practice_firebase/screens/home/home_screen.dart';
 import 'package:practice_firebase/screens/login_sign_up_screen/login_sign_up.dart';
 import 'package:practice_firebase/screens/sign_up_screen/sign_up.dart';
@@ -14,20 +15,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Practice_Firebase',
       debugShowCheckedModeBanner: false,
-      initialRoute: StartScreen.routeName,
-      onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case StartScreen.routeName:
-            return MaterialPageRoute(builder: (context) => const StartScreen());
-          case LoginSignUp.routeName:
-            return SlideTransitionPage(page: const LoginSignUp());
-          case SignUp.routeName:
-            return SlideTransitionPage(page: const SignUp());
-          case HomeScreen.routeName:
-            return MaterialPageRoute(builder: (context) => const HomeScreen());
-        }
-        return null;
-      },
+      home: DetailScreen(),
+      // initialRoute: StartScreen.routeName,
+      // onGenerateRoute: (settings) {
+      //   switch (settings.name) {
+      //     case StartScreen.routeName:
+      //       return MaterialPageRoute(builder: (context) => const StartScreen());
+      //     case LoginSignUp.routeName:
+      //       return SlideTransitionPage(page: const LoginSignUp());
+      //     case SignUp.routeName:
+      //       return SlideTransitionPage(page: const SignUp());
+      //     case HomeScreen.routeName:
+      //       return MaterialPageRoute(builder: (context) => const HomeScreen());
+      //   }
+      //   return null;
+      // },
     );
   }
 }

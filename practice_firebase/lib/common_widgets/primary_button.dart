@@ -26,8 +26,8 @@ class LoginButton extends StatelessWidget {
       ),
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.transparent),
-          elevation: MaterialStateProperty.all(0),
+          backgroundColor: WidgetStateProperty.all(Colors.transparent),
+          elevation: WidgetStateProperty.all(0),
           mouseCursor: null,
         ),
         onPressed: onPressed,
