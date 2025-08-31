@@ -9,6 +9,10 @@ class BuildDetailBodyWidgets extends StatefulWidget {
 class _BuildDetailBodyWidgetsState extends State<BuildDetailBodyWidgets> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      color: Colors.amber,
+      child: const Text('Detail Screen'),
+      
+    );
   }
 }
