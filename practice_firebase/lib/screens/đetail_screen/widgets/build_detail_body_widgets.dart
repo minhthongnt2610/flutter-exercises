@@ -24,54 +24,57 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
       height: double.infinity,
       child: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            SizedBox(height: 110 * height / 928),
-            Text(
-              isUpdate ? 'Update Friend' : 'Add Friend',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          
+          child: Column(
+            children: [
+              SizedBox(height: 110 * height / 928),
+              Text(
+                isUpdate ? 'Update Friend' : 'Add Friend',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            InputField(
-              hintText: 'Name',
-              onChanged: (value) {},
-              maxLines: 1,
-              initialValue: '',
-            ),
-            const SizedBox(height: 20),
-            InputField(
-              hintText: 'Phone Number',
-              onChanged: (value) {},
-              maxLines: 1,
-              initialValue: '',
-            ),
-            const SizedBox(height: 20),
-            InputField(
-              hintText: 'Email',
-              onChanged: (value) {},
-              maxLines: 1,
-              initialValue: '',
-            ),
-            const SizedBox(height: 20),
-            InputField(
-              hintText: 'Address',
-              onChanged: (value) {},
-              maxLines: 1,
-              initialValue: '',
-            ),
-            const SizedBox(height: 20),
-            PrimaryButton(
-              title: isUpdate ? 'Update' : 'Add',
-              isColor: true,
-              onPressed: () {},
-            ),
-            const SizedBox(height: 20),
-            DeleteButton(title: 'Delete', onTap: () {}),
-          ],
+              const SizedBox(height: 20),
+              InputField(
+                hintText: 'Name',
+                onChanged: (value) {},
+                maxLines: 1,
+                initialValue: '',
+              ),
+              const SizedBox(height: 20),
+              InputField(
+                hintText: 'Phone Number',
+                onChanged: (value) {},
+                maxLines: 1,
+                initialValue: '',
+              ),
+              const SizedBox(height: 20),
+              InputField(
+                hintText: 'Email',
+                onChanged: (value) {},
+                maxLines: 1,
+                initialValue: '',
+              ),
+              const SizedBox(height: 20),
+              InputField(
+                hintText: 'Address',
+                onChanged: (value) {},
+                maxLines: 1,
+                initialValue: '',
+              ),
+              const SizedBox(height: 20),
+              PrimaryButton(
+                title: isUpdate ? 'Update' : 'Add',
+                isColor: true,
+                onPressed: () {},
+              ),
+              const SizedBox(height: 20),
+              DeleteButton(title: 'Delete', onTap: () {}),
+            ],
+          ),
         ),
       ),
     );
