@@ -15,21 +15,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Practice_Firebase',
       debugShowCheckedModeBanner: false,
-      home: DetailScreen(),
-      // initialRoute: StartScreen.routeName,
-      // onGenerateRoute: (settings) {
-      //   switch (settings.name) {
-      //     case StartScreen.routeName:
-      //       return MaterialPageRoute(builder: (context) => const StartScreen());
-      //     case LoginSignUp.routeName:
-      //       return SlideTransitionPage(page: const LoginSignUp());
-      //     case SignUp.routeName:
-      //       return SlideTransitionPage(page: const SignUp());
-      //     case HomeScreen.routeName:
-      //       return MaterialPageRoute(builder: (context) => const HomeScreen());
-      //   }
-      //   return null;
-      // },
+      // home: DetailScreen(),
+      initialRoute: HomeScreen.routeName,
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case StartScreen.routeName:
+            return MaterialPageRoute(builder: (context) => const StartScreen());
+          case LoginSignUp.routeName:
+            return SlideTransitionPage(page: const LoginSignUp());
+          case SignUp.routeName:
+            return SlideTransitionPage(page: const SignUp());
+          case HomeScreen.routeName:
+            return MaterialPageRoute(builder: (context) => const HomeScreen());
+          case DetailScreen.routeName:
+            return MaterialPageRoute(
+              builder: (context) => const DetailScreen(),
+            );
+        }
+        return null;
+      },
     );
   }
 }

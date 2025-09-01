@@ -25,7 +25,6 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: SingleChildScrollView(
-          
           child: Column(
             children: [
               SizedBox(height: 110 * height / 928),

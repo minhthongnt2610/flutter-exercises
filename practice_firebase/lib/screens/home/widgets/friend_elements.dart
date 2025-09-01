@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/friend_model.dart';
+import '../../đetail_screen/detail_screen.dart';
 import 'info_friend_widgets.dart';
 
 class FriendElement extends StatelessWidget {
@@ -18,7 +19,9 @@ class FriendElement extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: onTap,
+        onTap: (){
+          Navigator.pushNamed(context, DetailScreen.routeName);
+        },
         child: Container(
           width: size.width * 0.95,
           height: size.height * 0.12,
