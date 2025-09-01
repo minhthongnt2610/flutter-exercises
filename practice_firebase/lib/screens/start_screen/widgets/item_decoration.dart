@@ -55,7 +55,7 @@ class ItemDecoration extends StatelessWidget {
               ),
             ),
             SizedBox(height: 140 * height / 928),
-            LoginButton(
+            PrimaryButton(
               title: 'Login',
               isColor: true,
               onPressed: () {
@@ -63,7 +63,7 @@ class ItemDecoration extends StatelessWidget {
               },
             ),
             SizedBox(height: 20 * height / 928),
-            LoginButton(
+            PrimaryButton(
               title: 'Sign Up',
               isColor: false,
               onPressed: () {

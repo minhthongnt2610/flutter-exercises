@@ -86,7 +86,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
                     ),
                   ),
                   SizedBox(height: 20 * height / 928),
-                  LoginButton(title: 'Login', isColor: true, onPressed: () {}),
+                  PrimaryButton(title: 'Login', isColor: true, onPressed: () {}),
                   SizedBox(height: 40 * height / 928),
                   Text(
                     "-------------------- Or Login with --------------------",
