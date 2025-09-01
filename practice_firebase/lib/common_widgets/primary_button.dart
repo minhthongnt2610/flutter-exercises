@@ -14,10 +14,9 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int width = MediaQuery.of(context).size.width.toInt();
     int height = MediaQuery.of(context).size.height.toInt();
     return Container(
-      width: 368 * width / 428,
+      width: double.infinity,
       height: 58 * height / 928,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white54, width: 3),
