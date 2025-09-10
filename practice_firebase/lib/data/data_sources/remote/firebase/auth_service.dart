@@ -4,6 +4,5 @@ class AuthService {
 
   bool isSignedIn(){
     return _auth.currentUser != null ? true : false;
-
   }
 }
