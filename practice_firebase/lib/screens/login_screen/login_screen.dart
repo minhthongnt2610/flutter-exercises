@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/screens/login_screen/widgets/filed_widget.dart';
 
 import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
 import '../../contants/app_colors.dart';
-import '../login_screen/login.dart';
-import '../login_screen/widgets/filed_widget.dart';
+import '../sign_up_screen/sign_up_screen.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
-  static const String routeName = '/sign_up';
+class Login extends StatefulWidget {
+  const Login({super.key});
+  static const String routeName = '/login_sign_up';
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
+
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -47,7 +45,7 @@ class _SignUpState extends State<SignUp> {
                   Column(
                     children: [
                       Text(
-                        "Create Account",
+                        "Welcome",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 40,
@@ -55,7 +53,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                       Text(
-                        "To get started now!",
+                        "Scorpion to see you!",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 26,
@@ -78,50 +76,53 @@ class _SignUpState extends State<SignUp> {
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
                   ),
-                  SizedBox(height: 20 * height / 928),
-                  FiledWidget(
-                    labelText: 'Confirm Password',
-                    hintText: 'Confirm password',
-                    isPassword: true,
-                    suffixIcon: Icon(Icons.remove_red_eye),
+                  Container(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Forgot Password?",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                    ),
                   ),
-                  SizedBox(height: 50 * height / 928),
-                  PrimaryButton(title: 'Sign up', isColor: true, onPressed: () {  },),
+                  SizedBox(height: 20 * height / 928),
+                  PrimaryButton(title: 'Login', isColor: true, onPressed: () {}),
                   SizedBox(height: 40 * height / 928),
                   Text(
-                    "-------------------- Or Sign Up with --------------------",
+                    "-------------------- Or Login with --------------------",
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
-                  SizedBox(height: 20 * height / 928),
+                  SizedBox(height: 60 * height / 928),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      SocialButton(onPressed: () {}, icon: null, isIcon: false),
                       SocialButton(
                         onPressed: () {},
-                        icon: null,
-                        isIcon: false,
-                      ),
-                      SocialButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.facebook, color: Colors.blue, size: 30),
+                        icon: Icon(
+                          Icons.facebook,
+                          color: Colors.blue,
+                          size: 30,
+                        ),
                         isIcon: true,
                       ),
                     ],
                   ),
-                  SizedBox(height: 100 * height / 928),
+                  SizedBox(height: 120 * height / 928),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Already have an account?",
+                        "Don't have an account?",
                         style: TextStyle(color: Colors.black, fontSize: 16),
                       ),
                       TextButton(
                         onPressed: () {
-                            Navigator.pushNamed(context, Login.routeName);
+                          Navigator.pushNamed(context, SignUp.routeName);
                         },
                         child: Text(
-                          "Login Now.",
+                          "Sign up now.",
                           style: TextStyle(color: Colors.white, fontSize: 17),
                         ),
                       ),

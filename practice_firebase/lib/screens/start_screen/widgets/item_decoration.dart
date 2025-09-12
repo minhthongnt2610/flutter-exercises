@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:practice_firebase/screens/sign_up_screen/sign_up.dart';
+import 'package:practice_firebase/screens/sign_up_screen/sign_up_screen.dart';
 
 import '../../../common_widgets/primary_button.dart';
-import '../../login_screen/login.dart';
+import '../../login_screen/login_screen.dart';
 
 class ItemDecoration extends StatelessWidget {
   const ItemDecoration({super.key});
