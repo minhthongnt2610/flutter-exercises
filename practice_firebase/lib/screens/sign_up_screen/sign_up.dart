@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:practice_firebase/screens/login_sign_up_screen/widgets/filed_widget.dart';
 
 import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
 import '../../contants/app_colors.dart';
+import '../login_screen/login_sign_up.dart';
+import '../login_screen/widgets/filed_widget.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -84,18 +85,8 @@ class _SignUpState extends State<SignUp> {
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
                   ),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Forgot Password?",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20 * height / 928),
-                  PrimaryButton(title: 'Login', isColor: true, onPressed: () {  },),
+                  SizedBox(height: 50 * height / 928),
+                  PrimaryButton(title: 'Sign up', isColor: true, onPressed: () {  },),
                   SizedBox(height: 40 * height / 928),
                   Text(
                     "-------------------- Or Sign Up with --------------------",
@@ -117,7 +108,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 80 * height / 928),
+                  SizedBox(height: 100 * height / 928),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -126,7 +117,9 @@ class _SignUpState extends State<SignUp> {
                         style: TextStyle(color: Colors.black, fontSize: 16),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                            Navigator.pushNamed(context, Login.routeName);
+                        },
                         child: Text(
                           "Login Now.",
                           style: TextStyle(color: Colors.white, fontSize: 17),

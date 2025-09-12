@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:practice_firebase/screens/login_sign_up_screen/widgets/filed_widget.dart';
+import 'package:practice_firebase/screens/login_screen/widgets/filed_widget.dart';
 
 import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
 import '../../contants/app_colors.dart';
+import '../sign_up_screen/sign_up.dart';
 
-class LoginSignUp extends StatefulWidget {
-  const LoginSignUp({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
   static const String routeName = '/login_sign_up';
 
   @override
-  State<LoginSignUp> createState() => _LoginSignUpState();
+  State<Login> createState() => _LoginState();
 }
 
-class _LoginSignUpState extends State<LoginSignUp> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
@@ -117,9 +118,11 @@ class _LoginSignUpState extends State<LoginSignUp> {
                         style: TextStyle(color: Colors.black, fontSize: 16),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, SignUp.routeName);
+                        },
                         child: Text(
-                          "Sign Up now.",
+                          "Sign up now.",
                           style: TextStyle(color: Colors.white, fontSize: 17),
                         ),
                       ),
