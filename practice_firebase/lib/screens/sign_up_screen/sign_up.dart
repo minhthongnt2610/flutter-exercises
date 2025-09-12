@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
 import '../../contants/app_colors.dart';
-import '../login_screen/login_sign_up.dart';
+import '../login_screen/login.dart';
 import '../login_screen/widgets/filed_widget.dart';
 
 class SignUp extends StatefulWidget {

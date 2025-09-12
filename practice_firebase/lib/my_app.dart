@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/%C4%91etail_screen/detail_screen.dart';
 import 'package:practice_firebase/screens/home/home_screen.dart';
-import 'package:practice_firebase/screens/login_screen/login_sign_up.dart';
+import 'package:practice_firebase/screens/login_screen/login.dart';
 import 'package:practice_firebase/screens/sign_up_screen/sign_up.dart';
 import 'package:practice_firebase/screens/start_screen/start_screen.dart';
 

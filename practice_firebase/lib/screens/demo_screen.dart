@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/sign_up_screen/sign_up.dart';
 import 'package:practice_firebase/screens/start_screen/start_screen.dart';
 
-import 'login_screen/login_sign_up.dart';
+import 'login_screen/login.dart';
 
 void main() {
   runApp(
