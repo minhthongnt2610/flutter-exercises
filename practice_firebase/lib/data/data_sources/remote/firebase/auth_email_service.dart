@@ -29,6 +29,12 @@ class AuthEmailService {
   }
 
   //đăng nhập bằng email và password
+  Future<User?> signInWithEmailAnhPassword({
+    required String email,
+    required String password,
+}){
+
+  }
   //đăng xuất
   //xử lý lỗi firebase auth
 }
