@@ -101,7 +101,12 @@ class _SignUpState extends State<SignUp> {
                     isColor: true,
                     onPressed: () {
                       if(_password != _confirmPassword){
-                        debugPrint('Password not match');
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Password not match'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
                       }
                       else{
                         debugPrint('Password match');
