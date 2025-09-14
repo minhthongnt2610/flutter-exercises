@@ -68,6 +68,7 @@ class _LoginState extends State<Login> {
                     hintText: 'Enter your email',
                     isPassword: false,
                     suffixIcon: Icon(Icons.email, color: Colors.white),
+                    onChange: (String value) {},
                   ),
                   SizedBox(height: 20 * height / 928),
                   FiledWidget(
@@ -75,6 +76,7 @@ class _LoginState extends State<Login> {
                     hintText: 'Enter your password',
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
+                    onChange: (String value) {},
                   ),
                   Container(
                     alignment: Alignment.centerRight,
@@ -87,7 +89,11 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   SizedBox(height: 20 * height / 928),
-                  PrimaryButton(title: 'Login', isColor: true, onPressed: () {}),
+                  PrimaryButton(
+                    title: 'Login',
+                    isColor: true,
+                    onPressed: () {},
+                  ),
                   SizedBox(height: 40 * height / 928),
                   Text(
                     "-------------------- Or Login with --------------------",
