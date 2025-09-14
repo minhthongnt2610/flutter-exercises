@@ -13,7 +13,7 @@ class AuthEmailService {
         password: password,
       );
       final user = userCredential.user;
-      if(user != null){
+      if (user != null) {
         //tra ve Auth Share Pref
         //await await AuthSharedPrefs.saveUid(user.uid);
       }
@@ -24,7 +24,7 @@ class AuthEmailService {
         print('The password provided is too weak.');
       }
 
-      ///thêm _handleError viết sau
+      ///add _handleError after
     }
   }
 
@@ -32,9 +32,24 @@ class AuthEmailService {
   Future<User?> signInWithEmailAnhPassword({
     required String email,
     required String password,
-}){
-
+  }) async {
+    try {
+      final userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      final user = userCredential.user;
+      if (user != null) {
+        ///return Auth Share Pref
+        ///await await AuthSharedPrefs.saveUid(user.uid);
+      }
+      return user;
+    } on FirebaseAuthException catch (e) {
+      ///add _handleError after
+    }
+    return null;
   }
+
   //đăng xuất
   //xử lý lỗi firebase auth
 }
