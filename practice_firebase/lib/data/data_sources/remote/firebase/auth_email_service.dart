@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthEmailService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  //đăng ký email và password
+  //register with email and password
   Future<User?> registerWithEmailAndPassword({
     required String email,
     required String password,
@@ -26,9 +26,10 @@ class AuthEmailService {
 
       ///add _handleError after
     }
+    return null;
   }
 
-  //đăng nhập bằng email và password
+  //sign in with email and password
   Future<User?> signInWithEmailAnhPassword({
     required String email,
     required String password,
@@ -50,9 +51,10 @@ class AuthEmailService {
     return null;
   }
 
-  //đăng xuất
+  //sign out
   Future<void> signOut() async {
     await _auth.signOut();
   }
-  //xử lý lỗi firebase auth
+  //FirebaseAuth Error Handling
+
 }
