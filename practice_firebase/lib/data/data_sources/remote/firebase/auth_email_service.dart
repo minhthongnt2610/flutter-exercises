@@ -56,5 +56,22 @@ class AuthEmailService {
     await _auth.signOut();
   }
   //FirebaseAuth Error Handling
-
+  String _handleError(FirebaseAuthException e){
+    switch (e.code) {
+      case 'invalid-email':
+        return 'Your email address appears to be malformed.';
+      case 'user-disable':
+        return 'This user has been disabled.';
+      case 'user-not-found':
+        return 'This user does not exist.';
+      case 'wrong-password':
+        return 'Your password is wrong.';
+      case 'email-already-in-use':
+        return 'This email is already in use.';
+      case 'weak-password':
+        return 'Your password is too weak.';
+      default:
+        return 'Something went wrong.';
+    }
+  }
 }
