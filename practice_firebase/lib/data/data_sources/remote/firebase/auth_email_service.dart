@@ -14,19 +14,14 @@ class AuthEmailService {
       );
       final user = userCredential.user;
       if (user != null) {
-        //tra ve Auth Share Pref
-        //await await AuthSharedPrefs.saveUid(user.uid);
+        ///return Auth Share Pref
+        ///await AuthSharedPrefs.saveUid(user.uid);
       }
       return user;
     } on FirebaseAuthException catch (e) {
-      //tạm thời
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      }
-
-      ///add _handleError after
+      ///add _handleError
+      throw Exception(_handleError(e));
     }
-    return null;
   }
 
   //sign in with email and password
@@ -46,14 +41,16 @@ class AuthEmailService {
       }
       return user;
     } on FirebaseAuthException catch (e) {
-      ///add _handleError after
+      ///add _handleError
+      throw Exception(_handleError(e));
     }
-    return null;
   }
 
   //sign out
   Future<void> signOut() async {
     await _auth.signOut();
+    ///return Auth Share Pref
+    ///await AuthSharedPrefs.saveUid(user.uid);
   }
   //FirebaseAuth Error Handling
   String _handleError(FirebaseAuthException e){
