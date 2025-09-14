@@ -70,7 +70,9 @@ class _SignUpState extends State<SignUp> {
                     hintText: 'Enter your email',
                     isPassword: false,
                     suffixIcon: Icon(Icons.email, color: Colors.white),
-                    onChange: (String value) {},
+                    onChange: (String value) {
+                      _email = value;
+                    },
                   ),
                   SizedBox(height: 20 * height / 928),
                   FiledWidget(
@@ -78,7 +80,9 @@ class _SignUpState extends State<SignUp> {
                     hintText: 'Enter your password',
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
-                    onChange: (String value) {},
+                    onChange: (String value) {
+                      _password = value;
+                    },
                   ),
                   SizedBox(height: 20 * height / 928),
                   FiledWidget(
@@ -86,13 +90,25 @@ class _SignUpState extends State<SignUp> {
                     hintText: 'Confirm password',
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
-                    onChange: (String value) {},
+                    onChange: (String value) {
+                      _confirmPassword = value;
+
+                    },
                   ),
                   SizedBox(height: 50 * height / 928),
                   PrimaryButton(
                     title: 'Sign up',
                     isColor: true,
-                    onPressed: () {},
+                    onPressed: () {
+                      if(_password != _confirmPassword){
+                        debugPrint('Password not match');
+                      }
+                      else{
+                        debugPrint('Password match');
+                        debugPrint(_email);
+                        debugPrint(_password);
+                      }
+                    },
                   ),
                   SizedBox(height: 40 * height / 928),
                   Text(
