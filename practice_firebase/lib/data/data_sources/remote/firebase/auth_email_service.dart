@@ -52,7 +52,7 @@ class AuthEmailService {
 
   //đăng xuất
   Future<void> signOut() async {
-
+    await _auth.signOut();
   }
   //xử lý lỗi firebase auth
 }
