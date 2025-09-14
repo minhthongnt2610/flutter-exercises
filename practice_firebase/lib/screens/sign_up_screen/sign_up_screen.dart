@@ -15,15 +15,15 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  String? _email;
+  String? _password;
+  String? _confirmPassword;
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -70,6 +70,7 @@ class _SignUpState extends State<SignUp> {
                     hintText: 'Enter your email',
                     isPassword: false,
                     suffixIcon: Icon(Icons.email, color: Colors.white),
+                    onChange: (String value) {},
                   ),
                   SizedBox(height: 20 * height / 928),
                   FiledWidget(
@@ -77,6 +78,7 @@ class _SignUpState extends State<SignUp> {
                     hintText: 'Enter your password',
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
+                    onChange: (String value) {},
                   ),
                   SizedBox(height: 20 * height / 928),
                   FiledWidget(
@@ -84,9 +86,14 @@ class _SignUpState extends State<SignUp> {
                     hintText: 'Confirm password',
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
+                    onChange: (String value) {},
                   ),
                   SizedBox(height: 50 * height / 928),
-                  PrimaryButton(title: 'Sign up', isColor: true, onPressed: () {  },),
+                  PrimaryButton(
+                    title: 'Sign up',
+                    isColor: true,
+                    onPressed: () {},
+                  ),
                   SizedBox(height: 40 * height / 928),
                   Text(
                     "-------------------- Or Sign Up with --------------------",
@@ -96,14 +103,14 @@ class _SignUpState extends State<SignUp> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      SocialButton(onPressed: () {}, icon: null, isIcon: false),
                       SocialButton(
                         onPressed: () {},
-                        icon: null,
-                        isIcon: false,
-                      ),
-                      SocialButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.facebook, color: Colors.blue, size: 30),
+                        icon: Icon(
+                          Icons.facebook,
+                          color: Colors.blue,
+                          size: 30,
+                        ),
                         isIcon: true,
                       ),
                     ],
@@ -118,7 +125,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                       TextButton(
                         onPressed: () {
-                            Navigator.pushNamed(context, Login.routeName);
+                          Navigator.pushNamed(context, Login.routeName);
                         },
                         child: Text(
                           "Login Now.",
