@@ -51,5 +51,8 @@ class AuthEmailService {
   }
 
   //đăng xuất
+  Future<void> signOut() async {
+
+  }
   //xử lý lỗi firebase auth
 }
