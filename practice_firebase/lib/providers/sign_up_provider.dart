@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/auth_email_service.dart';
 
 class SignUpProvider extends ChangeNotifier {
@@ -26,8 +27,18 @@ class SignUpProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> signUp() async {
-
+  Future<String?> signUp() async {
+    if (_password != _confirmPassword) {
+      return 'Password not match';
+    }
+    try{
+      _authEmailService.signUpWithEmailAndPassword(
+        email: _email!,
+        password: _password!,
+      );
+      return null;
+    } catch(e){
+      return e.toString();
+    }
   }
-
 }
