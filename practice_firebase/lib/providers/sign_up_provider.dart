@@ -25,4 +25,9 @@ class SignUpProvider extends ChangeNotifier {
     _confirmPassword = value;
     notifyListeners();
   }
+
+  Future<void> signUp() async {
+
+  }
+
 }
