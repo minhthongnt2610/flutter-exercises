@@ -1,11 +1,17 @@
 class AuthSharedPrefs {
     static const String _uidKey = 'uid';
-}
 
 /// 1. Lưu UID sau khi đăng nhập
-//
+
+static Future<void> saveUid(String uid) async {
+
+}
+
 // Khi user đăng nhập bằng Email / Google / Facebook, Firebase trả về một User (có uid).
 // Ta lưu uid này vào SharedPreferences → để lần sau mở app, không cần đăng nhập lại (auto login).
+}
+
+
 
 
 
