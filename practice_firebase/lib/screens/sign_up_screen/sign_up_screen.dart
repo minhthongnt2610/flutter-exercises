@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:practice_firebase/data/data_sources/remote/firebase/auth_email_service.dart';
 import 'package:provider/provider.dart';
 
 import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
 import '../../contants/app_colors.dart';
-import '../../data/data_sources/remote/firebase/auth_service.dart';
 import '../../providers/sign_up_provider.dart';
 import '../login_screen/login_screen.dart';
 import '../login_screen/widgets/filed_widget.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
+  static const String routeName = '/sign_up';
+
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
+
     return ChangeNotifierProvider(
       create: (_) => SignUpProvider(),
       child: SignUpBody(),
     );
   }
 }
+
 
 class SignUpBody extends StatelessWidget {
   const SignUpBody({super.key});
