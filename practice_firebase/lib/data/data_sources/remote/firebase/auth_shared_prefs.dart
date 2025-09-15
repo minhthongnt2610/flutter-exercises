@@ -1,5 +1,5 @@
 class AuthSharedPrefs {
-
+    static const String _uidKey = 'uid';
 }
 
 /// 1. Lưu UID sau khi đăng nhập
