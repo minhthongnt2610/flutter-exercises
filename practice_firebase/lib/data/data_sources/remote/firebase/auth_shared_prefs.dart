@@ -5,24 +5,24 @@ class AuthSharedPrefs {
 
   /// 1. Lưu UID sau khi đăng nhập
   static Future<void> saveUid(String uid) async {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString(_uidKey, uid);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_uidKey, uid);
   }
   // Khi user đăng nhập bằng Email / Google / Facebook, Firebase trả về một User (có uid).
   // Ta lưu uid này vào SharedPreferences → để lần sau mở app, không cần đăng nhập lại (auto login).
 
   ///2. Xóa UID khi logout
   static Future<void> clearUid() async {
-      final prefs = await SharedPreferences.getInstance();
-        await prefs.remove(_uidKey);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_uidKey);
   }
   // Khi user bấm Đăng xuất, ta xóa UID khỏi SharedPreferences.
   // Điều này đảm bảo lần sau mở app, hệ thống biết user chưa đăng nhập.
 
   /// 3. Lấy UID đã lưu
   static Future<String?> getSaveUid() async {
-      final prefs = await SharedPreferences.getInstance();
-      return prefs.getString(_uidKey);
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_uidKey);
   }
   // Khi app khởi động (ví dụ trong SplashScreen), ta kiểm tra xem SharedPreferences có uid không.
   // Nếu có → user đã đăng nhập trước đó → chuyển thẳng vào HomeScreen.
