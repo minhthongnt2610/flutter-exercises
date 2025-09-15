@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'auth_shared_prefs.dart';
+
 class AuthEmailService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   //register with email and password
@@ -15,7 +17,7 @@ class AuthEmailService {
       final user = userCredential.user;
       if (user != null) {
         ///return Auth Share Pref
-        ///await AuthSharedPrefs.saveUid(user.uid);
+        await AuthSharedPrefs.saveUid(user.uid);
       }
       return user;
     } on FirebaseAuthException catch (e) {
@@ -37,7 +39,7 @@ class AuthEmailService {
       final user = userCredential.user;
       if (user != null) {
         ///return Auth Share Pref
-        ///await await AuthSharedPrefs.saveUid(user.uid);
+        await AuthSharedPrefs.saveUid(user.uid);
       }
       return user;
     } on FirebaseAuthException catch (e) {
@@ -49,11 +51,13 @@ class AuthEmailService {
   //sign out
   Future<void> signOut() async {
     await _auth.signOut();
+
     ///return Auth Share Pref
-    ///await AuthSharedPrefs.saveUid(user.uid);
+    await AuthSharedPrefs.clearUid();
   }
+
   //FirebaseAuth Error Handling
-  String _handleError(FirebaseAuthException e){
+  String _handleError(FirebaseAuthException e) {
     switch (e.code) {
       case 'invalid-email':
         return 'Your email address appears to be malformed.';

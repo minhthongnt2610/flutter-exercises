@@ -76,7 +76,9 @@ class _LoginState extends State<Login> {
                     hintText: 'Enter your password',
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
-                    onChange: (String value) {},
+                    onChange: (String value) {
+
+                    },
                   ),
                   Container(
                     alignment: Alignment.centerRight,
