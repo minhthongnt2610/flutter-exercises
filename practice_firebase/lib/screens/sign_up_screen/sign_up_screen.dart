@@ -20,18 +20,20 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
-   return ChangeNotifierProvider(
-     create: (_) => SignUpProvider(),
-     child: SignUpBody(),
-   );
+    return ChangeNotifierProvider(
+      create: (_) => SignUpProvider(),
+      child: SignUpBody(),
+    );
   }
 }
+
 class SignUpBody extends StatelessWidget {
   const SignUpBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
+    final signUpProvider = context.watch<SignUpProvider>();
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
@@ -81,9 +83,7 @@ class SignUpBody extends StatelessWidget {
                     hintText: 'Enter your email',
                     isPassword: false,
                     suffixIcon: Icon(Icons.email, color: Colors.white),
-                    onChange: (String value) {
-                      _email = value;
-                    },
+                    onChange: (value) => signUpProvider.setEmail(value),
                   ),
                   SizedBox(height: 20 * height / 928),
                   FiledWidget(
@@ -91,9 +91,7 @@ class SignUpBody extends StatelessWidget {
                     hintText: 'Enter your password',
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
-                    onChange: (String value) {
-                      _password = value;
-                    },
+                    onChange: (value) => signUpProvider.setPassword(value),
                   ),
                   SizedBox(height: 20 * height / 928),
                   FiledWidget(
@@ -101,29 +99,24 @@ class SignUpBody extends StatelessWidget {
                     hintText: 'Confirm password',
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
-                    onChange: (String value) {
-                      _confirmPassword = value;
-
-                    },
+                    onChange: (value) =>
+                        signUpProvider.setConfirmPassword(value),
                   ),
                   SizedBox(height: 50 * height / 928),
                   PrimaryButton(
                     title: 'Sign up',
                     isColor: true,
-                    onPressed: () {
-                      if(_password != _confirmPassword){
+                    onPressed: () async {
+                      final error = await signUpProvider.signUp();
+                      if (error != null) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('Password not match'),
+                            content: Text(error),
                             backgroundColor: Colors.red,
                           ),
                         );
-                      }
-                      else{
-                        _authEmailService.signUpWithEmailAndPassword(email: _email!, password: _password!);
-                        debugPrint('Password match');
-                        debugPrint(_email);
-                        debugPrint(_password);
+                      } else {
+                        debugPrint('Sign up success');
                       }
                     },
                   ),
