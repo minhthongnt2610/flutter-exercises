@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/data/data_sources/remote/firebase/auth_email_service.dart';
 
 import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
 import '../../contants/app_colors.dart';
+import '../../data/data_sources/remote/firebase/auth_service.dart';
 import '../login_screen/login_screen.dart';
 import '../login_screen/widgets/filed_widget.dart';
 
@@ -18,6 +20,7 @@ class _SignUpState extends State<SignUp> {
   String? _email;
   String? _password;
   String? _confirmPassword;
+  final _authEmailService = AuthEmailService();
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
@@ -109,6 +112,7 @@ class _SignUpState extends State<SignUp> {
                         );
                       }
                       else{
+                        _authEmailService.signUpWithEmailAndPassword(email: _email!, password: _password!);
                         debugPrint('Password match');
                         debugPrint(_email);
                         debugPrint(_password);
