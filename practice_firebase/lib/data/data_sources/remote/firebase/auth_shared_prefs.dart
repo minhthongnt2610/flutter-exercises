@@ -17,7 +17,9 @@ static Future<void> clearUid() async {}
 // Điều này đảm bảo lần sau mở app, hệ thống biết user chưa đăng nhập.
 
 /// 3. Lấy UID đã lưu
-//
+static Future<String?> getSaveUid() async{
+
+}
 // Khi app khởi động (ví dụ trong SplashScreen), ta kiểm tra xem SharedPreferences có uid không.
 // Nếu có → user đã đăng nhập trước đó → chuyển thẳng vào HomeScreen.
 // Nếu không → chuyển vào LoginScreen.
