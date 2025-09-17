@@ -32,6 +32,8 @@ class SignUpBody extends StatelessWidget {
 
   final _formKey = GlobalKey<FormState>();
 
+  ///Khi user nhấn Sign up, hàm _formKey.currentState!.validate() sẽ gọi validator của tất cả FiledWidget
+
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
@@ -60,18 +62,22 @@ class SignUpBody extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: 150 * height / 928),
-                    Text("Create Account",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        )),
-                    Text("To get started now!",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                        )),
+                    Text(
+                      "Create Account",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      "To get started now!",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     SizedBox(height: 30 * height / 928),
 
                     // Email
@@ -107,8 +113,9 @@ class SignUpBody extends StatelessWidget {
                         if (value.length < 8) {
                           return 'Password must be at least 8 characters';
                         }
-                        final specialCharRegex =
-                        RegExp(r'[!@#$%^&*/(),.?":{}|<>]');
+                        final specialCharRegex = RegExp(
+                          r'[!@#$%^&*/(),.?":{}|<>]',
+                        );
                         if (!specialCharRegex.hasMatch(value)) {
                           return 'Password must contain a special character';
                         }
@@ -158,6 +165,45 @@ class SignUpBody extends StatelessWidget {
                       "-------------------- Or Sign Up with --------------------",
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
+                    SizedBox(height: 20 * height / 928),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SocialButton(
+                          onPressed: () {},
+                          icon: null,
+                          isIcon: false,
+                        ),
+                        SocialButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.facebook,
+                            color: Colors.blue,
+                            size: 30,
+                          ),
+                          isIcon: true,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 100 * height / 928),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Already have an account?",
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, Login.routeName);
+                          },
+                          child: Text(
+                            "Login Now.",
+                            style: TextStyle(color: Colors.white, fontSize: 17),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -186,4 +232,3 @@ class SignUpBody extends StatelessWidget {
     );
   }
 }
-
