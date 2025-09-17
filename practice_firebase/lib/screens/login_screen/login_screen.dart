@@ -69,6 +69,7 @@ class _LoginState extends State<Login> {
                     isPassword: false,
                     suffixIcon: Icon(Icons.email, color: Colors.white),
                     onChange: (String value) {},
+                    validator: (String? value) { },
                   ),
                   SizedBox(height: 20 * height / 928),
                   FiledWidget(
@@ -78,7 +79,7 @@ class _LoginState extends State<Login> {
                     suffixIcon: Icon(Icons.remove_red_eye),
                     onChange: (String value) {
 
-                    },
+                    }, validator: (String? value) {  },
                   ),
                   Container(
                     alignment: Alignment.centerRight,

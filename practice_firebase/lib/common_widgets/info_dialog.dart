@@ -41,7 +41,10 @@ class InfoDialog extends StatelessWidget {
             PrimaryButton(
               title: confirmButtonTitle,
               isColor: false,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+                onConfirm();
+              },
             ),
           ],
         ),

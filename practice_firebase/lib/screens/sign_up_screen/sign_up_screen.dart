@@ -13,7 +13,6 @@ class SignUp extends StatefulWidget {
   const SignUp({super.key});
   static const String routeName = '/sign_up';
 
-
   @override
   State<SignUp> createState() => _SignUpState();
 }
@@ -21,14 +20,12 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
-
     return ChangeNotifierProvider(
       create: (_) => SignUpProvider(),
       child: SignUpBody(),
     );
   }
 }
-
 
 class SignUpBody extends StatelessWidget {
   const SignUpBody({super.key});
@@ -87,6 +84,12 @@ class SignUpBody extends StatelessWidget {
                     isPassword: false,
                     suffixIcon: Icon(Icons.email, color: Colors.white),
                     onChange: (value) => signUpProvider.setEmail(value),
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your email';
+                      }
+
+                    },
                   ),
                   SizedBox(height: 20 * height / 928),
                   FiledWidget(
@@ -95,6 +98,7 @@ class SignUpBody extends StatelessWidget {
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
                     onChange: (value) => signUpProvider.setPassword(value),
+                    validator: (String? value) {},
                   ),
                   SizedBox(height: 20 * height / 928),
                   FiledWidget(
@@ -104,6 +108,7 @@ class SignUpBody extends StatelessWidget {
                     suffixIcon: Icon(Icons.remove_red_eye),
                     onChange: (value) =>
                         signUpProvider.setConfirmPassword(value),
+                    validator: (String? value) {},
                   ),
                   SizedBox(height: 50 * height / 928),
                   PrimaryButton(
@@ -112,10 +117,7 @@ class SignUpBody extends StatelessWidget {
                     onPressed: () async {
                       final error = await signUpProvider.signUp();
                       if (error != null) {
-                        _showErrorDialog(
-                          context: context,
-                          error: error,
-                        );
+                        _showErrorDialog(context: context, error: error);
                       } else {
                         debugPrint('Sign up success');
                       }
