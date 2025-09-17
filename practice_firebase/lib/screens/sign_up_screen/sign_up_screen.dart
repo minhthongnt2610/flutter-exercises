@@ -195,7 +195,7 @@ class SignUpBody extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, Login.routeName);
+                            Navigator.pushNamed(context, LoginScreen.routeName);
                           },
                           child: Text(
                             "Login Now.",

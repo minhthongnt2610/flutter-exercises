@@ -59,7 +59,7 @@ class ItemDecoration extends StatelessWidget {
               title: 'Login',
               isColor: true,
               onPressed: () {
-                Navigator.pushNamed(context, Login.routeName);
+                Navigator.pushNamed(context, LoginScreen.routeName);
               },
             ),
             SizedBox(height: 20 * height / 928),
