@@ -1,0 +1,41 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:practice_firebase/data/data_sources/remote/firebase/auth_email_service.dart';
+
+import '../common_widgets/info_dialog.dart';
+
+class LoginProvider extends ChangeNotifier {
+  final _authEmailService = AuthEmailService();
+  String? _email;
+  String? _password;
+
+
+  String? get email => _email;
+  String? get password => _password;
+
+
+  void setEmail(String value) {
+    _email = value;
+    notifyListeners();
+  }
+
+  void setPassword(String value) {
+    _password = value;
+    notifyListeners();
+  }
+
+
+
+  Future<String?> login() async {
+
+    try {
+      _authEmailService.signInWithEmailAnhPassword(
+        email: _email!,
+        password: _password!,
+      );
+      return null;
+    } catch (e) {
+      return e.toString();
+    }
+  }
+}
