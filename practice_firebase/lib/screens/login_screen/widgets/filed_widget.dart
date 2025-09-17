@@ -8,12 +8,15 @@ class FiledWidget extends StatefulWidget {
     this.isPassword = false,
     required this.suffixIcon,
     required this.onChange,
+    required this.validator,
   });
   final String labelText;
   final String hintText;
   final bool isPassword;
   final Widget suffixIcon;
   final ValueChanged<String> onChange;
+  final FormFieldValidator<String> validator;
+
   @override
   State<FiledWidget> createState() => _FiledWidgetState();
 }
@@ -24,6 +27,7 @@ class _FiledWidgetState extends State<FiledWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
       onChanged: widget.onChange,
       cursorColor: Colors.white,
       obscureText: widget.isPassword ? !_isPassword : false,
