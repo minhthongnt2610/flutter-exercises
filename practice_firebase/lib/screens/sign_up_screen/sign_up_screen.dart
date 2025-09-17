@@ -88,7 +88,10 @@ class SignUpBody extends StatelessWidget {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email';
                       }
-
+                      if (!value.contains('@')) {
+                        return 'Please enter a valid email';
+                      }
+                      return null;
                     },
                   ),
                   SizedBox(height: 20 * height / 928),
@@ -98,7 +101,19 @@ class SignUpBody extends StatelessWidget {
                     isPassword: true,
                     suffixIcon: Icon(Icons.remove_red_eye),
                     onChange: (value) => signUpProvider.setPassword(value),
-                    validator: (String? value) {},
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your password';
+                      }
+                      if (value.length < 8) {
+                        return 'Password must be at least 8 characters';
+                      }
+                      final specialCharRegex = RegExp(r'[!@#$%^&*/(),.?":{}|<>]');
+                      if (!specialCharRegex.hasMatch(value)) {
+                        return 'Password must contain at least one special character';
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(height: 20 * height / 928),
                   FiledWidget(
@@ -108,7 +123,15 @@ class SignUpBody extends StatelessWidget {
                     suffixIcon: Icon(Icons.remove_red_eye),
                     onChange: (value) =>
                         signUpProvider.setConfirmPassword(value),
-                    validator: (String? value) {},
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please confirm your password';
+                      }
+                      if (value != signUpProvider.password) {
+                        return 'Passwords do not match';
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(height: 50 * height / 928),
                   PrimaryButton(
