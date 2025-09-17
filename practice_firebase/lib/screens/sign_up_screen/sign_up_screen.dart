@@ -28,19 +28,20 @@ class _SignUpState extends State<SignUp> {
 }
 
 class SignUpBody extends StatelessWidget {
-  const SignUpBody({super.key});
+  SignUpBody({super.key});
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
     final signUpProvider = context.watch<SignUpProvider>();
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
       body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
+        onTap: () => FocusScope.of(context).unfocus(),
         child: Container(
           width: double.infinity,
           height: double.infinity,
@@ -54,163 +55,111 @@ class SignUpBody extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: 150 * height / 928),
-                  Column(
-                    children: [
-                      Text(
-                        "Create Account",
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    SizedBox(height: 150 * height / 928),
+                    Text("Create Account",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "To get started now!",
+                        )),
+                    Text("To get started now!",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 30 * height / 928),
-                  FiledWidget(
-                    labelText: 'Email address',
-                    hintText: 'Enter your email',
-                    isPassword: false,
-                    suffixIcon: Icon(Icons.email, color: Colors.white),
-                    onChange: (value) => signUpProvider.setEmail(value),
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        _showErrorDialog(
-                          context: context,
-                          error: 'Please enter your email',
-                        );
-                      }
-                      if (value!.contains('@')) {
-                        _showErrorDialog(
-                          context: context,
-                          error: 'Please enter a valid email',
-                        );
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 20 * height / 928),
-                  FiledWidget(
-                    labelText: 'Password',
-                    hintText: 'Enter your password',
-                    isPassword: true,
-                    suffixIcon: Icon(Icons.remove_red_eye),
-                    onChange: (value) => signUpProvider.setPassword(value),
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        _showErrorDialog(
-                          context: context,
-                          error: 'Please enter your password',
-                        );
-                      }
-                      if (value!.length < 8) {
-                        _showErrorDialog(
-                          context: context,
-                          error: 'Password must be at least 8 characters',
-                        );
-                      }
-                      final specialCharRegex = RegExp(
-                        r'[!@#$%^&*/(),.?":{}|<>]',
-                      );
-                      if (!specialCharRegex.hasMatch(value)) {
-                        _showErrorDialog(
-                          context: context,
-                          error:
-                              'Password must contain at least one special character',
-                        );
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 20 * height / 928),
-                  FiledWidget(
-                    labelText: 'Confirm Password',
-                    hintText: 'Confirm password',
-                    isPassword: true,
-                    suffixIcon: Icon(Icons.remove_red_eye),
-                    onChange: (value) =>
-                        signUpProvider.setConfirmPassword(value),
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        _showErrorDialog(
-                          context: context,
-                          error: 'Please confirm your password',
-                        );
-                      }
-                      if (value != signUpProvider.password) {
-                        _showErrorDialog(
-                          context: context,
-                          error: 'Passwords do not match',
-                        );
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 50 * height / 928),
-                  PrimaryButton(
-                    title: 'Sign up',
-                    isColor: true,
-                    onPressed: () async {
-                      final error = await signUpProvider.signUp();
-                      if (error != null) {
-                        _showErrorDialog(context: context, error: error);
-                      } else {
-                        debugPrint('Sign up success');
-                      }
-                    },
-                  ),
-                  SizedBox(height: 40 * height / 928),
-                  Text(
-                    "-------------------- Or Sign Up with --------------------",
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ),
-                  SizedBox(height: 20 * height / 928),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SocialButton(onPressed: () {}, icon: null, isIcon: false),
-                      SocialButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.facebook,
-                          color: Colors.blue,
-                          size: 30,
-                        ),
-                        isIcon: true,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 100 * height / 928),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Already have an account?",
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, Login.routeName);
-                        },
-                        child: Text(
-                          "Login Now.",
-                          style: TextStyle(color: Colors.white, fontSize: 17),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                        )),
+                    SizedBox(height: 30 * height / 928),
+
+                    // Email
+                    FiledWidget(
+                      labelText: 'Email address',
+                      hintText: 'Enter your email',
+                      isPassword: false,
+                      suffixIcon: const Icon(Icons.email, color: Colors.white),
+                      onChange: (value) => signUpProvider.setEmail(value),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        if (!value.contains('@')) {
+                          return 'Please enter a valid email';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20 * height / 928),
+
+                    // Password
+                    FiledWidget(
+                      labelText: 'Password',
+                      hintText: 'Enter your password',
+                      isPassword: true,
+                      suffixIcon: const Icon(Icons.remove_red_eye),
+                      onChange: (value) => signUpProvider.setPassword(value),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        if (value.length < 8) {
+                          return 'Password must be at least 8 characters';
+                        }
+                        final specialCharRegex =
+                        RegExp(r'[!@#$%^&*/(),.?":{}|<>]');
+                        if (!specialCharRegex.hasMatch(value)) {
+                          return 'Password must contain a special character';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20 * height / 928),
+
+                    // Confirm password
+                    FiledWidget(
+                      labelText: 'Confirm Password',
+                      hintText: 'Confirm password',
+                      isPassword: true,
+                      suffixIcon: const Icon(Icons.remove_red_eye),
+                      onChange: (value) =>
+                          signUpProvider.setConfirmPassword(value),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please confirm your password';
+                        }
+                        if (value != signUpProvider.password) {
+                          return 'Passwords do not match';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 50 * height / 928),
+
+                    // Sign up button
+                    PrimaryButton(
+                      title: 'Sign up',
+                      isColor: true,
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          // tất cả field hợp lệ
+                          final error = await signUpProvider.signUp();
+                          if (error != null) {
+                            _showErrorDialog(context: context, error: error);
+                          } else {
+                            debugPrint('Sign up success');
+                          }
+                        }
+                      },
+                    ),
+                    SizedBox(height: 40 * height / 928),
+                    Text(
+                      "-------------------- Or Sign Up with --------------------",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -231,11 +180,10 @@ class SignUpBody extends StatelessWidget {
           title: "Error",
           content: error,
           confirmButtonTitle: "OK",
-          onConfirm: () {
-            Navigator.of(context).pop();
-          },
+          onConfirm: () => Navigator.of(context).pop(),
         );
       },
     );
   }
 }
+
