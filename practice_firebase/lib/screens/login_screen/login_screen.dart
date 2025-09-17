@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class LoginBody extends StatelessWidget {
-   LoginBody({super.key});
+  LoginBody({super.key});
   final _formKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
@@ -35,10 +35,7 @@ class LoginBody extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: GestureDetector(
+      body: GestureDetector(
             onTap: () {
               FocusScope.of(context).unfocus();
             },
@@ -55,113 +52,146 @@ class LoginBody extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(height: 150 * height / 928),
-                      Column(
-                        children: [
-                          Text(
-                            "Welcome",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 150 * height / 928),
+                        Column(
+                          children: [
+                            Text(
+                              "Welcome",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "Scorpion to see you!",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              "Scorpion to see you!",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 26,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 30 * height / 928),
-                      FiledWidget(
-                        labelText: 'Email address',
-                        hintText: 'Enter your email',
-                        isPassword: false,
-                        suffixIcon: Icon(Icons.email, color: Colors.white),
-                        onChange: (value) => loginProvider.setEmail(value),
-                        validator: (String? value) {
-
-                        },
-                      ),
-                      SizedBox(height: 20 * height / 928),
-                      FiledWidget(
-                        labelText: 'Password',
-                        hintText: 'Enter your password',
-                        isPassword: true,
-                        suffixIcon: Icon(Icons.remove_red_eye),
-                        onChange: (value) => loginProvider.setPassword(value),
-                        validator: (String? value) {},
-                      ),
-                      Container(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Forgot Password?",
-                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ],
+                        ),
+                        SizedBox(height: 30 * height / 928),
+                        FiledWidget(
+                          labelText: 'Email address',
+                          hintText: 'Enter your email',
+                          isPassword: false,
+                          suffixIcon: Icon(Icons.email, color: Colors.white),
+                          onChange: (value) => loginProvider.setEmail(value),
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your email';
+                            }
+                            if (!value.contains('@')) {
+                              return 'Please enter a valid email';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 20 * height / 928),
+                        FiledWidget(
+                          labelText: 'Password',
+                          hintText: 'Enter your password',
+                          isPassword: true,
+                          suffixIcon: Icon(Icons.remove_red_eye),
+                          onChange: (value) => loginProvider.setPassword(value),
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your password';
+                            }
+                            if (value.length < 8) {
+                              return 'Password must be at least 8 characters';
+                            }
+                            final specialCharRegex = RegExp(
+                              r'[!@#$%^&*/(),.?":{}|<>]',
+                            );
+                            if (!specialCharRegex.hasMatch(value)) {
+                              return 'Password must contain a special character';
+                            }
+                            return null;
+                          },
+                        ),
+                        Container(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "Forgot Password?",
+                              style: TextStyle(color: Colors.white, fontSize: 16),
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 20 * height / 928),
-                      PrimaryButton(
-                        title: 'Login',
-                        isColor: true,
-                        onPressed: () {},
-                      ),
-                      SizedBox(height: 40 * height / 928),
-                      Text(
-                        "-------------------- Or Login with --------------------",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-                      SizedBox(height: 60 * height / 928),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          SocialButton(onPressed: () {}, icon: null, isIcon: false),
-                          SocialButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.facebook,
-                              color: Colors.blue,
-                              size: 30,
+                        SizedBox(height: 20 * height / 928),
+                        PrimaryButton(
+                          title: 'Login',
+                          isColor: true,
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              loginProvider.login();
+                            }
+                          },
+                        ),
+                        SizedBox(height: 40 * height / 928),
+                        Text(
+                          "-------------------- Or Login with --------------------",
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                        SizedBox(height: 60 * height / 928),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SocialButton(
+                              onPressed: () {},
+                              icon: null,
+                              isIcon: false,
                             ),
-                            isIcon: true,
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 120 * height / 928),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Don't have an account?",
-                            style: TextStyle(color: Colors.black, fontSize: 16),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, SignUp.routeName);
-                            },
-                            child: Text(
-                              "Sign up now.",
-                              style: TextStyle(color: Colors.white, fontSize: 17),
+                            SocialButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.facebook,
+                                color: Colors.blue,
+                                size: 30,
+                              ),
+                              isIcon: true,
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                        SizedBox(height: 120 * height / 928),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Don't have an account?",
+                              style: TextStyle(color: Colors.black, fontSize: 16),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, SignUp.routeName);
+                              },
+                              child: Text(
+                                "Sign up now.",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      ),
-    );
+        );
+
   }
 }
