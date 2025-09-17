@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common_widgets/info_dialog.dart';
@@ -79,23 +78,4 @@ class AuthEmailService {
     }
   }
 
-  void _showErrorDialog({
-    required BuildContext context,
-    required String error,
-  }) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return InfoDialog(
-          title: "Error",
-          content: error,
-          confirmButtonTitle: "OK",
-          onConfirm: () {
-            Navigator.of(context).pop();
-          },
-        );
-      },
-    );
-  }
 }

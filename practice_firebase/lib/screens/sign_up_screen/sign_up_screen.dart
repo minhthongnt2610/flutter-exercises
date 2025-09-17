@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../common_widgets/info_dialog.dart';
 import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
 import '../../contants/app_colors.dart';
@@ -111,11 +112,9 @@ class SignUpBody extends StatelessWidget {
                     onPressed: () async {
                       final error = await signUpProvider.signUp();
                       if (error != null) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(error),
-                            backgroundColor: Colors.red,
-                          ),
+                        _showErrorDialog(
+                          context: context,
+                          error: error,
                         );
                       } else {
                         debugPrint('Sign up success');
@@ -168,6 +167,26 @@ class SignUpBody extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void _showErrorDialog({
+    required BuildContext context,
+    required String error,
+  }) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return InfoDialog(
+          title: "Error",
+          content: error,
+          confirmButtonTitle: "OK",
+          onConfirm: () {
+            Navigator.of(context).pop();
+          },
+        );
+      },
     );
   }
 }
