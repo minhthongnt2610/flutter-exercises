@@ -86,10 +86,16 @@ class SignUpBody extends StatelessWidget {
                     onChange: (value) => signUpProvider.setEmail(value),
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your email';
+                        _showErrorDialog(
+                          context: context,
+                          error: 'Please enter your email',
+                        );
                       }
-                      if (!value.contains('@')) {
-                        return 'Please enter a valid email';
+                      if (value!.contains('@')) {
+                        _showErrorDialog(
+                          context: context,
+                          error: 'Please enter a valid email',
+                        );
                       }
                       return null;
                     },
@@ -103,14 +109,26 @@ class SignUpBody extends StatelessWidget {
                     onChange: (value) => signUpProvider.setPassword(value),
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
+                        _showErrorDialog(
+                          context: context,
+                          error: 'Please enter your password',
+                        );
                       }
-                      if (value.length < 8) {
-                        return 'Password must be at least 8 characters';
+                      if (value!.length < 8) {
+                        _showErrorDialog(
+                          context: context,
+                          error: 'Password must be at least 8 characters',
+                        );
                       }
-                      final specialCharRegex = RegExp(r'[!@#$%^&*/(),.?":{}|<>]');
+                      final specialCharRegex = RegExp(
+                        r'[!@#$%^&*/(),.?":{}|<>]',
+                      );
                       if (!specialCharRegex.hasMatch(value)) {
-                        return 'Password must contain at least one special character';
+                        _showErrorDialog(
+                          context: context,
+                          error:
+                              'Password must contain at least one special character',
+                        );
                       }
                       return null;
                     },
@@ -125,10 +143,16 @@ class SignUpBody extends StatelessWidget {
                         signUpProvider.setConfirmPassword(value),
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please confirm your password';
+                        _showErrorDialog(
+                          context: context,
+                          error: 'Please confirm your password',
+                        );
                       }
                       if (value != signUpProvider.password) {
-                        return 'Passwords do not match';
+                        _showErrorDialog(
+                          context: context,
+                          error: 'Passwords do not match',
+                        );
                       }
                       return null;
                     },
