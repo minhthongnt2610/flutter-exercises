@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
           "Home your friends",
           style: TextStyle(
             color: Colors.white,
-            fontSize: 40,
+            fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
         child: Padding(
-          padding: const EdgeInsets.only(top: kToolbarHeight + 70),
+          padding: const EdgeInsets.only(top: kToolbarHeight + 65),
           child: ListView(
             children: [
               FriendElement(
