@@ -13,7 +13,7 @@ class FiledWidget extends StatefulWidget {
   final String labelText;
   final String hintText;
   final bool isPassword;
-  final Widget suffixIcon;
+  final Widget? suffixIcon;
   final ValueChanged<String> onChange;
   final FormFieldValidator<String> validator;
 
