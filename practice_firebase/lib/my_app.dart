@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/%C4%91etail_screen/detail_screen.dart';
 import 'package:practice_firebase/screens/home/home_screen.dart';
+import 'package:practice_firebase/screens/home/widgets/home_app_bar.dart';
 import 'package:practice_firebase/screens/login_screen/login_screen.dart';
 import 'package:practice_firebase/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:practice_firebase/screens/start_screen/start_screen.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Practice_Firebase',
       debugShowCheckedModeBanner: false,
-      home: AppBar(),
+      home: HomeAppBar(),
       // initialRoute: StartScreen.routeName,
       // onGenerateRoute: (settings) {
       //   switch (settings.name) {
