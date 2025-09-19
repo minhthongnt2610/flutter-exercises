@@ -44,8 +44,7 @@ class SignUpBody extends StatelessWidget {
       appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child: Container(
-          width: double.infinity,
+        child: Container( width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -54,6 +53,7 @@ class SignUpBody extends StatelessWidget {
               colors: [AppColor.hex1F4F70, AppColor.hex8FC9F0],
             ),
           ),
+
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SingleChildScrollView(
