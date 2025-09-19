@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/common_widgets/primary_button.dart';
 
 import '../../contants/app_colors.dart';
 import '../login_screen/widgets/filed_widget.dart';
@@ -62,7 +63,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   validator: (String? value) {},
                 ),
                 SizedBox(height: 50 * height / 928),
-
+                PrimaryButton(
+                  title: 'Reset Password',
+                  isColor: true,
+                  onPressed: () {},
+                ),
               ],
             ),
           ),
