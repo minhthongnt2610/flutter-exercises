@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/contants/app_Images.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +24,10 @@ class HomeAppBar extends StatelessWidget {
         elevation: 0,
         actions: [
           GestureDetector(
+            onTap: () {},
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(22.5)),
-              child: Image.asset('assets/icon/icon.png', width: 45, height: 45),
+              child: Image.asset(AppImages.avatar, width: 45, height: 45),
             ),
           ),
         ],
