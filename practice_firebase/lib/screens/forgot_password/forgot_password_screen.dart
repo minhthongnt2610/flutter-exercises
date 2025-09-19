@@ -6,6 +6,7 @@ import '../login_screen/widgets/filed_widget.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
+  final String routeName = '/forgot_password';
 
   @override
   State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
