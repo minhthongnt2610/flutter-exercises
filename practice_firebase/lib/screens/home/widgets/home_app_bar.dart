@@ -4,7 +4,6 @@ import 'package:practice_firebase/contants/app_Images.dart';
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +28,9 @@ class HomeAppBar extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(22.5)),
               child: Image.asset(AppImages.avatar, width: 45, height: 45),
             ),
+          ),
+          const SizedBox(
+            width: 10,
           ),
         ],
       ),
