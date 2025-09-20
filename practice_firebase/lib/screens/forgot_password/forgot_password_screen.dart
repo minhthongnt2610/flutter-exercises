@@ -33,43 +33,45 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                SizedBox(height: 150 * height / 928),
-                Text(
-                  "Forgot Password",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: 150 * height / 928),
+                  Text(
+                    "Forgot Password",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                SizedBox(height: 30 * height / 928),
-                Text(
-                  "Please enter your email address. You will receive a link to create a new password via email.",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                  SizedBox(height: 30 * height / 928),
+                  Text(
+                    "Please enter your email address. You will receive a link to create a new password via email.",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                SizedBox(height: 40 * height / 928),
-
-                FiledWidget(
-                  labelText: 'Email address',
-                  hintText: 'Enter your email',
-                  isPassword: false,
-                  suffixIcon: null,
-                  onChange: (String value) {},
-                  validator: (String? value) {},
-                ),
-                SizedBox(height: 50 * height / 928),
-                PrimaryButton(
-                  title: 'Reset Password',
-                  isColor: true,
-                  onPressed: () {},
-                ),
-              ],
+                  SizedBox(height: 40 * height / 928),
+              
+                  FiledWidget(
+                    labelText: 'Email address',
+                    hintText: 'Enter your email',
+                    isPassword: false,
+                    suffixIcon: null,
+                    onChange: (String value) {},
+                    validator: (String? value) {},
+                  ),
+                  SizedBox(height: 50 * height / 928),
+                  PrimaryButton(
+                    title: 'Reset Password',
+                    isColor: true,
+                    onPressed: () {},
+                  ),
+                ],
+              ),
             ),
           ),
         ),
