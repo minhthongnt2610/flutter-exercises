@@ -6,6 +6,7 @@ import 'package:practice_firebase/screens/home/widgets/home_app_bar.dart';
 import 'package:practice_firebase/screens/login_screen/login_screen.dart';
 import 'package:practice_firebase/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:practice_firebase/screens/start_screen/start_screen.dart';
+import 'package:practice_firebase/screens/update_profile/update_profile_screen.dart';
 
 import 'animations/screen_transitions/slide_transition_page.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Practice_Firebase',
       debugShowCheckedModeBanner: false,
-      home: ForgotPasswordScreen(),
+      home: UpdateProfileScreen(),
       // initialRoute: StartScreen.routeName,
       // onGenerateRoute: (settings) {
       //   switch (settings.name) {
