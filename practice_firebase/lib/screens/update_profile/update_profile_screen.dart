@@ -56,18 +56,32 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     SizedBox(height: 150 * height / 928),
 
                     FiledWidget(
-                      labelText: 'Email address',
-                      hintText: 'Enter your email',
+                      labelText: 'Name',
+                      hintText: 'Enter your name',
                       isPassword: false,
                       suffixIcon: null,
                       onChange: (String value) {},
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
+                          return 'Please enter your name';
                         }
-                        if (!value.contains('@')) {
-                          return 'Please enter a valid email';
+
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 50 * height / 928),
+
+                    FiledWidget(
+                      labelText: 'Birthdate',
+                      hintText: 'Enter your Birthdate',
+                      isPassword: false,
+                      suffixIcon: null,
+                      onChange: (String value) {},
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your Birthdate';
                         }
+
                         return null;
                       },
                     ),
@@ -90,7 +104,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     ),
                     SizedBox(height: 50 * height / 928),
                     PrimaryButton(
-                      title: 'Reset Password',
+                      title: 'Update',
                       isColor: true,
                       onPressed: () {},
                     ),
