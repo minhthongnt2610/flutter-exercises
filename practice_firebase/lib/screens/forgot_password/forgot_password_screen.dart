@@ -13,8 +13,10 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+
     int height = MediaQuery.of(context).size.height.toInt();
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -62,7 +64,15 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     isPassword: false,
                     suffixIcon: null,
                     onChange: (String value) {},
-                    validator: (String? value) {},
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your email';
+                      }
+                      if (!value.contains('@')) {
+                        return 'Please enter a valid email';
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(height: 50 * height / 928),
                   PrimaryButton(
