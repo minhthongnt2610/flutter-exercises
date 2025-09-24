@@ -43,5 +43,12 @@ class FirestoreService {
   }
 
   //delete
-  Future<void> deleteFriend(int id) async {}
+  Future<void> deleteFriend(int id) async {
+    await _firestore
+        .collection("users")
+        .doc("uid")
+        .collection("friends")
+        .doc(id.toString())
+        .delete();
+  }
 }
