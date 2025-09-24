@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/common_widgets/primary_button.dart';
+import 'package:practice_firebase/screens/update_profile/widgets/input_date_time_field.dart';
 
 import '../../contants/app_colors.dart';
 import '../login_screen/widgets/filed_widget.dart';
@@ -71,20 +72,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     ),
                     SizedBox(height: 50 * height / 928),
 
-                    FiledWidget(
-                      labelText: 'Birthdate',
-                      hintText: 'Enter your Birthdate',
-                      isPassword: false,
-                      suffixIcon: null,
-                      onChange: (String value) {},
-                      validator: (String? value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your Birthdate';
-                        }
+                    InputDateTimeField(selectedDate: DateTime.now(), onChanged: (DateTime? value) {
 
-                        return null;
-                      },
-                    ),
+                    },),
                     SizedBox(height: 50 * height / 928),
                     FiledWidget(
                       labelText: 'Email address',
