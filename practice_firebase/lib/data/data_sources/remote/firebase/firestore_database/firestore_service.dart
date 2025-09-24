@@ -33,5 +33,7 @@ class FirestoreService {
   }
 
   //update
+  Future<void> updateFriend(FriendModel friends) async {}
   //delete
+
 }
