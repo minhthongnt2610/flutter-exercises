@@ -33,7 +33,15 @@ class FirestoreService {
   }
 
   //update
-  Future<void> updateFriend(FriendModel friends) async {}
+  Future<void> updateFriend(FriendModel friends) async {
+    await _firestore
+        .collection("users")
+        .doc("uid")
+        .collection("friends")
+        .doc(friends.id.toString())
+        .update(friends.toJson());
+  }
+
   //delete
   Future<void> deleteFriend(int id) async {}
 }
