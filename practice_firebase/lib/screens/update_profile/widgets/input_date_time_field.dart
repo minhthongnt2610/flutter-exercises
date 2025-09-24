@@ -16,15 +16,18 @@ class InputDateTimeField extends StatelessWidget
   {
     return DateTimeField(
       decoration: const InputDecoration(
-        labelText: 'Enter Date',
         labelStyle: TextStyle(
-          color: Colors.white30,
+          color: Colors.white,
           fontSize: 16,
         ),
-        helperText: 'YYYY/MM/DD',
-        border: OutlineInputBorder(),
+        helperText: 'MM/DD/YYYY',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(color: Colors.white, width: 2),
+        ),
         filled: true,
-        fillColor: Colors.white12,
+        fillColor: Colors.white24,
+
       ),
       value: selectedDate,
       dateFormat: DateFormat.yMd(),

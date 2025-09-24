@@ -72,8 +72,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     ),
                     SizedBox(height: 50 * height / 928),
 
-                    // InputDateTimeField(selectedDate: , onChanged: onChanged)
-                    // ),
+                    InputDateTimeField(selectedDate: DateTime.now(), onChanged: (DateTime? value) {
+
+                    },),
                     SizedBox(height: 50 * height / 928),
                     FiledWidget(
                       labelText: 'Email address',
