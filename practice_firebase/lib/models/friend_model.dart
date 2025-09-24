@@ -1,13 +1,13 @@
 
 class FriendModel
 {
-  int id;
+  int? id;
   String name;
   DateTime birthdate;
   String email;
 
   FriendModel({
-    required this.id,
+     this.id,
     required this.name,
     required this.birthdate,
     required this.email,
