@@ -17,10 +17,21 @@ class FirestoreService {
         .doc(friends.id.toString())
         .set(friends.toJson());
   }
-  //get (Stream realtime)
-  Stream<List<FriendModel>> getFriends(){
 
+  //get (Stream realtime)
+  Stream<List<FriendModel>> getFriends() {
+    return _firestore
+        .collection("users")
+        .doc("uid")
+        .collection("friends")
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((doc) => FriendModel.fromJson(doc.data()))
+              .toList(),
+        );
   }
+
   //update
   //delete
 }
