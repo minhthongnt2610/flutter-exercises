@@ -30,7 +30,6 @@ class UpdateProfileProvider extends ChangeNotifier {
   Future<String?> updateProfile() async {
     try {
       _firestoreService.updateFriend(
-        FriendModel(id: 1, name: _name, birthdate: _birthdate, email: _email),
       );
       return null;
     } catch (e) {
