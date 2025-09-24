@@ -18,6 +18,9 @@ class FirestoreService {
         .set(friends.toJson());
   }
   //get (Stream realtime)
+  Stream<List<FriendModel>> getFriends(){
+
+  }
   //update
   //delete
 }
