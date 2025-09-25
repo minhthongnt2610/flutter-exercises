@@ -6,7 +6,6 @@ import 'package:practice_firebase/screens/home/widgets/home_app_bar.dart';
 import 'package:practice_firebase/screens/login_screen/login_screen.dart';
 import 'package:practice_firebase/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:practice_firebase/screens/start_screen/start_screen.dart';
-import 'package:practice_firebase/screens/update_profile/update_profile_screen.dart';
 
 import 'animations/screen_transitions/slide_transition_page.dart';
 
@@ -18,25 +17,29 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Practice_Firebase',
       debugShowCheckedModeBanner: false,
-      home: UpdateProfileScreen(),
-      // initialRoute: StartScreen.routeName,
-      // onGenerateRoute: (settings) {
-      //   switch (settings.name) {
-      //     case StartScreen.routeName:
-      //       return MaterialPageRoute(builder: (context) => const StartScreen());
-      //     case LoginScreen.routeName:
-      //       return SlideTransitionPage(page: const LoginScreen());
-      //     case SignUp.routeName:
-      //       return SlideTransitionPage(page: const SignUp());
-      //     case HomeScreen.routeName:
-      //       return MaterialPageRoute(builder: (context) => const HomeScreen());
-      //     case DetailScreen.routeName:
-      //       return MaterialPageRoute(
-      //         builder: (context) => const DetailScreen(),
-      //       );
-      //   }
-      //   return null;
-      // },
+      // home: HomeScreen(),
+      initialRoute: StartScreen.routeName,
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case StartScreen.routeName:
+            return MaterialPageRoute(builder: (context) => const StartScreen());
+          case LoginScreen.routeName:
+            return SlideTransitionPage(page: const LoginScreen());
+          case SignUp.routeName:
+            return SlideTransitionPage(page: const SignUp());
+          case HomeScreen.routeName:
+            return MaterialPageRoute(builder: (context) => const HomeScreen());
+          case DetailScreen.routeName:
+            return MaterialPageRoute(
+              builder: (context) => const DetailScreen(),
+            );
+          case ForgotPasswordScreen.routeName:
+            return MaterialPageRoute(
+              builder: (context) => const ForgotPasswordScreen(),
+            );
+        }
+        return null;
+      },
     );
   }
 }

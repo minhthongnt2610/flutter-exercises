@@ -15,7 +15,7 @@ class ItemDecoration extends StatelessWidget {
       padding: EdgeInsets.all(25),
       width: double.infinity,
       height: double.infinity,
-      child: GestureDetector(
+      child: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(height: 150 * height / 928),
