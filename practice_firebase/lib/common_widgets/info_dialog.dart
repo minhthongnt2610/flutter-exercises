@@ -42,7 +42,6 @@ class InfoDialog extends StatelessWidget {
               title: confirmButtonTitle,
               isColor: false,
               onPressed: () {
-
                 onConfirm();
               },
             ),

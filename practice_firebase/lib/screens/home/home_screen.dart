@@ -44,45 +44,50 @@ class _HomeScreenState extends State<HomeScreen> {
 
         child: Padding(
           padding: const EdgeInsets.only(top: kToolbarHeight + 65),
-          child: ListView(
-            children: [
-              FriendElement(
-                friend: FriendModel(id: 1, name: 'name', birthdate: DateTime.now(), email: 'email'),
-                onTap: () {},
-              ),
-              FriendElement(
-                friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
-                onTap: () {},
-              ),
-              FriendElement(
-                friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
-                onTap: () {},
-              ),
-              FriendElement(
-                friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
-                onTap: () {},
-              ),
-              FriendElement(
-                friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
-                onTap: () {},
-              ),
-              FriendElement(
-                friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
-                onTap: () {},
-              ),
-              FriendElement(
-                friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
-                onTap: () {},
-              ),
-              FriendElement(
-                friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
-                onTap: () {},
-              ),
-              FriendElement(
-                friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
-                onTap: () {},
-              ),
-            ],
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/detail_screen');
+            },
+            child: ListView(
+              children: [
+                FriendElement(
+                  friend: FriendModel(id: 1, name: 'name', birthdate: DateTime.now(), email: 'email'),
+                  onTap: () {},
+                ),
+                FriendElement(
+                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  onTap: () {},
+                ),
+                FriendElement(
+                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  onTap: () {},
+                ),
+                FriendElement(
+                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  onTap: () {},
+                ),
+                FriendElement(
+                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  onTap: () {},
+                ),
+                FriendElement(
+                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  onTap: () {},
+                ),
+                FriendElement(
+                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  onTap: () {},
+                ),
+                FriendElement(
+                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  onTap: () {},
+                ),
+                FriendElement(
+                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  onTap: () {},
+                ),
+              ],
+            ),
           ),
         ),
       ),
