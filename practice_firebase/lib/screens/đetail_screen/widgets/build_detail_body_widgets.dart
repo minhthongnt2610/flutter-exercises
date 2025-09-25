@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../common_widgets/delete_button.dart';
 import '../../../common_widgets/input_field.dart';
 import '../../../common_widgets/primary_button.dart';
+import 'input_date_time_field.dart';
 
 class BuildDetailBodyWidget extends StatefulWidget {
   const BuildDetailBodyWidget({super.key});
@@ -44,12 +45,11 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                 initialValue: '',
               ),
               const SizedBox(height: 20),
-              InputField(
-                hintText: 'Phone Number',
-                onChanged: (value) {},
-                maxLines: 1,
-                initialValue: '',
+              InputDateTimeField(
+                selectedDate: DateTime.now(),
+                onChanged: (DateTime? value) {},
               ),
+
               const SizedBox(height: 20),
               InputField(
                 hintText: 'Email',
@@ -58,13 +58,7 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                 initialValue: '',
               ),
               const SizedBox(height: 20),
-              InputField(
-                hintText: 'Address',
-                onChanged: (value) {},
-                maxLines: 1,
-                initialValue: '',
-              ),
-              const SizedBox(height: 20),
+
               PrimaryButton(
                 title: isUpdate ? 'Update' : 'Add',
                 isColor: true,
