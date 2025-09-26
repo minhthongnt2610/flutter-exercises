@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../contants/app_colors.dart';
+
 class AvatarSelectionScreen extends StatelessWidget {
   final List<String> avatars = [
     "https://i.pravatar.cc/150?img=1",
@@ -17,31 +19,49 @@ class AvatarSelectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text("Choose Avatar"),
+        title: const Text(
+          "Choose Avatar",
+          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold,color: Colors.white),
+
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, // 3 avatars per row
-            crossAxisSpacing: 12,
-            mainAxisSpacing: 12,
+      body: Container(
+       width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [AppColor.hex1F4F70, AppColor.hex8FC9F0],
+            ),
           ),
-          itemCount: avatars.length,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                // Return the selected avatar to previous screen
-                Navigator.pop(context, avatars[index]);
-              },
-              child: CircleAvatar(
-                radius: 50,
-                backgroundImage: NetworkImage(avatars[index]),
-              ),
-            );
-          },
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, // 3 avatars per row
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+            ),
+            itemCount: avatars.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  // Return the selected avatar to previous screen
+                  Navigator.pop(context, avatars[index]);
+                },
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: NetworkImage(avatars[index]),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
