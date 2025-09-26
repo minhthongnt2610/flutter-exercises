@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/%C4%91etail_screen/detail_screen.dart';
+import 'package:practice_firebase/screens/avatar_selection_screen/avatar_selection_screen.dart';
 import 'package:practice_firebase/screens/forgot_password/forgot_password_screen.dart';
 import 'package:practice_firebase/screens/home/home_screen.dart';
 import 'package:practice_firebase/screens/home/widgets/home_app_bar.dart';
 import 'package:practice_firebase/screens/login_screen/login_screen.dart';
+import 'package:practice_firebase/screens/profire/profile_screen.dart';
 import 'package:practice_firebase/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:practice_firebase/screens/start_screen/start_screen.dart';
 
@@ -17,8 +19,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Practice_Firebase',
       debugShowCheckedModeBanner: false,
-      // home: HomeScreen(),
-      initialRoute: StartScreen.routeName,
+      // home: AvatarSelectionScreen(),
+      initialRoute: ProfileScreen.routeName,
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case StartScreen.routeName:
@@ -36,6 +38,14 @@ class MyApp extends StatelessWidget {
           case ForgotPasswordScreen.routeName:
             return MaterialPageRoute(
               builder: (context) => const ForgotPasswordScreen(),
+            );
+          case ProfileScreen.routeName:
+            return MaterialPageRoute(
+              builder: (context) => const ProfileScreen(),
+            );
+          case AvatarSelectionScreen.routeName:
+            return MaterialPageRoute(
+              builder: (context) => AvatarSelectionScreen(),
             );
         }
         return null;
