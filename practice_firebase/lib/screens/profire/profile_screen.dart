@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../../common_widgets/primary_button.dart';
@@ -15,8 +17,8 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   String _name = "Nguyễn Minh Thông"; // Example name
   String _email = "example@email.com"; // Example email
-  String _avatarUrl = "https://i.pravatar.cc/150?img=1";
-
+  String? _avatarUrl;
+  File? _avatarFile;
   void _signOut() {
     // TODO: Add your sign-out logic here
     ScaffoldMessenger.of(
@@ -69,17 +71,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     );
                     if (selectedAvatar != null) {
                       setState(() {
-                        _avatarUrl = selectedAvatar.toString();
+                        if (selectedAvatar is String) {
+                          _avatarUrl = selectedAvatar;
+                          _avatarFile = null;
+                        }
+                        if (selectedAvatar is File) {
+                          _avatarFile = selectedAvatar;
+                          _avatarUrl = null;
+                        }
                       });
                     }
                   },
                   child: CircleAvatar(
                     radius: 60,
-                    backgroundImage: NetworkImage(
-                      _avatarUrl,
-                    ), // Replace with your asset
-                  ),
+                    backgroundImage: _avatarFile != null
+                        ? FileImage(_avatarFile!) as ImageProvider
+                        : (_avatarUrl != null
+                              ? NetworkImage(_avatarUrl!) as ImageProvider
+                              : AssetImage("assets/icon/icon.png")),
+                  ), // Replace with your asset
                 ),
+
                 SizedBox(height: 20 * height / 928),
 
                 // Name

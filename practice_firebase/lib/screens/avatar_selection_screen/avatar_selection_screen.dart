@@ -1,5 +1,84 @@
+// import 'package:flutter/material.dart';
+//
+// import '../../contants/app_colors.dart';
+//
+// class AvatarSelectionScreen extends StatelessWidget {
+//   static const String routeName = '/avatar_selection';
+//
+//   final List<String> avatars = [
+//     "https://i.pravatar.cc/150?img=1",
+//     "https://i.pravatar.cc/150?img=2",
+//     "https://i.pravatar.cc/150?img=3",
+//     "https://i.pravatar.cc/150?img=4",
+//     "https://i.pravatar.cc/150?img=5",
+//     "https://i.pravatar.cc/150?img=6",
+//     "https://i.pravatar.cc/150?img=7",
+//     "https://i.pravatar.cc/150?img=8",
+//   ];
+//
+//   AvatarSelectionScreen({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       extendBodyBehindAppBar: true,
+//       appBar: AppBar(
+//         title: const Text(
+//           "Choose Avatar",
+//           style: TextStyle(
+//             fontSize: 40,
+//             fontWeight: FontWeight.bold,
+//             color: Colors.white,
+//           ),
+//         ),
+//         backgroundColor: Colors.transparent,
+//         elevation: 0,
+//         centerTitle: true,
+//       ),
+//       body: Container(
+//         width: double.infinity,
+//         height: double.infinity,
+//         decoration: BoxDecoration(
+//           gradient: LinearGradient(
+//             begin: Alignment.topLeft,
+//             end: Alignment.bottomRight,
+//             colors: [AppColor.hex1F4F70, AppColor.hex8FC9F0],
+//           ),
+//         ),
+//         child: Padding(
+//           padding: const EdgeInsets.all(12.0),
+//           child: GridView.builder(
+//             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//               crossAxisCount: 3, // 3 avatars per row
+//               crossAxisSpacing: 12,
+//               mainAxisSpacing: 12,
+//             ),
+//             itemCount: avatars.length,
+//             itemBuilder: (context, index) {
+//               return GestureDetector(
+//                 onTap: () {
+//                   // Return the selected avatar to previous screen
+//                   Navigator.pop(context, avatars[index]);
+//                 },
+//                 child: CircleAvatar(
+//                   radius: 50,
+//                   backgroundImage: NetworkImage(avatars[index]),
+//                 ),
+//               );
+//             },
+//           ),
+//         ),
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: () {},
+//         child: const Icon(Icons.photo_library),
+//       ),
+//     );
+//   }
+// }
+import 'dart:io';
 import 'package:flutter/material.dart';
-
+import 'package:image_picker/image_picker.dart';
 import '../../contants/app_colors.dart';
 
 class AvatarSelectionScreen extends StatelessWidget {
@@ -18,6 +97,15 @@ class AvatarSelectionScreen extends StatelessWidget {
 
   AvatarSelectionScreen({super.key});
 
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickFromGallery(BuildContext context) async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      Navigator.pop(context, File(image.path)); // return File instead of URL
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,23 +113,26 @@ class AvatarSelectionScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Choose Avatar",
-          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold,color: Colors.white),
-
+          style: TextStyle(
+            fontSize: 40,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
       ),
       body: Container(
-       width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [AppColor.hex1F4F70, AppColor.hex8FC9F0],
-            ),
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [AppColor.hex1F4F70, AppColor.hex8FC9F0],
           ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: GridView.builder(
@@ -65,6 +156,11 @@ class AvatarSelectionScreen extends StatelessWidget {
             },
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _pickFromGallery(context),
+        backgroundColor: Colors.white,
+        child: const Icon(Icons.photo_library, color: Colors.blue),
       ),
     );
   }
