@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../common_widgets/primary_button.dart';
 import '../../contants/app_colors.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -25,7 +26,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text("Profile"),
+        title: const Text(
+          "Profile",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 40,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -48,12 +56,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Avatar
-                const CircleAvatar(
-                  radius: 60,
-                  backgroundImage: AssetImage(
-                    "assets/icon/icon.png",
-                  ), // Replace with your asset
-                ),
+                 GestureDetector(
+                   onTap: () {
+                     // TODO: Add your avatar tap logic here
+                   },
+                   child: CircleAvatar(
+                    radius: 60,
+                    backgroundImage: AssetImage(
+                      "assets/icon/icon.png",
+                    ), // Replace with your asset
+                                   ),
+                 ),
                 const SizedBox(height: 20),
 
                 // Name
@@ -68,25 +81,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 // Email
                 Text(
                   email,
-                  style: const TextStyle(fontSize: 16, color: Colors.grey),
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
                 ),
 
                 const SizedBox(height: 40),
 
                 // Sign Out Button
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: _signOut,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                    ),
-                    child: const Text(
-                      "Sign Out",
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                  ),
+                PrimaryButton(
+                  title: 'Sign Out',
+                  isColor: true,
+                  onPressed: _signOut,
                 ),
               ],
             ),
