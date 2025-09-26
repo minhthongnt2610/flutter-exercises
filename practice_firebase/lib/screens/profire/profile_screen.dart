@@ -23,6 +23,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    int height = MediaQuery.of(context).size.height.toInt();
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -56,18 +58,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Avatar
-                 GestureDetector(
-                   onTap: () {
-                     // TODO: Add your avatar tap logic here
-                   },
-                   child: CircleAvatar(
+                GestureDetector(
+                  onTap: () {
+                    // TODO: Add your avatar tap logic here
+                  },
+                  child: CircleAvatar(
                     radius: 60,
                     backgroundImage: AssetImage(
                       "assets/icon/icon.png",
                     ), // Replace with your asset
-                                   ),
-                 ),
-                const SizedBox(height: 20),
+                  ),
+                ),
+                SizedBox(height: 20 * height / 928),
 
                 // Name
                 Text(
@@ -84,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: const TextStyle(fontSize: 16, color: Colors.white),
                 ),
 
-                const SizedBox(height: 40),
+                SizedBox(height: 40 * height / 928),
 
                 // Sign Out Button
                 PrimaryButton(
