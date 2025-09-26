@@ -15,7 +15,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   String _name = "Nguyễn Minh Thông"; // Example name
   String _email = "example@email.com"; // Example email
-  late String _avatarUrl;
+  String _avatarUrl = "https://i.pravatar.cc/150?img=1";
 
   void _signOut() {
     // TODO: Add your sign-out logic here
@@ -63,9 +63,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 // Avatar
                 GestureDetector(
                   onTap: () async {
-                    final selectedAvatar = await Navigator.pushNamed(context,
-                    AvatarSelectionScreen.routeName);
-                    if(selectedAvatar != null){
+                    final selectedAvatar = await Navigator.pushNamed(
+                      context,
+                      AvatarSelectionScreen.routeName,
+                    );
+                    if (selectedAvatar != null) {
                       setState(() {
                         _avatarUrl = selectedAvatar.toString();
                       });
@@ -73,8 +75,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: CircleAvatar(
                     radius: 60,
-                    backgroundImage: AssetImage(
-                      "assets/icon/icon.png",
+                    backgroundImage: NetworkImage(
+                      _avatarUrl,
                     ), // Replace with your asset
                   ),
                 ),
