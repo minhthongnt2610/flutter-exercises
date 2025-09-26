@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 
 import '../../common_widgets/primary_button.dart';
 import '../../contants/app_colors.dart';
+import '../avatar_selection_screen/avatar_selection_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+  static const String routeName = '/profile';
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String name = "Nguyễn Minh Thông"; // Example name
-  String email = "example@email.com"; // Example email
+  String _name = "Nguyễn Minh Thông"; // Example name
+  String _email = "example@email.com"; // Example email
+  late String _avatarUrl;
 
   void _signOut() {
     // TODO: Add your sign-out logic here
@@ -59,8 +62,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 // Avatar
                 GestureDetector(
-                  onTap: () {
-                    // TODO: Add your avatar tap logic here
+                  onTap: () async {
+                    final selectedAvatar = await Navigator.pushNamed(context,
+                    AvatarSelectionScreen.routeName);
+                    if(selectedAvatar != null){
+                      setState(() {
+                        _avatarUrl = selectedAvatar.toString();
+                      });
+                    }
                   },
                   child: CircleAvatar(
                     radius: 60,
@@ -73,7 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                 // Name
                 Text(
-                  name,
+                  _name,
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -82,7 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                 // Email
                 Text(
-                  email,
+                  _email,
                   style: const TextStyle(fontSize: 16, color: Colors.white),
                 ),
 

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../contants/app_colors.dart';
 
 class AvatarSelectionScreen extends StatelessWidget {
+  static const String routeName = '/avatar_selection';
+
   final List<String> avatars = [
     "https://i.pravatar.cc/150?img=1",
     "https://i.pravatar.cc/150?img=2",
