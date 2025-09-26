@@ -100,9 +100,17 @@ class AvatarSelectionScreen extends StatelessWidget {
   final ImagePicker _picker = ImagePicker();
 
   Future<void> _pickFromGallery(BuildContext context) async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      Navigator.pop(context, File(image.path)); // return File instead of URL
+    try {
+      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      if (!context.mounted) return;
+      Navigator.pop(context, File(image.path));
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Lỗi khi chọn ảnh: $e')));
+      }
     }
   }
 
