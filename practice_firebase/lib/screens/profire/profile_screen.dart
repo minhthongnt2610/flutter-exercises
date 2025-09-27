@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../common_widgets/primary_button.dart';
 import '../../contants/app_colors.dart';
 import '../avatar_selection_screen/avatar_selection_screen.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
   static const String routeName = '/profile';
@@ -25,13 +26,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
-class ProfileScreenBody extends StatelessWidget {
-   ProfileScreenBody({super.key});
+class ProfileScreenBody extends StatefulWidget {
+  ProfileScreenBody({super.key});
 
-  String _name = "Nguyễn Minh Thông"; // Example name
-  String _email = "example@email.com"; // Example email
-  String? _avatarUrl;
-  File? _avatarFile;
+  @override
+  State<ProfileScreenBody> createState() => _ProfileScreenBodyState();
+}
+
+class _ProfileScreenBodyState extends State<ProfileScreenBody> {
+  String name = "Nguyễn Minh Thông";
+ // Example name
+  String email = "example@email.com";
+ // Example email
   void _signOut() {
     // TODO: Add your sign-out logic here
   }
@@ -79,29 +85,22 @@ class ProfileScreenBody extends StatelessWidget {
                       context,
                       AvatarSelectionScreen.routeName,
                     );
-                    if (selectedAvatar != null) {
-                      setState(() {
-                        if (selectedAvatar is String) {
-                          _avatarUrl = selectedAvatar;
-                          _avatarFile = null;
-                        }
-                        if (selectedAvatar is File) {
-                          _avatarFile = selectedAvatar;
-                          _avatarUrl = null;
-                        }
-                      });
+                    if (selectedAvatar is File) {
+                      profileProvider.setAvatarFile(selectedAvatar);
                     }
-
-                    /// trả về màn hình Home_screen
-                    Navigator.pop(context, _avatarUrl ?? _avatarFile);
+                    if (selectedAvatar is String) {
+                      profileProvider.setAvatarUrl(selectedAvatar);
+                    }
                   },
                   child: CircleAvatar(
                     radius: 60,
-                    backgroundImage: _avatarFile != null
-                        ? FileImage(_avatarFile!) as ImageProvider
-                        : (_avatarUrl != null
-                        ? NetworkImage(_avatarUrl!) as ImageProvider
-                        : AssetImage("assets/icon/icon.png")),
+                    backgroundImage: profileProvider.avatarFile != null
+                        ? FileImage(profileProvider.avatarFile!)
+                              as ImageProvider
+                        : (profileProvider.avatarUrl != null
+                              ? NetworkImage(profileProvider.avatarUrl!)
+                                    as ImageProvider
+                              : AssetImage("assets/icon/icon.png")),
                   ), // Replace with your asset
                 ),
 
@@ -109,7 +108,7 @@ class ProfileScreenBody extends StatelessWidget {
 
                 // Name
                 Text(
-                  _name,
+                  name,
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -118,7 +117,7 @@ class ProfileScreenBody extends StatelessWidget {
 
                 // Email
                 Text(
-                  _email,
+                  email,
                   style: const TextStyle(fontSize: 16, color: Colors.white),
                 ),
 
@@ -136,4 +135,5 @@ class ProfileScreenBody extends StatelessWidget {
         ),
       ),
     );
+  }
 }
