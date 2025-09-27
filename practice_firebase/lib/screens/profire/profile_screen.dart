@@ -9,6 +9,7 @@ import '../../contants/app_colors.dart';
 import '../avatar_selection_screen/avatar_selection_screen.dart';
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+  static const String routeName = '/profile';
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -38,7 +39,7 @@ class ProfileScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
-
+    final profileProvider = context.watch<UserProvider>();
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
