@@ -14,4 +14,10 @@ class UserProvider extends ChangeNotifier{
     _avatarUrl= null;
     notifyListeners();
   }
+
+  void setAvatarUrl(String url) {
+    _avatarUrl = url;
+    _avatarFile = null;
+    notifyListeners();
+  }
 }
