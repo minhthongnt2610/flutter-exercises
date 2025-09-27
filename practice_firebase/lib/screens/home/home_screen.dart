@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/home/widgets/friend_elements.dart';
 import 'package:provider/provider.dart';
 
+import '../../contants/app_colors.dart';
 import '../../models/friend_model.dart';
 import '../../providers/user_provider.dart';
 import '../profire/profile_screen.dart';
@@ -47,17 +50,11 @@ class HomeScreenBody extends StatelessWidget {
           IconButton(
             onPressed: () async {
               final selectedAvatar = await Navigator.pushNamed(context, ProfileScreen.routeName);
-              if (selectedAvatar != null) {
-                setState(() {
-                  if (selectedAvatar is String) {
-                    _avatarUrl = selectedAvatar;
-                    _avatarFile = null;
-                  }
-                  if (selectedAvatar is File) {
-                    _avatarFile = selectedAvatar;
-                    _avatarUrl = null;
-                  }
-                });
+              if (selectedAvatar is File) {
+                profileProvider.setAvatarFile(selectedAvatar);
+              }
+              if (selectedAvatar is String) {
+                profileProvider.setAvatarUrl(selectedAvatar);
               }
             },
             icon: Container(
@@ -65,10 +62,12 @@ class HomeScreenBody extends StatelessWidget {
               height: 50,
               child: CircleAvatar(
                 radius: 60,
-                backgroundImage: _avatarFile != null
-                    ? FileImage(_avatarFile!) as ImageProvider
-                    : (_avatarUrl != null
-                    ? NetworkImage(_avatarUrl!) as ImageProvider
+                backgroundImage: profileProvider.avatarFile != null
+                    ? FileImage(profileProvider.avatarFile!)
+                as ImageProvider
+                    : (profileProvider.avatarUrl != null
+                    ? NetworkImage(profileProvider.avatarUrl!)
+                as ImageProvider
                     : AssetImage("assets/icon/icon.png")),
               ),
             ),
