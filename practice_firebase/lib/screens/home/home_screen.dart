@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/home/widgets/friend_elements.dart';
+import 'package:practice_firebase/screens/profire/profile_screen.dart';
 
 import '../../contants/app_colors.dart';
 import '../../models/friend_model.dart';
@@ -33,15 +34,33 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/profile_screen');
+            onPressed: () async {
+              final selectedAvatar = await Navigator.pushNamed(context, ProfileScreen.routeName);
+              if(selectedAvatar != null){
+                if(_avatarFile is File){
+                  setState(() {
+                    _avatarFile = selectedAvatar as File?;
+                    _avatarUrl = null;
+                  });
+                }
+                if(_avatarUrl is String){
+                  setState(() {
+                    _avatarUrl = selectedAvatar as String?;
+                    _avatarFile = null;
+                  });
+                }
+              }
             },
-            icon: ClipOval(
-              child: Image.asset(
-                'assets/icon/icon.png',
-                width: 40,
-                height: 40,
-                fit: BoxFit.cover,
+            icon: Container(
+              width: 50,
+              height: 50,
+              child: CircleAvatar(
+                radius: 60,
+                backgroundImage: _avatarFile != null
+                    ? FileImage(_avatarFile!) as ImageProvider
+                    : (_avatarUrl != null
+                    ? NetworkImage(_avatarUrl!) as ImageProvider
+                    : AssetImage("assets/icon/icon.png")),
               ),
             ),
           ),
