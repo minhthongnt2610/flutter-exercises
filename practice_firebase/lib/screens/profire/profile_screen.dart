@@ -1,29 +1,38 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/providers/user_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../common_widgets/primary_button.dart';
 import '../../contants/app_colors.dart';
 import '../avatar_selection_screen/avatar_selection_screen.dart';
-
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
-  static const String routeName = '/profile';
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => UserProvider(),
+      child: ProfileScreenBody(),
+    );
+  }
+}
+
+class ProfileScreenBody extends StatelessWidget {
+   ProfileScreenBody({super.key});
+
   String _name = "Nguyễn Minh Thông"; // Example name
   String _email = "example@email.com"; // Example email
   String? _avatarUrl;
   File? _avatarFile;
   void _signOut() {
     // TODO: Add your sign-out logic here
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("Signed out successfully")));
   }
 
   @override
@@ -81,16 +90,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         }
                       });
                     }
+
                     /// trả về màn hình Home_screen
-                    Navigator.pop(context,_avatarUrl ?? _avatarFile);
+                    Navigator.pop(context, _avatarUrl ?? _avatarFile);
                   },
                   child: CircleAvatar(
                     radius: 60,
                     backgroundImage: _avatarFile != null
                         ? FileImage(_avatarFile!) as ImageProvider
                         : (_avatarUrl != null
-                              ? NetworkImage(_avatarUrl!) as ImageProvider
-                              : AssetImage("assets/icon/icon.png")),
+                        ? NetworkImage(_avatarUrl!) as ImageProvider
+                        : AssetImage("assets/icon/icon.png")),
                   ), // Replace with your asset
                 ),
 
@@ -125,5 +135,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
-  }
 }
