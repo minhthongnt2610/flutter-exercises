@@ -1,12 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/home/widgets/friend_elements.dart';
-import 'package:practice_firebase/screens/profire/profile_screen.dart';
+import 'package:provider/provider.dart';
 
-import '../../contants/app_colors.dart';
 import '../../models/friend_model.dart';
-
+import '../../providers/user_provider.dart';
+import '../profire/profile_screen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -17,10 +15,23 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  File? _avatarFile;
-  String? _avatarUrl;
   @override
   Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => UserProvider(),
+      child: HomeScreenBody(),
+    );
+  }
+}
+
+class HomeScreenBody extends StatelessWidget {
+   HomeScreenBody({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    final profileProvider = context.watch<UserProvider>();
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -177,5 +188,4 @@ class _HomeScreenState extends State<HomeScreen> {
         child: const Icon(Icons.add),
       ),
     );
-  }
-}
+}}
