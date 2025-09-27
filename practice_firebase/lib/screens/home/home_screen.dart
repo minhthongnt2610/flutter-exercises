@@ -36,19 +36,17 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             onPressed: () async {
               final selectedAvatar = await Navigator.pushNamed(context, ProfileScreen.routeName);
-              if(selectedAvatar != null){
-                if(_avatarFile is File){
-                  setState(() {
-                    _avatarFile = selectedAvatar as File?;
-                    _avatarUrl = null;
-                  });
-                }
-                if(_avatarUrl is String){
-                  setState(() {
-                    _avatarUrl = selectedAvatar as String?;
+              if (selectedAvatar != null) {
+                setState(() {
+                  if (selectedAvatar is String) {
+                    _avatarUrl = selectedAvatar;
                     _avatarFile = null;
-                  });
-                }
+                  }
+                  if (selectedAvatar is File) {
+                    _avatarFile = selectedAvatar;
+                    _avatarUrl = null;
+                  }
+                });
               }
             },
             icon: Container(
