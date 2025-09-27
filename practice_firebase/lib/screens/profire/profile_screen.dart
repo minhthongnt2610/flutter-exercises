@@ -81,6 +81,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         }
                       });
                     }
+                    /// trả về màn hình Home_screen
+                    Navigator.pop(context,_avatarUrl ?? _avatarFile);
                   },
                   child: CircleAvatar(
                     radius: 60,

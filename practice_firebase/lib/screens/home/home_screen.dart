@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/home/widgets/friend_elements.dart';
 
@@ -14,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  File? _avatarFile;
+  String? _avatarUrl;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
