@@ -27,6 +27,21 @@ class _HomeScreenState extends State<HomeScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/profile_screen');
+            },
+            icon: ClipOval(
+              child: Image.asset(
+                'assets/icon/icon.png',
+                width: 40,
+                height: 40,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ],
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -51,39 +66,84 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListView(
               children: [
                 FriendElement(
-                  friend: FriendModel(id: 1, name: 'name', birthdate: DateTime.now(), email: 'email'),
+                  friend: FriendModel(
+                    id: 1,
+                    name: 'name',
+                    birthdate: DateTime.now(),
+                    email: 'email',
+                  ),
                   onTap: () {},
                 ),
                 FriendElement(
-                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  friend: FriendModel(
+                    id: 2,
+                    name: 'other',
+                    birthdate: DateTime.now(),
+                    email: 'other@email',
+                  ),
                   onTap: () {},
                 ),
                 FriendElement(
-                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  friend: FriendModel(
+                    id: 2,
+                    name: 'other',
+                    birthdate: DateTime.now(),
+                    email: 'other@email',
+                  ),
                   onTap: () {},
                 ),
                 FriendElement(
-                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  friend: FriendModel(
+                    id: 2,
+                    name: 'other',
+                    birthdate: DateTime.now(),
+                    email: 'other@email',
+                  ),
                   onTap: () {},
                 ),
                 FriendElement(
-                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  friend: FriendModel(
+                    id: 2,
+                    name: 'other',
+                    birthdate: DateTime.now(),
+                    email: 'other@email',
+                  ),
                   onTap: () {},
                 ),
                 FriendElement(
-                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  friend: FriendModel(
+                    id: 2,
+                    name: 'other',
+                    birthdate: DateTime.now(),
+                    email: 'other@email',
+                  ),
                   onTap: () {},
                 ),
                 FriendElement(
-                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  friend: FriendModel(
+                    id: 2,
+                    name: 'other',
+                    birthdate: DateTime.now(),
+                    email: 'other@email',
+                  ),
                   onTap: () {},
                 ),
                 FriendElement(
-                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  friend: FriendModel(
+                    id: 2,
+                    name: 'other',
+                    birthdate: DateTime.now(),
+                    email: 'other@email',
+                  ),
                   onTap: () {},
                 ),
                 FriendElement(
-                  friend: FriendModel(id: 2, name: 'other', birthdate: DateTime.now(), email: 'other@email'),
+                  friend: FriendModel(
+                    id: 2,
+                    name: 'other',
+                    birthdate: DateTime.now(),
+                    email: 'other@email',
+                  ),
                   onTap: () {},
                 ),
               ],
