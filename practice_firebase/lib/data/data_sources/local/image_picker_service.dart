@@ -14,9 +14,22 @@ class ImagePickerService{
       if (context.mounted) {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(SnackBar(content: Text('Lỗi khi chọn ảnh: $e')));
+        ).showSnackBar(SnackBar(content: Text('Error selecting photo: $e')));
       }
     }
   }
-  Future<void> pickFromCamera(BuildContext context) async {}
+  Future<void> pickFromCamera(BuildContext context) async {
+    try {
+      final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+      if (image == null) return;
+      if (!context.mounted) return;
+      Navigator.pop(context, File(image.path));
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error selecting photo: $e')));
+      }
+    }
+  }
 }
