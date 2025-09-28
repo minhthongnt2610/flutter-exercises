@@ -18,4 +18,5 @@ class ImagePickerService{
       }
     }
   }
+  Future<void> pickFromCamera(BuildContext context) async {}
 }
