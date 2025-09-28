@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 class ImagePickerService{
   final ImagePicker _picker = ImagePicker();
-  Future<void> _pickFromGallery(BuildContext context) async {
+  Future<void> pickFromGallery(BuildContext context) async {
     try {
       final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
       if (image == null) return;
