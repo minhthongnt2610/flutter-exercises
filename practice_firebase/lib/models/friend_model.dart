@@ -31,3 +31,13 @@ class FriendModel
       };
 
 }
+extension FriendModelExtension on FriendModel{
+  FbFriendModel toFbFriendModel() {
+    return FbFriendModel(
+      id: id,
+      name: name,
+      birthdate: birthdate.millisecondsSinceEpoch,
+      email: email,
+    );
+  }
+}
