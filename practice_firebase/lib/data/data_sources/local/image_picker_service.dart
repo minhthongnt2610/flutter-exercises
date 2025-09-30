@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -35,5 +36,26 @@ class ImagePickerService {
     }
   }
 
-  Future<File?> showImageSoureActionSheet(BuildContext context) async {}
+  Future<File?> showImageSoureActionSheet(BuildContext context) async {
+    final imageSource = await showCupertinoModalPopup<ImageSource?>(
+      context: context,
+      builder: (BuildContext context) => CupertinoActionSheet(
+        title: const Text('Pick an image from your gallery or take a new photo'),
+        actions: [
+          CupertinoActionSheetAction(
+            onPressed: () => Navigator.pop(context, ImageSource.gallery),
+            child: const Text('Choose Gallery'),
+          ),
+          CupertinoActionSheetAction(
+            onPressed: () => Navigator.pop(context, ImageSource.camera),
+            child: const Text('Take A Photo'),
+          ),
+        ],
+        cancelButton: CupertinoActionSheetAction(
+          onPressed: () => Navigator.pop(context,null),
+          child: const Text('Cancel'),
+        ),
+      ),
+    );
+  }
 }
