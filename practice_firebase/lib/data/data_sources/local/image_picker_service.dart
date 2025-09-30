@@ -34,4 +34,6 @@ class ImagePickerService {
       }
     }
   }
+
+  Future<File?> showImageSoureActionSheet(BuildContext context) async {}
 }
