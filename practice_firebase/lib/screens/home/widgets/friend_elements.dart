@@ -5,11 +5,7 @@ import '../../đetail_screen/detail_screen.dart';
 import 'info_friend_widgets.dart';
 
 class FriendElement extends StatelessWidget {
-  const FriendElement({
-    super.key,
-    required this.friend,
-    required this.onTap,
-  });
+  const FriendElement({super.key, required this.friend, required this.onTap});
   final FriendModel friend;
   final VoidCallback onTap;
   @override
@@ -19,7 +15,7 @@ class FriendElement extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           Navigator.pushNamed(context, DetailScreen.routeName);
         },
         child: Container(

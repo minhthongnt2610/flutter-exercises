@@ -6,6 +6,7 @@ import '../../common_widgets/primary_button.dart';
 import '../../contants/app_colors.dart';
 import '../../providers/user_provider.dart';
 import '../avatar_selection_screen/avatar_selection_screen.dart';
+
 ///không cần ChangeNotifierProvider
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -69,9 +70,9 @@ class ProfileScreen extends StatelessWidget {
                     backgroundImage: profileProvider.avatarFile != null
                         ? FileImage(profileProvider.avatarFile!)
                         : (profileProvider.avatarUrl != null
-                        ? NetworkImage(profileProvider.avatarUrl!)
-                        : const AssetImage("assets/icon/icon.png"))
-                    as ImageProvider,
+                                  ? NetworkImage(profileProvider.avatarUrl!)
+                                  : const AssetImage("assets/icon/icon.png"))
+                              as ImageProvider,
                   ),
                 ),
 

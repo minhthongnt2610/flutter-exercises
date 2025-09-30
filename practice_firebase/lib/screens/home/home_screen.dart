@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/home/widgets/friend_elements.dart';
@@ -57,9 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
               backgroundImage: profileProvider.avatarFile != null
                   ? FileImage(profileProvider.avatarFile!)
                   : (profileProvider.avatarUrl != null
-                  ? NetworkImage(profileProvider.avatarUrl!)
-                  : const AssetImage("assets/icon/icon.png"))
-              as ImageProvider,
+                            ? NetworkImage(profileProvider.avatarUrl!)
+                            : const AssetImage("assets/icon/icon.png"))
+                        as ImageProvider,
             ),
           ),
         ],

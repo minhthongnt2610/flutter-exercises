@@ -44,7 +44,8 @@ class SignUpBody extends StatelessWidget {
       appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child: Container( width: double.infinity,
+        child: Container(
+          width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
             gradient: LinearGradient(

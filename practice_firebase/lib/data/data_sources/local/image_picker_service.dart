@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-class ImagePickerService{
+
+class ImagePickerService {
   final ImagePicker _picker = ImagePicker();
   Future<void> pickFromGallery(BuildContext context) async {
     try {
@@ -18,6 +19,7 @@ class ImagePickerService{
       }
     }
   }
+
   Future<void> pickFromCamera(BuildContext context) async {
     try {
       final XFile? image = await _picker.pickImage(source: ImageSource.camera);
@@ -32,5 +34,4 @@ class ImagePickerService{
       }
     }
   }
-
 }

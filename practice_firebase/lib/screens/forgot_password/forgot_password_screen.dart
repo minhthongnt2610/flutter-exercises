@@ -16,7 +16,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-
     int height = MediaQuery.of(context).size.height.toInt();
     return Scaffold(
       extendBodyBehindAppBar: true,

@@ -34,16 +34,16 @@ class _FiledWidgetState extends State<FiledWidget> {
       decoration: InputDecoration(
         suffixIcon: widget.isPassword
             ? IconButton(
-          icon: Icon(
-            _isPassword ? Icons.visibility_off : Icons.visibility,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            setState(() {
-              _isPassword = !_isPassword;
-            });
-          },
-        )
+                icon: Icon(
+                  _isPassword ? Icons.visibility_off : Icons.visibility,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _isPassword = !_isPassword;
+                  });
+                },
+              )
             : widget.suffixIcon,
         filled: true,
         fillColor: Colors.white.withOpacity(0.3),

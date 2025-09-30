@@ -2,24 +2,19 @@ import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class InputDateTimeField extends StatelessWidget
-{
+class InputDateTimeField extends StatelessWidget {
   const InputDateTimeField({
     super.key,
     required this.selectedDate,
-    required this.onChanged
+    required this.onChanged,
   });
   final DateTime? selectedDate;
   final ValueChanged<DateTime?> onChanged;
   @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     return DateTimeField(
       decoration: const InputDecoration(
-        labelStyle: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-        ),
+        labelStyle: TextStyle(color: Colors.white, fontSize: 16),
         helperText: 'MM/DD/YYYY',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -27,7 +22,6 @@ class InputDateTimeField extends StatelessWidget
         ),
         filled: true,
         fillColor: Colors.white24,
-
       ),
       value: selectedDate,
       dateFormat: DateFormat.yMd(),

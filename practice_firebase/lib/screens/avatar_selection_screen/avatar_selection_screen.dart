@@ -18,7 +18,7 @@ class AvatarSelectionScreen extends StatelessWidget {
 
   AvatarSelectionScreen({super.key});
 
-   final ImagePickerService _picker = ImagePickerService();
+  final ImagePickerService _picker = ImagePickerService();
   //
   // Future<void> _pickFromGallery(BuildContext context) async {
   //   try {

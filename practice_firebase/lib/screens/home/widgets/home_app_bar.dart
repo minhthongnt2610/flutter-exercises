@@ -29,9 +29,7 @@ class HomeAppBar extends StatelessWidget {
               child: Image.asset(AppImages.avatar, width: 45, height: 45),
             ),
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          const SizedBox(width: 10),
         ],
       ),
     );
