@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/firestore_database/firestore_service.dart';
-import 'package:practice_firebase/models/friend_model.dart';
 
 import '../models/firebase/fb_friend_model.dart';
 

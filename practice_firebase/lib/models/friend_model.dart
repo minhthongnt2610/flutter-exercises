@@ -1,4 +1,6 @@
 
+import 'package:intl/intl.dart';
+
 import 'firebase/fb_friend_model.dart';
 
 class FriendModel
@@ -32,6 +34,10 @@ class FriendModel
 
 }
 extension FriendModelExtension on FriendModel{
+  String get displayDate {
+    final dateFormat = DateFormat('d MMM');
+    return dateFormat.format(birthdate);
+  }
   FbFriendModel toFbFriendModel() {
     return FbFriendModel(
       id: id,
