@@ -36,7 +36,7 @@ class ImagePickerService {
     }
   }
 
-  Future<File?> showImageSoureActionSheet(BuildContext context) async {
+  Future<File?> showImageSourceActionSheet(BuildContext context) async {
     final imageSource = await showCupertinoModalPopup<ImageSource?>(
       context: context,
       builder: (BuildContext context) => CupertinoActionSheet(
