@@ -70,16 +70,11 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                           if (selectedAvatar is String) {
                             profileProvider.setAvatarUrl(selectedAvatar);
                           }
-                          Navigator.pop(context, selectedAvatar);
                         },
                         child: CircleAvatar(
                           radius: 50,
                           backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.person,
-                            size: 60,
-                            color: Colors.grey[700],
-                          ),
+
                           backgroundImage: profileProvider.avatarFile != null
                               ? FileImage(profileProvider.avatarFile!)
                               : (profileProvider.avatarUrl != null
@@ -113,9 +108,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                       PrimaryButton(
                         title: 'Create Profile',
                         isColor: true,
-                        onPressed: () async {
-
-                        },
+                        onPressed: () async {},
                       ),
                     ],
                   ),

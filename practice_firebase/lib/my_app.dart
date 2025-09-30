@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
               );
             case CreateProfileScreen.routeName:
               return MaterialPageRoute(
-                builder: (context) => const CreateProfileScreen(),
+                builder: (context) => CreateProfileScreen(),
               );
           }
           return null;
