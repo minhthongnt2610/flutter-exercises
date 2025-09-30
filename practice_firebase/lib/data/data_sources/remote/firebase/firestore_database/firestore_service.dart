@@ -6,13 +6,13 @@ class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  String get uid => _auth.currentUser!.uid;
+  String get userid => _auth.currentUser!.uid;
 
   //create
   Future<void> addFriend(FriendModel friends) async {
     await _firestore
         .collection("users")
-        .doc("uid")
+        .doc("userid")
         .collection("friends")
         .doc(friends.id.toString())
         .set(friends.toJson());
@@ -22,7 +22,7 @@ class FirestoreService {
   Stream<List<FriendModel>> getFriends() {
     return _firestore
         .collection("users")
-        .doc("uid")
+        .doc("userid")
         .collection("friends")
         .snapshots()
         .map(
@@ -36,7 +36,7 @@ class FirestoreService {
   Future<void> updateFriend(FriendModel friends) async {
     await _firestore
         .collection("users")
-        .doc("uid")
+        .doc("userid")
         .collection("friends")
         .doc(friends.id.toString())
         .update(friends.toJson());
@@ -46,7 +46,7 @@ class FirestoreService {
   Future<void> deleteFriend(int id) async {
     await _firestore
         .collection("users")
-        .doc("uid")
+        .doc("userid")
         .collection("friends")
         .doc(id.toString())
         .delete();

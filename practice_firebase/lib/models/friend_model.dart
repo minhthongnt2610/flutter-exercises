@@ -1,4 +1,6 @@
 
+import 'firebase/fb_friend_model.dart';
+
 class FriendModel
 {
   int? id;
@@ -27,4 +29,5 @@ class FriendModel
         "birthdate": "${birthdate.year.toString().padLeft(4, '0')}-${birthdate.month.toString().padLeft(2, '0')}-${birthdate.day.toString().padLeft(2, '0')}",
         "email": email,
       };
+
 }
