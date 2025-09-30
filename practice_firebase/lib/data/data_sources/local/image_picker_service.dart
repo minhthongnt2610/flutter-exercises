@@ -40,7 +40,9 @@ class ImagePickerService {
     final imageSource = await showCupertinoModalPopup<ImageSource?>(
       context: context,
       builder: (BuildContext context) => CupertinoActionSheet(
-        title: const Text('Pick an image from your gallery or take a new photo'),
+        title: const Text(
+          'Pick an image from your gallery or take a new photo',
+        ),
         actions: [
           CupertinoActionSheetAction(
             onPressed: () => Navigator.pop(context, ImageSource.gallery),
@@ -52,10 +54,34 @@ class ImagePickerService {
           ),
         ],
         cancelButton: CupertinoActionSheetAction(
-          onPressed: () => Navigator.pop(context,null),
+          onPressed: () => Navigator.pop(context, null),
           child: const Text('Cancel'),
         ),
       ),
     );
+    if (imageSource == null) return null;
+    if (imageSource == ImageSource.gallery) {
+      try {
+        await pickFromGallery(context);
+      } catch (e) {
+        if (context.mounted) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('Error selecting photo: $e')));
+        }
+      }
+    }
+    else if(imageSource == ImageSource.camera){
+      try {
+        await pickFromCamera(context);
+        } catch (e) {
+        if (context.mounted) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('Error selecting photo: $e')));
+        }
+      }
+    }
+    return null;
   }
 }
