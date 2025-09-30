@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:practice_firebase/common_widgets/input_field.dart';
 import 'package:practice_firebase/common_widgets/primary_button.dart';
-import 'package:practice_firebase/screens/login_screen/widgets/filed_widget.dart';
 
 import '../../contains/app_colors.dart';
+import '../login_screen/widgets/filed_widget.dart';
 
 class CreateProfileScreen extends StatefulWidget {
   const CreateProfileScreen({super.key});
@@ -24,6 +23,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Container(
           width: double.infinity,
+          height: double.infinity,
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -34,60 +34,62 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Create Profile",
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+              child: SingleChildScrollView(
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Create Profile",
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 40),
-
-                    CircleAvatar(
-                      radius: 50,
-                      backgroundColor: Colors.white,
-                      child: Icon(
-                        Icons.person,
-                        size: 60,
-                        color: Colors.grey[700],
+                      const SizedBox(height: 40),
+                
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.person,
+                          size: 60,
+                          color: Colors.grey[700],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 30),
-
-                    FieldWidget(
-                      labelText: 'Enter your name',
-                      hintText: '',
-                      suffixIcon: null,
-                      onChange: (String value) {},
-                      validator: (String? value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your name';
-                        }
-                        return null;
-
-                      },
-                    ),
-
-                    SizedBox(height: 20 * height / 928),
-
-                    PrimaryButton(
-                      title: 'Create Profile',
-                      isColor: true,
-                      onPressed: () {},
-                    ),
-                    SizedBox(height: 20 * height / 928),
-                    PrimaryButton(
-                      title: 'Skip',
-                      isColor: false,
-                      onPressed: () {},
-                    ),
-                  ],
+                      const SizedBox(height: 30),
+                
+                      FieldWidget(
+                        labelText: 'Enter your name',
+                        hintText: '',
+                        
+                        suffixIcon: null,
+                        onChange: (String value) {},
+                        validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your name';
+                          }
+                          return null;
+                        },
+                      ),
+                
+                      SizedBox(height: 20 * height / 928),
+                
+                      PrimaryButton(
+                        title: 'Create Profile',
+                        isColor: true,
+                        onPressed: () {},
+                      ),
+                      SizedBox(height: 20 * height / 928),
+                      PrimaryButton(
+                        title: 'Skip',
+                        isColor: false,
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
