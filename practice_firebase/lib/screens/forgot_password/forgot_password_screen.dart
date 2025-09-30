@@ -59,7 +59,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     ),
                     SizedBox(height: 40 * height / 928),
 
-                    FiledWidget(
+                    FieldWidget(
                       labelText: 'Email address',
                       hintText: 'Enter your email',
                       isPassword: false,

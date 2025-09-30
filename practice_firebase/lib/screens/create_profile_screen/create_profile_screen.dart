@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/common_widgets/input_field.dart';
 import 'package:practice_firebase/common_widgets/primary_button.dart';
+import 'package:practice_firebase/screens/login_screen/widgets/filed_widget.dart';
 
 import '../../contains/app_colors.dart';
 
@@ -12,24 +13,12 @@ class CreateProfileScreen extends StatefulWidget {
 }
 
 class _CreateProfileScreenState extends State<CreateProfileScreen> {
-  final TextEditingController _nameController = TextEditingController();
-
-  void _createProfile() {
-    String name = _nameController.text.trim();
-    if (name.isNotEmpty) {
-      // TODO: Xử lý logic tạo profile (lưu vào DB hoặc Firebase)
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Profile created for $name')));
-    } else {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Vui lòng nhập tên')));
-    }
-  }
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    int height = MediaQuery.of(context).size.height.toInt();
+
     return Scaffold(
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -51,36 +40,49 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                   const Text(
                     "Create Profile",
                     style: TextStyle(
-                      fontSize: 28,
+                      fontSize: 40,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 40),
 
-                  // Avatar Placeholder
                   CircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.white,
-                    child: Icon(Icons.person, size: 60, color: Colors.grey[700]),
+                    child: Icon(
+                      Icons.person,
+                      size: 60,
+                      color: Colors.grey[700],
+                    ),
                   ),
                   const SizedBox(height: 30),
 
-                  // TextField nhập tên
+                  FieldWidget(
+                    labelText: 'Enter your name',
+                    hintText: '',
+                    suffixIcon: null,
+                    onChange: (String value) {},
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your name';
+                      }
+                      return null;
 
-                 InputField(
-                      hintText: "Enter your name",
-                      onChanged: (value) {},
-                      maxLines: 1,
-                      initialValue: null,
-                    ),
+                    },
+                  ),
 
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20 * height / 928),
 
-                  // Button khởi tạo
                   PrimaryButton(
                     title: 'Create Profile',
                     isColor: true,
+                    onPressed: () {},
+                  ),
+                  SizedBox(height: 20 * height / 928),
+                  PrimaryButton(
+                    title: 'Skip',
+                    isColor: false,
                     onPressed: () {},
                   ),
                 ],

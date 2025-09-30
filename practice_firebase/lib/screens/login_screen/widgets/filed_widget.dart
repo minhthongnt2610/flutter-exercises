@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FiledWidget extends StatefulWidget {
-  FiledWidget({
+class FieldWidget extends StatefulWidget {
+  FieldWidget({
     super.key,
     required this.labelText,
     required this.hintText,
@@ -18,10 +18,10 @@ class FiledWidget extends StatefulWidget {
   final FormFieldValidator<String> validator;
 
   @override
-  State<FiledWidget> createState() => _FiledWidgetState();
+  State<FieldWidget> createState() => _FieldWidgetState();
 }
 
-class _FiledWidgetState extends State<FiledWidget> {
+class _FieldWidgetState extends State<FieldWidget> {
   bool _isPassword = false;
 
   @override

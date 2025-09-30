@@ -78,7 +78,7 @@ class LoginBody extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 30 * height / 928),
-                    FiledWidget(
+                    FieldWidget(
                       labelText: 'Email address',
                       hintText: 'Enter your email',
                       isPassword: false,
@@ -95,7 +95,7 @@ class LoginBody extends StatelessWidget {
                       },
                     ),
                     SizedBox(height: 20 * height / 928),
-                    FiledWidget(
+                    FieldWidget(
                       labelText: 'Password',
                       hintText: 'Enter your password',
                       isPassword: true,
