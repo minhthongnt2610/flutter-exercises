@@ -47,7 +47,7 @@ class FriendElement extends StatelessWidget {
                       width: 15,
                       child: Text(' :', style: TextStyle(color: Colors.black)),
                     ),
-                    InfoFriendWidgets(title: friend.birthdate.toString()),
+                    InfoFriendWidgets(title: friend.displayDate),
                   ],
                 ),
                 Row(
