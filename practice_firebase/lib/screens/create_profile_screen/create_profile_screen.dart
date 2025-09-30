@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:practice_firebase/common_widgets/primary_button.dart';
 
 import '../../contains/app_colors.dart';
+import '../avatar_selection_screen/avatar_selection_screen.dart';
 import '../login_screen/widgets/filed_widget.dart';
 
 class CreateProfileScreen extends StatefulWidget {
   const CreateProfileScreen({super.key});
+  static const routeName = '/create-profile';
 
   @override
   State<CreateProfileScreen> createState() => _CreateProfileScreenState();
@@ -50,13 +52,21 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                       ),
                       const SizedBox(height: 40),
                 
-                      CircleAvatar(
-                        radius: 50,
-                        backgroundColor: Colors.white,
-                        child: Icon(
-                          Icons.person,
-                          size: 60,
-                          color: Colors.grey[700],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            AvatarSelectionScreen.routeName,
+                          );
+                        },
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundColor: Colors.white,
+                          child: Icon(
+                            Icons.person,
+                            size: 60,
+                            color: Colors.grey[700],
+                          ),
                         ),
                       ),
                       const SizedBox(height: 30),
