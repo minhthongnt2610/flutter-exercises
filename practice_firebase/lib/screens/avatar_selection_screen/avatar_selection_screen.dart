@@ -73,7 +73,7 @@ class AvatarSelectionScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _picker.pickFromCamera(context),
+        onPressed: () => _picker.showImageSoureActionSheet(context),
         backgroundColor: Colors.white,
         child: const Icon(Icons.photo_library, color: Colors.blue),
       ),
