@@ -93,11 +93,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                         onPressed: () {},
                       ),
                       SizedBox(height: 20 * height / 928),
-                      PrimaryButton(
-                        title: 'Skip',
-                        isColor: false,
-                        onPressed: () {},
-                      ),
+
                     ],
                   ),
                 ),
