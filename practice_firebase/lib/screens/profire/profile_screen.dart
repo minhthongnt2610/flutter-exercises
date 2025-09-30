@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../common_widgets/primary_button.dart';
-import '../../contants/app_colors.dart';
+import '../../contains/app_colors.dart';
 import '../../providers/user_provider.dart';
 import '../avatar_selection_screen/avatar_selection_screen.dart';
 

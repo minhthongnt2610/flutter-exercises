@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../common_widgets/info_dialog.dart';
 import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
-import '../../contants/app_colors.dart';
+import '../../contains/app_colors.dart';
 import '../../providers/sign_up_provider.dart';
 import '../login_screen/login_screen.dart';
 import '../login_screen/widgets/filed_widget.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/common_widgets/primary_button.dart';
 
-import '../../contants/app_colors.dart';
+import '../../contains/app_colors.dart';
 import '../login_screen/widgets/filed_widget.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {

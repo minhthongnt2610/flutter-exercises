@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/home/widgets/friend_elements.dart';
 import 'package:provider/provider.dart';
 
-import '../../contants/app_colors.dart';
+import '../../contains/app_colors.dart';
 import '../../models/friend_model.dart';
 import '../../providers/user_provider.dart';
 import '../profire/profile_screen.dart';

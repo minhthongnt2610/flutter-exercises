@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/start_screen/widgets/item_decoration.dart';
 
-import '../../contants/app_colors.dart';
+import '../../contains/app_colors.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});

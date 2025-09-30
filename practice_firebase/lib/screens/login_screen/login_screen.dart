@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
-import '../../contants/app_colors.dart';
+import '../../contains/app_colors.dart';
 import '../sign_up_screen/sign_up_screen.dart';
 
 class LoginScreen extends StatefulWidget {
