@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/screens/create_profile_screen/create_profile_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'package:practice_firebase/providers/user_provider.dart';
@@ -28,24 +29,36 @@ class MyApp extends StatelessWidget {
           switch (settings.name) {
             case StartScreen.routeName:
               return MaterialPageRoute(
-                  builder: (context) => const StartScreen());
+                builder: (context) => const StartScreen(),
+              );
             case LoginScreen.routeName:
               return SlideTransitionPage(page: const LoginScreen());
             case SignUp.routeName:
               return SlideTransitionPage(page: const SignUp());
             case HomeScreen.routeName:
-              return MaterialPageRoute(builder: (context) => const HomeScreen());
+              return MaterialPageRoute(
+                builder: (context) => const HomeScreen(),
+              );
             case DetailScreen.routeName:
-              return MaterialPageRoute(builder: (context) => const DetailScreen());
+              return MaterialPageRoute(
+                builder: (context) => const DetailScreen(),
+              );
             case ForgotPasswordScreen.routeName:
               return MaterialPageRoute(
-                  builder: (context) => const ForgotPasswordScreen());
+                builder: (context) => const ForgotPasswordScreen(),
+              );
             case ProfileScreen.routeName:
               return MaterialPageRoute(
-                  builder: (context) => const ProfileScreen());
+                builder: (context) => const ProfileScreen(),
+              );
             case AvatarSelectionScreen.routeName:
               return MaterialPageRoute(
-                  builder: (context) => AvatarSelectionScreen());
+                builder: (context) => AvatarSelectionScreen(),
+              );
+            case CreateProfileScreen.routeName:
+              return MaterialPageRoute(
+                builder: (context) => CreateProfileScreen(),
+              );
           }
           return null;
         },

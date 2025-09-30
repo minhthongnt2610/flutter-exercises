@@ -1,15 +1,16 @@
 import 'package:flutter/widgets.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/firestore_database/firestore_service.dart';
-import 'package:practice_firebase/models/friend_model.dart';
+
+import '../models/firebase/fb_friend_model.dart';
 
 class UpdateProfileProvider extends ChangeNotifier {
   final _firestoreService = FirestoreService();
   String? _name;
-  DateTime? _birthday;
+  int? _birthday;
   String? _email;
 
   String? get name => _name;
-  DateTime? get birthday => _birthday;
+  int? get birthday => _birthday;
   String? get email => _email;
 
   void setName(String value) {
@@ -17,7 +18,7 @@ class UpdateProfileProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setBirthday(DateTime value) {
+  void setBirthday(int value) {
     _birthday = value;
     notifyListeners();
   }
@@ -30,16 +31,11 @@ class UpdateProfileProvider extends ChangeNotifier {
   Future<String?> updateProfile() async {
     try {
       _firestoreService.updateFriend(
-        FriendModel(
-          name: _name!,
-          birthdate: _birthday!,
-          email: _email!,
-        ),
+        FbFriendModel(name: _name!, birthdate: _birthday!, email: _email!),
       );
       return null;
     } catch (e) {
       return e.toString();
     }
   }
-
 }

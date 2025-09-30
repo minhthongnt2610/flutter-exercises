@@ -1,10 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-class InputField extends StatelessWidget
-{
+class InputField extends StatelessWidget {
   const InputField({
     super.key,
     required this.hintText,
@@ -18,25 +15,14 @@ class InputField extends StatelessWidget
   final String? initialValue;
 
   @override
-  Widget build(BuildContext context)
-  {
-
+  Widget build(BuildContext context) {
     // final controller = Provider.of<FriendController>(context, listen: true);
     return TextFormField(
-      style:
-      const TextStyle(
-        color: Colors.white54,
-        fontSize: 16,
-      ),
+      style: const TextStyle(color: Colors.white54, fontSize: 16),
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: const TextStyle(
-          color: Colors.white30,
-          fontSize: 16,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        hintStyle: const TextStyle(color: Colors.white30, fontSize: 16),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         filled: true,
         fillColor: Colors.white12,
       ),

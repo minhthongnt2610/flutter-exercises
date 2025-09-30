@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/widgets.dart';
 
-class UserProvider extends ChangeNotifier{
+class UserProvider extends ChangeNotifier {
   File? _avatarFile;
   String? _avatarUrl;
 
@@ -11,7 +11,7 @@ class UserProvider extends ChangeNotifier{
 
   void setAvatarFile(File file) {
     _avatarFile = file;
-    _avatarUrl= null;
+    _avatarUrl = null;
     notifyListeners();
   }
 

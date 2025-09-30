@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practice_firebase/contants/app_Images.dart';
+import 'package:practice_firebase/contains/app_Images.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -29,9 +29,7 @@ class HomeAppBar extends StatelessWidget {
               child: Image.asset(AppImages.avatar, width: 45, height: 45),
             ),
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          const SizedBox(width: 10),
         ],
       ),
     );

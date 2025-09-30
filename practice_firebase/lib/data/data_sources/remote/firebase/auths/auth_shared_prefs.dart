@@ -24,6 +24,7 @@ class AuthSharedPrefs {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(_uidKey);
   }
+
   // Khi app khởi động (ví dụ trong SplashScreen), ta kiểm tra xem SharedPreferences có uid không.
   // Nếu có → user đã đăng nhập trước đó → chuyển thẳng vào HomeScreen.
   // Nếu không → chuyển vào LoginScreen.

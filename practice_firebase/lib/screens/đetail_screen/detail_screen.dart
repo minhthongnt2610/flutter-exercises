@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/%C4%91etail_screen/widgets/build_detail_body_widgets.dart';
 
-import '../../contants/app_colors.dart';
+import '../../contains/app_colors.dart';
+
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
   static const String routeName = '/detail_screen';

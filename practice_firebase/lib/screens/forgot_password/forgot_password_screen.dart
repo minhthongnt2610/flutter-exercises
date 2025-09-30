@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/common_widgets/primary_button.dart';
 
-import '../../contants/app_colors.dart';
+import '../../contains/app_colors.dart';
 import '../login_screen/widgets/filed_widget.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -16,7 +16,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-
     int height = MediaQuery.of(context).size.height.toInt();
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -60,7 +59,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     ),
                     SizedBox(height: 40 * height / 928),
 
-                    FiledWidget(
+                    FieldWidget(
                       labelText: 'Email address',
                       hintText: 'Enter your email',
                       isPassword: false,

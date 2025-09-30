@@ -9,7 +9,7 @@ class UpdateArgument {
     required this.email,
   });
 
-  Map<String, dynamic> toJson() =>{
+  Map<String, dynamic> toJson() => {
     "name": name,
     "birthday": birthday,
     "email": email,

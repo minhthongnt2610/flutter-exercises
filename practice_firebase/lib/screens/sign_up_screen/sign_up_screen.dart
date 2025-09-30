@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../common_widgets/info_dialog.dart';
 import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
-import '../../contants/app_colors.dart';
+import '../../contains/app_colors.dart';
 import '../../providers/sign_up_provider.dart';
 import '../login_screen/login_screen.dart';
 import '../login_screen/widgets/filed_widget.dart';
@@ -44,7 +44,8 @@ class SignUpBody extends StatelessWidget {
       appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child: Container( width: double.infinity,
+        child: Container(
+          width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -81,7 +82,7 @@ class SignUpBody extends StatelessWidget {
                     SizedBox(height: 30 * height / 928),
 
                     // Email
-                    FiledWidget(
+                    FieldWidget(
                       labelText: 'Email address',
                       hintText: 'Enter your email',
                       isPassword: false,
@@ -100,7 +101,7 @@ class SignUpBody extends StatelessWidget {
                     SizedBox(height: 20 * height / 928),
 
                     // Password
-                    FiledWidget(
+                    FieldWidget(
                       labelText: 'Password',
                       hintText: 'Enter your password',
                       isPassword: true,
@@ -125,7 +126,7 @@ class SignUpBody extends StatelessWidget {
                     SizedBox(height: 20 * height / 928),
 
                     // Confirm password
-                    FiledWidget(
+                    FieldWidget(
                       labelText: 'Confirm Password',
                       hintText: 'Confirm password',
                       isPassword: true,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FiledWidget extends StatefulWidget {
-  FiledWidget({
+class FieldWidget extends StatefulWidget {
+  FieldWidget({
     super.key,
     required this.labelText,
     required this.hintText,
@@ -18,10 +18,10 @@ class FiledWidget extends StatefulWidget {
   final FormFieldValidator<String> validator;
 
   @override
-  State<FiledWidget> createState() => _FiledWidgetState();
+  State<FieldWidget> createState() => _FieldWidgetState();
 }
 
-class _FiledWidgetState extends State<FiledWidget> {
+class _FieldWidgetState extends State<FieldWidget> {
   bool _isPassword = false;
 
   @override
@@ -34,16 +34,16 @@ class _FiledWidgetState extends State<FiledWidget> {
       decoration: InputDecoration(
         suffixIcon: widget.isPassword
             ? IconButton(
-          icon: Icon(
-            _isPassword ? Icons.visibility_off : Icons.visibility,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            setState(() {
-              _isPassword = !_isPassword;
-            });
-          },
-        )
+                icon: Icon(
+                  _isPassword ? Icons.visibility_off : Icons.visibility,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _isPassword = !_isPassword;
+                  });
+                },
+              )
             : widget.suffixIcon,
         filled: true,
         fillColor: Colors.white.withOpacity(0.3),

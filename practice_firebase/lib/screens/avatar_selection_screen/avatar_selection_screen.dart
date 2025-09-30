@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/data/data_sources/local/image_picker_service.dart';
-import '../../contants/app_colors.dart';
+import '../../contains/app_colors.dart';
 
 class AvatarSelectionScreen extends StatelessWidget {
   static const String routeName = '/avatar_selection';
@@ -18,22 +18,8 @@ class AvatarSelectionScreen extends StatelessWidget {
 
   AvatarSelectionScreen({super.key});
 
-   final ImagePickerService _picker = ImagePickerService();
-  //
-  // Future<void> _pickFromGallery(BuildContext context) async {
-  //   try {
-  //     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-  //     if (image == null) return;
-  //     if (!context.mounted) return;
-  //     Navigator.pop(context, File(image.path));
-  //   } catch (e) {
-  //     if (context.mounted) {
-  //       ScaffoldMessenger.of(
-  //         context,
-  //       ).showSnackBar(SnackBar(content: Text('Lỗi khi chọn ảnh: $e')));
-  //     }
-  //   }
-  // }
+  final ImagePickerService _picker = ImagePickerService();
+
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +73,7 @@ class AvatarSelectionScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _picker.pickFromCamera(context),
+        onPressed: () => _picker.showImageSourceActionSheet(context),
         backgroundColor: Colors.white,
         child: const Icon(Icons.photo_library, color: Colors.blue),
       ),

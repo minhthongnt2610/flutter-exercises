@@ -77,5 +77,4 @@ class AuthEmailService {
         return 'Something went wrong.';
     }
   }
-
 }
