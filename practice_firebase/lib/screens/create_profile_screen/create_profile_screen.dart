@@ -34,58 +34,61 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Create Profile",
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Create Profile",
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 40),
+                    const SizedBox(height: 40),
 
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.person,
-                      size: 60,
-                      color: Colors.grey[700],
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.person,
+                        size: 60,
+                        color: Colors.grey[700],
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 30),
+                    const SizedBox(height: 30),
 
-                  FieldWidget(
-                    labelText: 'Enter your name',
-                    hintText: '',
-                    suffixIcon: null,
-                    onChange: (String value) {},
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your name';
-                      }
-                      return null;
+                    FieldWidget(
+                      labelText: 'Enter your name',
+                      hintText: '',
+                      suffixIcon: null,
+                      onChange: (String value) {},
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
 
-                    },
-                  ),
+                      },
+                    ),
 
-                  SizedBox(height: 20 * height / 928),
+                    SizedBox(height: 20 * height / 928),
 
-                  PrimaryButton(
-                    title: 'Create Profile',
-                    isColor: true,
-                    onPressed: () {},
-                  ),
-                  SizedBox(height: 20 * height / 928),
-                  PrimaryButton(
-                    title: 'Skip',
-                    isColor: false,
-                    onPressed: () {},
-                  ),
-                ],
+                    PrimaryButton(
+                      title: 'Create Profile',
+                      isColor: true,
+                      onPressed: () {},
+                    ),
+                    SizedBox(height: 20 * height / 928),
+                    PrimaryButton(
+                      title: 'Skip',
+                      isColor: false,
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
