@@ -10,15 +10,13 @@ import '../avatar_selection_screen/avatar_selection_screen.dart';
 
 ///không cần ChangeNotifierProvider
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key, required this.friend});
+  ProfileScreen({super.key});
   static const String routeName = '/profile';
-  final FriendModel friend;
 
   @override
   Widget build(BuildContext context) {
     final profileProvider = context.watch<UserProvider>();
     int height = MediaQuery.of(context).size.height.toInt();
-    FriendModel? friend;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -83,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
 
                 // Name
                 Text(
-                  friend?.nameUser! ?? '',
+                   '',
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
