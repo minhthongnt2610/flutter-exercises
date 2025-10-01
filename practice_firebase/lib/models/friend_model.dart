@@ -33,7 +33,7 @@ class FriendModel {
 
 extension FriendModelExtension on FriendModel {
   String get displayDate {
-    final dateFormat = DateFormat('dd MM yyyy');
+    final dateFormat = DateFormat('dd/MM/yyyy');
     return dateFormat.format(birthdate);
   }
 
