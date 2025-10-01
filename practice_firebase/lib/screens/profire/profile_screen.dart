@@ -1,23 +1,23 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:practice_firebase/models/friend_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../common_widgets/primary_button.dart';
 import '../../contains/app_colors.dart';
+import '../../models/friend_model.dart';
 import '../../providers/user_provider.dart';
 import '../avatar_selection_screen/avatar_selection_screen.dart';
 
 ///không cần ChangeNotifierProvider
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key });
+  ProfileScreen({super.key});
   static const String routeName = '/profile';
 
   @override
   Widget build(BuildContext context) {
     final profileProvider = context.watch<UserProvider>();
     int height = MediaQuery.of(context).size.height.toInt();
-
+    FriendModel? friend;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -82,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
 
                 // Name
                 Text(
-                  " 12355",
+                  friend?.nameUser ?? "Name",
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -90,9 +90,9 @@ class ProfileScreen extends StatelessWidget {
                 ),
 
                 // Email
-                const Text(
+                Text(
                   "example@email.com",
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
                 ),
 
                 SizedBox(height: 40 * height / 928),
@@ -113,5 +113,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
-
