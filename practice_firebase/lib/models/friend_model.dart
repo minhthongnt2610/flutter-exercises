@@ -7,14 +7,14 @@ class FriendModel {
   String name;
   DateTime birthdate;
   String email;
-  String nameUser;
+  String? nameUser;
 
   FriendModel({
     this.id,
     required this.name,
     required this.birthdate,
     required this.email,
-    required this.nameUser,
+     this.nameUser,
   });
 
   factory FriendModel.fromJson(Map<String, dynamic> json) => FriendModel(

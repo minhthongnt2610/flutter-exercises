@@ -5,14 +5,14 @@ class FbFriendModel {
   String name;
   int birthdate;
   String email;
-  String nameUser;
+  String? nameUser;
 
   FbFriendModel({
     this.id,
     required this.name,
     required this.birthdate,
     required this.email,
-    required this.nameUser,
+     this.nameUser,
   });
 
   factory FbFriendModel.fromJson(Map<String, dynamic> json) => FbFriendModel(
