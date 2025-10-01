@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/screens/create_profile_screen/create_profile_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../common_widgets/info_dialog.dart';
@@ -31,7 +32,9 @@ class SignUpBody extends StatelessWidget {
   SignUpBody({super.key});
 
   final _formKey = GlobalKey<FormState>();
-
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
   ///Khi user nhấn Sign up, hàm _formKey.currentState!.validate() sẽ gọi validator của tất cả FiledWidget
 
   @override
@@ -97,7 +100,7 @@ class SignUpBody extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: TextEditingController(),
+                      controller: emailController,
                     ),
                     SizedBox(height: 20 * height / 928),
 
@@ -123,7 +126,7 @@ class SignUpBody extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: TextEditingController(),
+                      controller: passwordController,
                     ),
                     SizedBox(height: 20 * height / 928),
 
@@ -144,7 +147,7 @@ class SignUpBody extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: TextEditingController(),
+                      controller: confirmPasswordController,
                     ),
                     SizedBox(height: 50 * height / 928),
 
@@ -156,6 +159,7 @@ class SignUpBody extends StatelessWidget {
                         if (_formKey.currentState!.validate()) {
                           // tất cả field hợp lệ
                           final error = await signUpProvider.signUp();
+                          Navigator.pushNamed(context, CreateProfileScreen.routeName);
                           if (error != null) {
                             _showErrorDialog(context: context, error: error);
                           } else {
