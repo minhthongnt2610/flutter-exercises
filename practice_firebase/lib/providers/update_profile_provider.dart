@@ -8,10 +8,12 @@ class UpdateProfileProvider extends ChangeNotifier {
   String? _name;
   int? _birthday;
   String? _email;
+  String? _nameUser;
 
   String? get name => _name;
   int? get birthday => _birthday;
   String? get email => _email;
+  String? get nameUser => _nameUser;
 
   void setName(String value) {
     _name = value;
@@ -27,11 +29,14 @@ class UpdateProfileProvider extends ChangeNotifier {
     _email = value;
     notifyListeners();
   }
-
+  void setNameUser(String value){
+    _nameUser = value;
+    notifyListeners();
+  }
   Future<String?> updateProfile() async {
     try {
       _firestoreService.updateFriend(
-        FbFriendModel(name: _name!, birthdate: _birthday!, email: _email!),
+        FbFriendModel(name: _name!, birthdate: _birthday!, email: _email!, nameUser: ''),
       );
       return null;
     } catch (e) {

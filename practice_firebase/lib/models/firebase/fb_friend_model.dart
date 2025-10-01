@@ -5,12 +5,14 @@ class FbFriendModel {
   String name;
   int birthdate;
   String email;
+  String nameUser;
 
   FbFriendModel({
     this.id,
     required this.name,
     required this.birthdate,
     required this.email,
+    required this.nameUser,
   });
 
   factory FbFriendModel.fromJson(Map<String, dynamic> json) => FbFriendModel(
@@ -18,6 +20,7 @@ class FbFriendModel {
     name: json["name"],
     birthdate: json["birthdate"],
     email: json["email"],
+    nameUser: json["nameUser"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -25,6 +28,7 @@ class FbFriendModel {
     "name": name,
     "birthdate": birthdate,
     "email": email,
+    "nameUser": nameUser,
   };
 }
 
@@ -35,6 +39,7 @@ extension FbFriendModelExtension on FbFriendModel {
       name: name,
       birthdate: DateTime.fromMillisecondsSinceEpoch(birthdate),
       email: email,
+      nameUser: nameUser,
     );
   }
 }

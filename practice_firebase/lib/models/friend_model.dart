@@ -7,12 +7,14 @@ class FriendModel {
   String name;
   DateTime birthdate;
   String email;
+  String nameUser;
 
   FriendModel({
     this.id,
     required this.name,
     required this.birthdate,
     required this.email,
+    required this.nameUser,
   });
 
   factory FriendModel.fromJson(Map<String, dynamic> json) => FriendModel(
@@ -20,6 +22,7 @@ class FriendModel {
     name: json["name"],
     birthdate: DateTime.parse(json["birthdate"]),
     email: json["email"],
+    nameUser: json["nameUser"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -28,6 +31,7 @@ class FriendModel {
     "birthdate":
         "${birthdate.year.toString().padLeft(4, '0')}-${birthdate.month.toString().padLeft(2, '0')}-${birthdate.day.toString().padLeft(2, '0')}",
     "email": email,
+    "nameUser": nameUser,
   };
 }
 
@@ -43,6 +47,7 @@ extension FriendModelExtension on FriendModel {
       name: name,
       birthdate: birthdate.millisecondsSinceEpoch,
       email: email,
+      nameUser: nameUser,
     );
   }
 }
