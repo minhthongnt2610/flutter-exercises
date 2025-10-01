@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/common_widgets/primary_button.dart';
+import 'package:practice_firebase/screens/profire/profile_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../contains/app_colors.dart';
@@ -19,6 +20,7 @@ class CreateProfileScreen extends StatefulWidget {
 
 class _CreateProfileScreenState extends State<CreateProfileScreen> {
   final _formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +103,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                           }
                           return null;
                         },
+                        controller: nameController,
                       ),
 
                       SizedBox(height: 20 * height / 928),
@@ -108,7 +111,15 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                       PrimaryButton(
                         title: 'Create Profile',
                         isColor: true,
-                        onPressed: () async {},
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            profileProvider.setNameUser(nameController.text);
+                            Navigator.pushNamed(
+                              context,
+                              ProfileScreen.routeName,
+                            );
+                          }
+                        },
                       ),
                     ],
                   ),

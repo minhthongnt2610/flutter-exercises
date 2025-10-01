@@ -9,7 +9,7 @@ import '../avatar_selection_screen/avatar_selection_screen.dart';
 
 ///không cần ChangeNotifierProvider
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
   static const String routeName = '/profile';
 
   @override
@@ -80,7 +80,7 @@ class ProfileScreen extends StatelessWidget {
 
                 // Name
                 Text(
-                  "Nguyễn Minh Thông",
+                  profileProvider.nameUser ?? '',
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -88,9 +88,9 @@ class ProfileScreen extends StatelessWidget {
                 ),
 
                 // Email
-                const Text(
-                  "example@email.com",
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                Text(
+                  profileProvider.emailUser ?? '',
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
                 ),
 
                 SizedBox(height: 40 * height / 928),

@@ -93,6 +93,7 @@ class LoginBody extends StatelessWidget {
                         }
                         return null;
                       },
+                      controller: TextEditingController(),
                     ),
                     SizedBox(height: 20 * height / 928),
                     FieldWidget(
@@ -116,6 +117,7 @@ class LoginBody extends StatelessWidget {
                         }
                         return null;
                       },
+                      controller: TextEditingController(),
                     ),
                     Container(
                       alignment: Alignment.centerRight,

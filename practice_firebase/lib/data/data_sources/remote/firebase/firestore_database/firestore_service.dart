@@ -1,6 +1,5 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:firebase_auth/firebase_auth.dart";
-import "package:practice_firebase/models/friend_model.dart";
 
 import "../../../../../models/firebase/fb_friend_model.dart";
 

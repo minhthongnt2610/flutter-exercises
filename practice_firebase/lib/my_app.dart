@@ -3,7 +3,7 @@ import 'package:practice_firebase/screens/create_profile_screen/create_profile_s
 import 'package:provider/provider.dart';
 
 import 'package:practice_firebase/providers/user_provider.dart';
-import 'package:practice_firebase/screens/đetail_screen/detail_screen.dart';
+import 'package:practice_firebase/screens/detail_screen/detail_screen.dart';
 import 'package:practice_firebase/screens/avatar_selection_screen/avatar_selection_screen.dart';
 import 'package:practice_firebase/screens/forgot_password/forgot_password_screen.dart';
 import 'package:practice_firebase/screens/home/home_screen.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Practice_Firebase',
         debugShowCheckedModeBanner: false,
-        initialRoute: HomeScreen.routeName,
+        initialRoute: StartScreen.routeName,
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case StartScreen.routeName:
@@ -48,9 +48,7 @@ class MyApp extends StatelessWidget {
                 builder: (context) => const ForgotPasswordScreen(),
               );
             case ProfileScreen.routeName:
-              return MaterialPageRoute(
-                builder: (context) => const ProfileScreen(),
-              );
+              return MaterialPageRoute(builder: (context) => ProfileScreen());
             case AvatarSelectionScreen.routeName:
               return MaterialPageRoute(
                 builder: (context) => AvatarSelectionScreen(),

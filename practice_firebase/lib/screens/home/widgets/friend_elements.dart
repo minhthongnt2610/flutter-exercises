@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/friend_model.dart';
-import '../../đetail_screen/detail_screen.dart';
+import '../../detail_screen/detail_screen.dart';
 import 'info_friend_widgets.dart';
 
 class FriendElement extends StatelessWidget {

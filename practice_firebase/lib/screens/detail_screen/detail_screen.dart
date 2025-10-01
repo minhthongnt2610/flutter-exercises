@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practice_firebase/screens/%C4%91etail_screen/widgets/build_detail_body_widgets.dart';
+import 'package:practice_firebase/screens/detail_screen/widgets/build_detail_body_widgets.dart';
 
 import '../../contains/app_colors.dart';
 
