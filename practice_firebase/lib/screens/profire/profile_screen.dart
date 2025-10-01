@@ -81,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
 
                 // Name
                 Text(
-                   profileProvider.nameUser!,
+                   profileProvider.nameUser ?? '',
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -90,7 +90,7 @@ class ProfileScreen extends StatelessWidget {
 
                 // Email
                 Text(
-                  "example@email.com",
+                  profileProvider.emailUser ?? '',
                   style: const TextStyle(fontSize: 16, color: Colors.white),
                 ),
 
