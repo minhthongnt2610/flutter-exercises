@@ -100,7 +100,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                             return 'Please enter your name';
                           }
                           return null;
-                        },
+                        }, controller: TextEditingController(),
                       ),
 
                       SizedBox(height: 20 * height / 928),

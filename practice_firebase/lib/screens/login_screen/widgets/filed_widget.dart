@@ -8,8 +8,9 @@ class FieldWidget extends StatefulWidget {
     this.isPassword = false,
     required this.suffixIcon,
     required this.onChange,
-    required this.validator,
+    required this.validator, required this.controller,
   });
+  final TextEditingController controller;
   final String labelText;
   final String hintText;
   final bool isPassword;
@@ -27,6 +28,7 @@ class _FieldWidgetState extends State<FieldWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       validator: widget.validator,
       onChanged: widget.onChange,
       cursorColor: Colors.white,

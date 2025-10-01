@@ -92,7 +92,7 @@ class LoginBody extends StatelessWidget {
                           return 'Please enter a valid email';
                         }
                         return null;
-                      },
+                      }, controller: TextEditingController(),
                     ),
                     SizedBox(height: 20 * height / 928),
                     FieldWidget(
@@ -115,7 +115,7 @@ class LoginBody extends StatelessWidget {
                           return 'Password must contain a special character';
                         }
                         return null;
-                      },
+                      }, controller: TextEditingController(),
                     ),
                     Container(
                       alignment: Alignment.centerRight,

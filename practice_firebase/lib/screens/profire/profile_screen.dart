@@ -10,8 +10,9 @@ import '../avatar_selection_screen/avatar_selection_screen.dart';
 
 ///không cần ChangeNotifierProvider
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key});
+  ProfileScreen({super.key, required this.friend});
   static const String routeName = '/profile';
+  final FriendModel friend;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +83,7 @@ class ProfileScreen extends StatelessWidget {
 
                 // Name
                 Text(
-                  friend?.nameUser ?? "Name",
+                  friend?.nameUser! ?? '',
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
