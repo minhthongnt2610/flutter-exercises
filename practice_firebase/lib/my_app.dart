@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Practice_Firebase',
         debugShowCheckedModeBanner: false,
-        initialRoute: ProfileScreen.routeName,
+        initialRoute: CreateProfileScreen.routeName,
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case StartScreen.routeName:
@@ -48,9 +48,7 @@ class MyApp extends StatelessWidget {
                 builder: (context) => const ForgotPasswordScreen(),
               );
             case ProfileScreen.routeName:
-              return MaterialPageRoute(
-                builder: (context) =>  ProfileScreen(),
-              );
+              return MaterialPageRoute(builder: (context) => ProfileScreen());
             case AvatarSelectionScreen.routeName:
               return MaterialPageRoute(
                 builder: (context) => AvatarSelectionScreen(),

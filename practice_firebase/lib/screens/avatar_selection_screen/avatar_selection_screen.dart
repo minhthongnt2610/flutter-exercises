@@ -20,7 +20,6 @@ class AvatarSelectionScreen extends StatelessWidget {
 
   final ImagePickerService _picker = ImagePickerService();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

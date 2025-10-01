@@ -112,9 +112,12 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                         title: 'Create Profile',
                         isColor: true,
                         onPressed: () async {
-                          if(_formKey.currentState!.validate()){
+                          if (_formKey.currentState!.validate()) {
                             profileProvider.setNameUser(nameController.text);
-                            Navigator.pushNamed(context, ProfileScreen.routeName);
+                            Navigator.pushNamed(
+                              context,
+                              ProfileScreen.routeName,
+                            );
                           }
                         },
                       ),

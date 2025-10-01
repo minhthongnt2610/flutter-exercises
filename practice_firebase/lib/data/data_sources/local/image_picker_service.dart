@@ -70,11 +70,10 @@ class ImagePickerService {
           ).showSnackBar(SnackBar(content: Text('Error selecting photo: $e')));
         }
       }
-    }
-    else if(imageSource == ImageSource.camera){
+    } else if (imageSource == ImageSource.camera) {
       try {
         await pickFromCamera(context);
-        } catch (e) {
+      } catch (e) {
         if (context.mounted) {
           ScaffoldMessenger.of(
             context,

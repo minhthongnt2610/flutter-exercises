@@ -25,12 +25,12 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setNameUser(String nameUser){
+  void setNameUser(String nameUser) {
     _nameUser = nameUser;
     notifyListeners();
   }
 
-  void setEmailUser(String emailUser){
+  void setEmailUser(String emailUser) {
     _emailUser = emailUser;
     notifyListeners();
   }

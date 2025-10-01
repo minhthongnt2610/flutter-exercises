@@ -8,7 +8,8 @@ class FieldWidget extends StatefulWidget {
     this.isPassword = false,
     required this.suffixIcon,
     required this.onChange,
-    required this.validator, required this.controller,
+    required this.validator,
+    required this.controller,
   });
   final TextEditingController controller;
   final String labelText;

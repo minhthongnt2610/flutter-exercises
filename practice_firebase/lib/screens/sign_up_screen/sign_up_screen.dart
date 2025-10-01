@@ -96,7 +96,8 @@ class SignUpBody extends StatelessWidget {
                           return 'Please enter a valid email';
                         }
                         return null;
-                      }, controller: TextEditingController(),
+                      },
+                      controller: TextEditingController(),
                     ),
                     SizedBox(height: 20 * height / 928),
 
@@ -121,7 +122,8 @@ class SignUpBody extends StatelessWidget {
                           return 'Password must contain a special character';
                         }
                         return null;
-                      }, controller: TextEditingController(),
+                      },
+                      controller: TextEditingController(),
                     ),
                     SizedBox(height: 20 * height / 928),
 
@@ -141,7 +143,8 @@ class SignUpBody extends StatelessWidget {
                           return 'Passwords do not match';
                         }
                         return null;
-                      }, controller: TextEditingController(),
+                      },
+                      controller: TextEditingController(),
                     ),
                     SizedBox(height: 50 * height / 928),
 

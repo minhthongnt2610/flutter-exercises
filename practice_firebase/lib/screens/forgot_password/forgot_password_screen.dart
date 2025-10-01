@@ -73,7 +73,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                           return 'Please enter a valid email';
                         }
                         return null;
-                      }, controller: TextEditingController(),
+                      },
+                      controller: TextEditingController(),
                     ),
                     SizedBox(height: 50 * height / 928),
                     PrimaryButton(

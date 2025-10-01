@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import '../../common_widgets/primary_button.dart';
 import '../../contains/app_colors.dart';
-import '../../models/friend_model.dart';
 import '../../providers/user_provider.dart';
 import '../avatar_selection_screen/avatar_selection_screen.dart';
 
@@ -81,7 +80,7 @@ class ProfileScreen extends StatelessWidget {
 
                 // Name
                 Text(
-                   profileProvider.nameUser ?? '',
+                  profileProvider.nameUser ?? '',
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
