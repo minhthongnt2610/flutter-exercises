@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/models/friend_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../common_widgets/primary_button.dart';
@@ -9,8 +10,10 @@ import '../avatar_selection_screen/avatar_selection_screen.dart';
 
 ///không cần ChangeNotifierProvider
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+   ProfileScreen({super.key,
+   this.friend});
   static const String routeName = '/profile';
+  FriendModel? friend;
 
   @override
   Widget build(BuildContext context) {
