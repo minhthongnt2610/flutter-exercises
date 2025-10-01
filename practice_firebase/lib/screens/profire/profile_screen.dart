@@ -81,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
 
                 // Name
                 Text(
-                   '',
+                   profileProvider.nameUser!,
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
