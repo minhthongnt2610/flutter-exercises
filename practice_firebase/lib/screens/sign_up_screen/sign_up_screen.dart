@@ -169,6 +169,7 @@ class SignUpBody extends StatelessWidget {
                       },
                     ),
                     SizedBox(height: 40 * height / 928),
+
                     Text(
                       "-------------------- Or Sign Up with --------------------",
                       style: TextStyle(color: Colors.white, fontSize: 16),
