@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:practice_firebase/contains/app_Images.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/user_provider.dart';
@@ -14,67 +13,62 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final profileProvider = context.watch<UserProvider>();
 
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: Text(
-          greet(profileProvider.nameUser ?? 'Anonymous'),
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
+    return AppBar(
+      title: Text(
+        greet(profileProvider.nameUser ?? 'Anonymous'),
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      centerTitle: true,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      actions: [
+        IconButton(
+          onPressed: () async {
+            final selectedAvatar = await Navigator.pushNamed(
+              context,
+              ProfileScreen.routeName,
+            );
+
+            if (selectedAvatar is File) {
+              profileProvider.setAvatarFile(selectedAvatar);
+            }
+            if (selectedAvatar is String) {
+              profileProvider.setAvatarUrl(selectedAvatar);
+            }
+          },
+          icon: CircleAvatar(
+            radius: 25,
+            backgroundImage: profileProvider.avatarFile != null
+                ? FileImage(profileProvider.avatarFile!)
+                : (profileProvider.avatarUrl != null
+                          ? NetworkImage(profileProvider.avatarUrl!)
+                          : const AssetImage("assets/icon/icon.png"))
+                      as ImageProvider,
           ),
         ),
-        centerTitle: true,
-        // backgroundColor: Colors.transparent,
-        backgroundColor: Colors.white38,
-        elevation: 0,
-        actions: [
-          IconButton(
-            onPressed: () async {
-              final selectedAvatar = await Navigator.pushNamed(
-                context,
-                ProfileScreen.routeName,
-              );
-
-              if (selectedAvatar is File) {
-                profileProvider.setAvatarFile(selectedAvatar);
-              }
-              if (selectedAvatar is String) {
-                profileProvider.setAvatarUrl(selectedAvatar);
-              }
-            },
-            icon: CircleAvatar(
-              radius: 25,
-              backgroundImage: profileProvider.avatarFile != null
-                  ? FileImage(profileProvider.avatarFile!)
-                  : (profileProvider.avatarUrl != null
-                  ? NetworkImage(profileProvider.avatarUrl!)
-                  : const AssetImage("assets/icon/icon.png"))
-              as ImageProvider,
-            ),
-          ),
-        ],
-      ),
+      ],
     );
   }
-  String greet(String name){
+
+  String greet(String name) {
     var hour = DateTime.now().hour;
     var greeting = '';
-    if(hour < 12){
-        greeting = 'Good morning ☀️';
+    if (hour < 12) {
+      greeting = 'Good morning ☀️';
     }
-    if(hour < 18){
+    if (hour < 18) {
       greeting = 'Good afternoon 🌤️';
-    }
-    else{
+    } else {
       greeting = 'Good evening 🌃';
     }
-      return '$greeting,\n$name 🖐️';
+    return '$greeting,\n$name 🖐️';
   }
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(70);
-
+  Size get preferredSize => const Size.fromHeight(90);
 }
