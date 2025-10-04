@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final currentUser = userProvider.firebaseUser;
 
     if (currentUser == null) {
-      return Scaffold(body: Center(child: Text("Bạn chưa đăng nhập")));
+      return Scaffold(body: Center(child: Text("No user found")));
     }
     return StreamBuilder(
       stream: _firestoreService.getFriends(),
