@@ -90,6 +90,10 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                       email: email ?? '',
                     );
                     await _firestoreService.updateFriend(editFriend.toFbFriendModel());
+
+                    if (context.mounted) {
+                      Navigator.of(context).pop(true);
+                    }
                   } else {
                     final createFriend = FriendModel(
                       id: _authEmailService.currentUser!.uid.hashCode,
@@ -98,6 +102,10 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                       email: email ?? '',
                     );
                     await _firestoreService.addFriend(createFriend.toFbFriendModel());
+
+                    if (context.mounted) {
+                      Navigator.of(context).pop(true);
+                    }
                   }
                 },
               ),

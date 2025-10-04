@@ -68,11 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(DetailScreen.routeName,
-              arguments: NewFriendScreenArgument(
-
-              ));
+            onPressed: () async {
+              await _navigateToNewFriendScreen();
             },
             child: const Icon(Icons.add),
           ),
@@ -80,46 +77,51 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
-}
 
-Future<void> _navigateToNewFriendScreen({TaskModel? taskModel}) async {
-  /// Sử dụng hàm pushNamed để điều hướng tới
-  /// màn hình tạo công việc mới
-  final result = await Navigator.of(context).pushNamed(
-    /// Đường dẫn của màn hình tạo công việc mới
-    NewTaskScreen.routeName,
+  Future<void> _navigateToNewFriendScreen({FriendModel? friendModel}) async {
+    /// Sử dụng hàm pushNamed để điều hướng tới
+    /// màn hình tạo công việc mới
+    final result =
+        await Navigator.of(context).pushNamed(
+              /// Đường dẫn của màn hình tạo công việc mới
+              DetailScreen.routeName,
 
-    /// Tham số truuyền vào màn hình tạo công việc mới
-    arguments: NewTaskScreenArguments(
-      taskModel: taskModel,
-    ),
-  ) as bool?;
+              /// Tham số truuyền vào màn hình tạo công việc mới
+              arguments: NewFriendScreenArgument(friendModel: friendModel),
+            )
+            as bool?;
 
-  /// Nếu không có công việc mới
-  if (result != true) {
-    return;
+    /// Nếu không có công việc mới
+    if (result != true) {
+      return;
+    }
   }
-}
-Widget _buildFriendListWidget(List<FriendModel> friends) {
-  if (friends.isEmpty) {
-    return Center(
-      child: Container(
-        child: Text(
-          'You have no friend to complete.',
-          style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 16),
-          textAlign: TextAlign.center,
+  Widget _buildFriendListWidget(List<FriendModel> friends) {
+    if (friends.isEmpty) {
+      return Center(
+        child: Container(
+          child: Text(
+            'You have no friend to complete.',
+            style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
         ),
-      ),
-    );
-  } else {
-    return ListView.builder(
-      itemBuilder: (context, index) {
-        final friend = friends[index];
-        return FriendElement(friend: friend, onTap: () {
-
-        });
-      },
-      itemCount: friends.length,
-    );
+      );
+    } else {
+      return ListView.builder(
+        itemBuilder: (context, index) {
+          final friend = friends[index];
+          return FriendElement(
+            friend: friend,
+            onTap: () async {
+              await _navigateToNewFriendScreen(friendModel: friend);
+            },
+          );
+        },
+        itemCount: friends.length,
+      );
+    }
   }
+
 }
+
