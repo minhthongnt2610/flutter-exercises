@@ -39,8 +39,19 @@ class HomeAppBar extends StatelessWidget {
       ),
     );
   }
-  String greet(){
-
+  String greet(String name){
+    var hour = DateTime.now().hour;
+    var greeting = '';
+    if(hour < 12){
+        greeting = 'Good morning ☀️';
+    }
+    if(hour < 18){
+      greeting = 'Good afternoon 🌤️';
+    }
+    else{
+      greeting = 'Good evening 🌃';
+    }
+      return '$greeting,\n$name 🖐️';
   }
 
 }
