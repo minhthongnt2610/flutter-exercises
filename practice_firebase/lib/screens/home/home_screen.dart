@@ -1,5 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_email_service.dart';
+import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_service.dart';
+import 'package:practice_firebase/data/data_sources/remote/firebase/firestore_database/firestore_service.dart';
 import 'package:practice_firebase/screens/home/widgets/friend_elements.dart';
 import 'package:practice_firebase/screens/home/widgets/home_app_bar.dart';
 import '../../contains/app_colors.dart';
@@ -15,6 +18,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _authEmailService = AuthEmailService();
+  final _firestoreService = FirestoreService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

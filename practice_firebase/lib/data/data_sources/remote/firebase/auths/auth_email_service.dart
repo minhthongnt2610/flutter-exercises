@@ -6,6 +6,11 @@ import 'auth_shared_prefs.dart';
 
 class AuthEmailService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  User? get currentUser => _auth.currentUser;
+  bool isSignedIn() {
+    return currentUser != null;
+  }
+
   //register with email and password
   Future<User?> signUpWithEmailAndPassword({
     required String email,
@@ -58,6 +63,10 @@ class AuthEmailService {
     await AuthSharedPrefs.clearUid();
   }
 
+  ///send email to reset password
+  Future<void> sendPasswordResetEmail({required String email}){
+
+  }
   //FirebaseAuth Error Handling
   String _handleError(FirebaseAuthException e) {
     switch (e.code) {
