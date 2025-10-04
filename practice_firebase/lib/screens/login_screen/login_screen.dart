@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/providers/login_provider.dart';
+import 'package:practice_firebase/screens/home/home_screen.dart';
 import 'package:practice_firebase/screens/login_screen/widgets/filed_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -136,6 +137,7 @@ class LoginBody extends StatelessWidget {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           loginProvider.login();
+                          Navigator.pushNamed(context, HomeScreen.routeName);
                         }
                       },
                     ),

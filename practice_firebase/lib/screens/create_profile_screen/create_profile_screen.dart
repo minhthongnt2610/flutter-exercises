@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/common_widgets/primary_button.dart';
+import 'package:practice_firebase/screens/home/home_screen.dart';
 import 'package:practice_firebase/screens/profire/profile_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -116,7 +117,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                             profileProvider.setNameUser(nameController.text);
                             Navigator.pushNamed(
                               context,
-                              ProfileScreen.routeName,
+                              HomeScreen.routeName,
                             );
                           }
                         },

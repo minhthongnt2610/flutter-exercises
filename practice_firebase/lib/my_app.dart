@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/create_profile_screen/create_profile_screen.dart';
+import 'package:practice_firebase/screens/detail_screen/models/new_friend_screen_argument.dart';
 import 'package:provider/provider.dart';
 
 import 'package:practice_firebase/providers/user_provider.dart';
@@ -13,6 +14,7 @@ import 'package:practice_firebase/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:practice_firebase/screens/start_screen/start_screen.dart';
 
 import 'animations/screen_transitions/slide_transition_page.dart';
+import 'data/data_sources/remote/firebase/auths/auth_email_service.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => UserProvider(),
+      create: (_) => UserProvider( AuthEmailService()),
       child: MaterialApp(
         title: 'Practice_Firebase',
         debugShowCheckedModeBanner: false,
@@ -40,8 +42,9 @@ class MyApp extends StatelessWidget {
                 builder: (context) => const HomeScreen(),
               );
             case DetailScreen.routeName:
+              final arguments = settings.arguments as NewFriendScreenArgument;
               return MaterialPageRoute(
-                builder: (context) => const DetailScreen(),
+                builder: (context) => DetailScreen(argument: arguments,),
               );
             case ForgotPasswordScreen.routeName:
               return MaterialPageRoute(

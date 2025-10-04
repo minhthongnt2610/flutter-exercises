@@ -15,9 +15,7 @@ class FriendElement extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(context, DetailScreen.routeName);
-        },
+        onTap: onTap,
         child: Container(
           width: size.width * 0.95,
           height: size.height * 0.12,
