@@ -27,6 +27,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       backgroundColor: Colors.transparent,
       elevation: 0,
+      titleSpacing: 0,
+      leadingWidth: 100,
       actions: [
         IconButton(
           onPressed: () async {
@@ -72,5 +74,5 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => const Size.fromHeight(100);
 }
