@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_email_service.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/firestore_database/firestore_service.dart';
+import 'package:practice_firebase/screens/detail_screen/models/new_friend_screen_argument.dart';
 
 import '../../../common_widgets/delete_button.dart';
 import '../../../common_widgets/input_field.dart';
@@ -9,8 +10,8 @@ import '../../../common_widgets/primary_button.dart';
 import 'input_date_time_field.dart';
 
 class BuildDetailBodyWidget extends StatefulWidget {
-  const BuildDetailBodyWidget({super.key});
-
+  const BuildDetailBodyWidget({super.key, required this.argument});
+  final NewFriendScreenArgument argument;
   @override
   State<BuildDetailBodyWidget> createState() => _BuildDetailBodyWidgetState();
 }
@@ -19,6 +20,12 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
   final _firestoreService = FirestoreService();
   final _authEmailService = AuthEmailService();
   bool _isEditing = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // final friendModel = widget.
+  }
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/create_profile_screen/create_profile_screen.dart';
+import 'package:practice_firebase/screens/detail_screen/models/new_friend_screen_argument.dart';
 import 'package:provider/provider.dart';
 
 import 'package:practice_firebase/providers/user_provider.dart';
@@ -41,8 +42,9 @@ class MyApp extends StatelessWidget {
                 builder: (context) => const HomeScreen(),
               );
             case DetailScreen.routeName:
+              final arguments = settings.arguments as NewFriendScreenArgument;
               return MaterialPageRoute(
-                builder: (context) => const DetailScreen(),
+                builder: (context) => DetailScreen(argument: arguments,),
               );
             case ForgotPasswordScreen.routeName:
               return MaterialPageRoute(
