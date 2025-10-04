@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/home/widgets/friend_elements.dart';
+import 'package:practice_firebase/screens/home/widgets/home_app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../contains/app_colors.dart';
@@ -24,45 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: const Text(
-          "Home your friends",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          IconButton(
-            onPressed: () async {
-              final selectedAvatar = await Navigator.pushNamed(
-                context,
-                ProfileScreen.routeName,
-              );
-
-              if (selectedAvatar is File) {
-                profileProvider.setAvatarFile(selectedAvatar);
-              }
-              if (selectedAvatar is String) {
-                profileProvider.setAvatarUrl(selectedAvatar);
-              }
-            },
-            icon: CircleAvatar(
-              radius: 25,
-              backgroundImage: profileProvider.avatarFile != null
-                  ? FileImage(profileProvider.avatarFile!)
-                  : (profileProvider.avatarUrl != null
-                            ? NetworkImage(profileProvider.avatarUrl!)
-                            : const AssetImage("assets/icon/icon.png"))
-                        as ImageProvider,
-            ),
-          ),
-        ],
-      ),
+      appBar: HomeAppBar(),
       body: Container(
         width: double.infinity,
         height: double.infinity,
