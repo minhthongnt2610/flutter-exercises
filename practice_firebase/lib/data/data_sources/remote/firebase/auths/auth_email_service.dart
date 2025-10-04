@@ -64,9 +64,10 @@ class AuthEmailService {
   }
 
   ///send email to reset password
-  Future<void> sendPasswordResetEmail({required String email}){
-
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    await _auth.sendPasswordResetEmail(email: email);
   }
+
   //FirebaseAuth Error Handling
   String _handleError(FirebaseAuthException e) {
     switch (e.code) {
