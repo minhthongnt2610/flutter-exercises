@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_email_service.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/firestore_database/firestore_service.dart';
+import 'package:practice_firebase/models/friend_model.dart';
 import 'package:practice_firebase/screens/detail_screen/models/new_friend_screen_argument.dart';
 
 import '../../../common_widgets/delete_button.dart';
@@ -31,7 +32,7 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
     if (friendModel != null) {
       _isEditing = true;
       name = friendModel.name;
-      birthday = friendModel.birthdate;
+      birthday = friendModel.birthday;
       email = friendModel.email;
     }
   }
@@ -78,24 +79,33 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                 initialValue: '',
               ),
               const SizedBox(height: 20),
-
               PrimaryButton(
                 title: _isEditing ? 'Update' : 'Create',
                 isColor: true,
-                onPressed: () {},
-              ),
-              const SizedBox(height: 20),
-              DeleteButton(
-                title: 'Delete',
-                onTap: () {
-                  _showDeleteDialog(context);
+                onPressed: () {
+                  if (_isEditing) {
+                    // final editFriend = FriendModel(name: name ?? '', birthday: birthday, email: email)
+                  } else {
+                    //create
+                  }
                 },
               ),
+              const SizedBox(height: 20),
+              // if(_isEditing){
+              //   DeleteButton(
+              //     title: 'Delete',
+              //     onTap: () {
+              //       _showDeleteDialog(context);
+              //     },
+              //   ),
+              // }
+
             ],
           ),
         ),
       ),
     );
+    
   }
 
   Future<bool?> _showDeleteDialog(BuildContext context) {
@@ -120,3 +130,4 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
     );
   }
 }
+

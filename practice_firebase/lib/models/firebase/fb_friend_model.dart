@@ -33,7 +33,7 @@ extension FbFriendModelExtension on FbFriendModel {
     return FriendModel(
       id: id,
       name: name,
-      birthdate: DateTime.fromMillisecondsSinceEpoch(birthdate),
+      birthday: DateTime.fromMillisecondsSinceEpoch(birthdate),
       email: email,
     );
   }
