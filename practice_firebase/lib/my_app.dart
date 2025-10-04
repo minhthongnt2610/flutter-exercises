@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Practice_Firebase',
         debugShowCheckedModeBanner: false,
-        initialRoute: CreateProfileScreen.routeName,
+        initialRoute: StartScreen.routeName,
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case StartScreen.routeName:

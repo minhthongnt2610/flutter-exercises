@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 import '../../contains/app_colors.dart';
 import '../../models/friend_model.dart';
 import '../../providers/user_provider.dart';
+import '../detail_screen/detail_screen.dart';
+import '../detail_screen/models/new_friend_screen_argument.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -67,7 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              // TODO: thêm logic add friend
+              Navigator.of(context).pushNamed(DetailScreen.routeName,
+              arguments: NewFriendScreenArgument(
+
+              ));
             },
             child: const Icon(Icons.add),
           ),
@@ -77,6 +82,24 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
+Future<void> _navigateToNewFriendScreen({TaskModel? taskModel}) async {
+  /// Sử dụng hàm pushNamed để điều hướng tới
+  /// màn hình tạo công việc mới
+  final result = await Navigator.of(context).pushNamed(
+    /// Đường dẫn của màn hình tạo công việc mới
+    NewTaskScreen.routeName,
+
+    /// Tham số truuyền vào màn hình tạo công việc mới
+    arguments: NewTaskScreenArguments(
+      taskModel: taskModel,
+    ),
+  ) as bool?;
+
+  /// Nếu không có công việc mới
+  if (result != true) {
+    return;
+  }
+}
 Widget _buildFriendListWidget(List<FriendModel> friends) {
   if (friends.isEmpty) {
     return Center(
