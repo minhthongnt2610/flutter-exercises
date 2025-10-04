@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/contains/app_Images.dart';
+import 'package:provider/provider.dart';
+
+import '../../../providers/user_provider.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final profileProvider = context.watch<UserProvider>();
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -34,4 +39,8 @@ class HomeAppBar extends StatelessWidget {
       ),
     );
   }
+  String greet(){
+
+  }
+
 }
