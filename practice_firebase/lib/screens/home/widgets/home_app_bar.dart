@@ -19,16 +19,15 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           greet(profileProvider.nameUser ?? 'Anonymous'),
           style: TextStyle(
             color: Colors.white,
-            fontSize: 26,
+            fontSize: 25,
             fontWeight: FontWeight.bold,
           ),
         ),
       ),
-      centerTitle: true,
       backgroundColor: Colors.transparent,
       elevation: 0,
+      centerTitle: true,
       titleSpacing: 0,
-      leadingWidth: 100,
       actions: [
         IconButton(
           onPressed: () async {
@@ -69,6 +68,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     } else {
       greeting = 'Good evening 🌃';
     }
+    debugPrint('$greeting,$name 🖐️');
     return '$greeting,\n$name 🖐️';
   }
 
