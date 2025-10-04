@@ -30,7 +30,7 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
             children: [
               SizedBox(height: 110 * height / 928),
               Text(
-                isUpdate ? 'Update Friend' : 'Add Friend',
+                isUpdate ? 'Update Friend' : 'Create Friend',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -65,7 +65,9 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                 onPressed: () {},
               ),
               const SizedBox(height: 20),
-              DeleteButton(title: 'Delete', onTap: () {}),
+              DeleteButton(title: 'Delete', onTap: () {
+                _showDeleteDialog(context);
+              }),
             ],
           ),
         ),
