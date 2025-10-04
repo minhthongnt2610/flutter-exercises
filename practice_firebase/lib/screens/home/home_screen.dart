@@ -92,7 +92,9 @@ Widget _buildFriendListWidget(List<FriendModel> friends) {
     return ListView.builder(
       itemBuilder: (context, index) {
         final friend = friends[index];
-        return FriendElement(friend: friend, onTap: () {});
+        return FriendElement(friend: friend, onTap: () {
+
+        });
       },
       itemCount: friends.length,
     );
