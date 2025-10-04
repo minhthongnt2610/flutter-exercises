@@ -1,10 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/contains/app_Images.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/user_provider.dart';
+import '../../profire/profile_screen.dart';
 
-class HomeAppBar extends StatelessWidget {
+class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
 
   @override
@@ -15,7 +18,7 @@ class HomeAppBar extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
-          "Home your friends",
+          greet(profileProvider.nameUser ?? 'Anonymous'),
           style: TextStyle(
             color: Colors.white,
             fontSize: 30,
@@ -27,14 +30,30 @@ class HomeAppBar extends StatelessWidget {
         backgroundColor: Colors.white38,
         elevation: 0,
         actions: [
-          GestureDetector(
-            onTap: () {},
-            child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(22.5)),
-              child: Image.asset(AppImages.avatar, width: 45, height: 45),
+          IconButton(
+            onPressed: () async {
+              final selectedAvatar = await Navigator.pushNamed(
+                context,
+                ProfileScreen.routeName,
+              );
+
+              if (selectedAvatar is File) {
+                profileProvider.setAvatarFile(selectedAvatar);
+              }
+              if (selectedAvatar is String) {
+                profileProvider.setAvatarUrl(selectedAvatar);
+              }
+            },
+            icon: CircleAvatar(
+              radius: 25,
+              backgroundImage: profileProvider.avatarFile != null
+                  ? FileImage(profileProvider.avatarFile!)
+                  : (profileProvider.avatarUrl != null
+                  ? NetworkImage(profileProvider.avatarUrl!)
+                  : const AssetImage("assets/icon/icon.png"))
+              as ImageProvider,
             ),
           ),
-          const SizedBox(width: 10),
         ],
       ),
     );
@@ -53,5 +72,9 @@ class HomeAppBar extends StatelessWidget {
     }
       return '$greeting,\n$name 🖐️';
   }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => const Size.fromHeight(70);
 
 }
