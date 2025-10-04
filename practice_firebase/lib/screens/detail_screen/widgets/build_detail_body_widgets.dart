@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_email_service.dart';
+import 'package:practice_firebase/data/data_sources/remote/firebase/firestore_database/firestore_service.dart';
 
 import '../../../common_widgets/delete_button.dart';
 import '../../../common_widgets/input_field.dart';
@@ -14,11 +16,12 @@ class BuildDetailBodyWidget extends StatefulWidget {
 }
 
 class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
+  final _firestoreService = FirestoreService();
+  final _authEmailService = AuthEmailService();
+  bool _isEditing = false;
   @override
   Widget build(BuildContext context) {
-    int width = MediaQuery.of(context).size.width.toInt();
     int height = MediaQuery.of(context).size.height.toInt();
-    final isUpdate = true;
 
     return Container(
       width: double.infinity,
@@ -30,7 +33,7 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
             children: [
               SizedBox(height: 110 * height / 928),
               Text(
-                isUpdate ? 'Update Friend' : 'Create Friend',
+                _isEditing ? 'Update Friend' : 'Create Friend',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -60,7 +63,7 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
               const SizedBox(height: 20),
 
               PrimaryButton(
-                title: isUpdate ? 'Update' : 'Add',
+                title: _isEditing ? 'Update' : 'Add',
                 isColor: true,
                 onPressed: () {},
               ),
