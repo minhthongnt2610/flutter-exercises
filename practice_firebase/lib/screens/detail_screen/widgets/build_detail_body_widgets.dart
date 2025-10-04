@@ -17,6 +17,9 @@ class BuildDetailBodyWidget extends StatefulWidget {
 }
 
 class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
+  String? name;
+  DateTime? birthday;
+  String? email;
   final _firestoreService = FirestoreService();
   final _authEmailService = AuthEmailService();
   bool _isEditing = false;
@@ -24,8 +27,15 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // final friendModel = widget.
+    final friendModel = widget.argument.friendModel;
+    if (friendModel != null) {
+      _isEditing = true;
+      name = friendModel.name;
+      birthday = friendModel.birthdate;
+      email = friendModel.email;
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
@@ -70,14 +80,17 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
               const SizedBox(height: 20),
 
               PrimaryButton(
-                title: _isEditing ? 'Update' : 'Add',
+                title: _isEditing ? 'Update' : 'Create',
                 isColor: true,
                 onPressed: () {},
               ),
               const SizedBox(height: 20),
-              DeleteButton(title: 'Delete', onTap: () {
-                _showDeleteDialog(context);
-              }),
+              DeleteButton(
+                title: 'Delete',
+                onTap: () {
+                  _showDeleteDialog(context);
+                },
+              ),
             ],
           ),
         ),
