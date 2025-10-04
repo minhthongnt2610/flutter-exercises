@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../providers/user_provider.dart';
 import '../../profire/profile_screen.dart';
 
@@ -14,12 +12,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     final profileProvider = context.watch<UserProvider>();
 
     return AppBar(
-      title: Text(
-        greet(profileProvider.nameUser ?? 'Anonymous'),
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
+      toolbarHeight: 100,
+      title: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Text(
+          greet(profileProvider.nameUser ?? 'Anonymous'),
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       centerTitle: true,
@@ -70,5 +72,5 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(90);
+  Size get preferredSize => const Size.fromHeight(60);
 }

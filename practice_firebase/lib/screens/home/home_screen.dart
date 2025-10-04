@@ -2,12 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/screens/home/widgets/friend_elements.dart';
 import 'package:practice_firebase/screens/home/widgets/home_app_bar.dart';
-import 'package:provider/provider.dart';
-
 import '../../contains/app_colors.dart';
 import '../../models/friend_model.dart';
-import '../../providers/user_provider.dart';
-import '../profire/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,8 +17,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final profileProvider = context.watch<UserProvider>();
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: HomeAppBar(),
@@ -37,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(top: kToolbarHeight + 65),
+          padding: const EdgeInsets.only(top: 30),
           child: ListView(
             children: [
               FriendElement(
