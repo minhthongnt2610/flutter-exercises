@@ -82,15 +82,27 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
               PrimaryButton(
                 title: _isEditing ? 'Update' : 'Create',
                 isColor: true,
-                onPressed: () {
+                onPressed: () async {
                   if (_isEditing) {
-                    // final editFriend = FriendModel(name: name ?? '', birthday: birthday, email: email)
+                    final editFriend = FriendModel(
+                      name: name ?? '',
+                      birthday: birthday ?? DateTime.now(),
+                      email: email ?? '',
+                    );
+                    await _firestoreService.updateFriend(editFriend.toFbFriendModel());
                   } else {
-                    //create
+                    final createFriend = FriendModel(
+                      id: _authEmailService.currentUser!.uid.hashCode,
+                      name: name ?? '',
+                      birthday: birthday ?? DateTime.now(),
+                      email: email ?? '',
+                    );
+                    await _firestoreService.addFriend(createFriend.toFbFriendModel());
                   }
                 },
               ),
               const SizedBox(height: 20),
+              //
               // if(_isEditing){
               //   DeleteButton(
               //     title: 'Delete',
@@ -99,13 +111,11 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
               //     },
               //   ),
               // }
-
             ],
           ),
         ),
       ),
     );
-    
   }
 
   Future<bool?> _showDeleteDialog(BuildContext context) {
@@ -130,4 +140,3 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
     );
   }
 }
-
