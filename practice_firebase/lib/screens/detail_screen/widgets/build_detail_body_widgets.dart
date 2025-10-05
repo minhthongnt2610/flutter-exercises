@@ -128,15 +128,12 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                 },
               ),
               const SizedBox(height: 20),
-              //
-              // if(_isEditing){
-              //   DeleteButton(
-              //     title: 'Delete',
-              //     onTap: () {
-              //       _showDeleteDialog(context);
-              //     },
-              //   ),
-              // }
+              _isEditing ? DeleteButton(
+                title: 'Delete',
+                onTap: () {
+                  _showDeleteDialog(context);
+                },
+              ) : Container(),
             ],
           ),
         ),
