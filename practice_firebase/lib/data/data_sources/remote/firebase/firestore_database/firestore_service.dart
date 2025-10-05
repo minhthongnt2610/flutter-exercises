@@ -13,7 +13,7 @@ class FirestoreService {
   Future<void> addFriend(FbFriendModel addFriends) async {
     await _firestore
         .collection("users")
-        .doc("userid")
+        .doc(userid)
         .collection("friends")
         .doc(addFriends.id.toString())
         .set(addFriends.toJson());
@@ -23,7 +23,7 @@ class FirestoreService {
   Stream<List<FbFriendModel>> getFriends() {
     return _firestore
         .collection("users")
-        .doc("userid")
+        .doc(userid)
         .collection("friends")
         .snapshots()
         .map(
@@ -37,7 +37,7 @@ class FirestoreService {
   Future<void> updateFriend(FbFriendModel updateFriends) async {
     await _firestore
         .collection("users")
-        .doc("userid")
+        .doc(userid)
         .collection("friends")
         .doc(updateFriends.id.toString())
         .update(updateFriends.toJson());
@@ -47,7 +47,7 @@ class FirestoreService {
   Future<void> deleteFriend(int id) async {
     await _firestore
         .collection("users")
-        .doc("userid")
+        .doc(userid)
         .collection("friends")
         .doc(id.toString())
         .delete();

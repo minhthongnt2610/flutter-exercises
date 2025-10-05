@@ -61,22 +61,34 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
               const SizedBox(height: 20),
               InputField(
                 hintText: 'Name',
-                onChanged: (value) {},
+                onChanged: (value) {
+                  setState(() {
+                    name = value;
+                  });
+                },
                 maxLines: 1,
-                initialValue: '',
+                initialValue: name ?? '',
               ),
               const SizedBox(height: 20),
               InputDateTimeField(
-                selectedDate: DateTime.now(),
-                onChanged: (DateTime? value) {},
+                selectedDate: birthday,
+                onChanged: (DateTime? value) {
+                  setState(() {
+                    birthday = value;
+                  });
+                },
               ),
 
               const SizedBox(height: 20),
               InputField(
                 hintText: 'Email',
-                onChanged: (value) {},
+                onChanged: (value) {
+                  setState(() {
+                    email = value;
+                  });
+                },
                 maxLines: 1,
-                initialValue: '',
+                initialValue: email ?? '',
               ),
               const SizedBox(height: 20),
               PrimaryButton(
@@ -85,23 +97,29 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                 onPressed: () async {
                   if (_isEditing) {
                     final editFriend = FriendModel(
+                      id: widget.argument.friendModel!.id,
                       name: name ?? '',
                       birthday: birthday ?? DateTime.now(),
                       email: email ?? '',
                     );
-                    await _firestoreService.updateFriend(editFriend.toFbFriendModel());
+                    await _firestoreService.updateFriend(
+                      editFriend.toFbFriendModel(),
+                    );
 
                     if (context.mounted) {
                       Navigator.of(context).pop(true);
                     }
                   } else {
+                    final newId = DateTime.now().millisecondsSinceEpoch;
                     final createFriend = FriendModel(
-                      id: _authEmailService.currentUser!.uid.hashCode,
+                      id: newId,
                       name: name ?? '',
                       birthday: birthday ?? DateTime.now(),
                       email: email ?? '',
                     );
-                    await _firestoreService.addFriend(createFriend.toFbFriendModel());
+                    await _firestoreService.addFriend(
+                      createFriend.toFbFriendModel(),
+                    );
 
                     if (context.mounted) {
                       Navigator.of(context).pop(true);
@@ -110,15 +128,21 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                 },
               ),
               const SizedBox(height: 20),
-              //
-              // if(_isEditing){
-              //   DeleteButton(
-              //     title: 'Delete',
-              //     onTap: () {
-              //       _showDeleteDialog(context);
-              //     },
-              //   ),
-              // }
+              _isEditing ? DeleteButton(
+                title: 'Delete',
+                onTap: () async {
+                  final delete = await _showDeleteDialog(context);
+                  if (delete == true) {
+                    await _firestoreService.deleteFriend(
+                      widget.argument.friendModel!.id!,
+                    );
+                  }
+
+                  if (context.mounted) {
+                    Navigator.of(context).pop(true);
+                  }
+                },
+              ) : Container(),
             ],
           ),
         ),
