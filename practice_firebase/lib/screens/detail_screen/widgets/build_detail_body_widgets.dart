@@ -96,24 +96,28 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                 isColor: true,
                 onPressed: () async {
                   if (_isEditing) {
-                    final createFriend = FriendModel(
-                      id: _authEmailService.currentUser!.uid.hashCode,
+                    final editFriend = FriendModel(
+                      id: widget.argument.friendModel!.id,
                       name: name ?? '',
                       birthday: birthday ?? DateTime.now(),
                       email: email ?? '',
                     );
-                    await _firestoreService.addFriend(createFriend.toFbFriendModel());
+                    await _firestoreService.updateFriend(
+                      editFriend.toFbFriendModel(),
+                    );
 
                     if (context.mounted) {
                       Navigator.of(context).pop(true);
                     }
                   } else {
-                    final editFriend = FriendModel(
+                    final createFriend = FriendModel(
                       name: name ?? '',
                       birthday: birthday ?? DateTime.now(),
                       email: email ?? '',
                     );
-                    await _firestoreService.updateFriend(editFriend.toFbFriendModel());
+                    await _firestoreService.addFriend(
+                      createFriend.toFbFriendModel(),
+                    );
 
                     if (context.mounted) {
                       Navigator.of(context).pop(true);

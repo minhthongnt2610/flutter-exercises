@@ -68,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           floatingActionButton: FloatingActionButton(
+            heroTag: 'fab_add',
             onPressed: ()  {
                _navigateToNewFriendScreen();
             },
