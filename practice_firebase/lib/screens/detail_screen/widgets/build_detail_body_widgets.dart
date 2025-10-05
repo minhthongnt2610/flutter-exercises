@@ -67,7 +67,7 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                   });
                 },
                 maxLines: 1,
-                initialValue: '',
+                initialValue: name ?? '',
               ),
               const SizedBox(height: 20),
               InputDateTimeField(
@@ -88,7 +88,7 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                   });
                 },
                 maxLines: 1,
-                initialValue: '',
+                initialValue: email ?? '',
               ),
               const SizedBox(height: 20),
               PrimaryButton(
@@ -110,7 +110,9 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                       Navigator.of(context).pop(true);
                     }
                   } else {
+                    final newId = DateTime.now().millisecondsSinceEpoch;
                     final createFriend = FriendModel(
+                      id: newId,
                       name: name ?? '',
                       birthday: birthday ?? DateTime.now(),
                       email: email ?? '',
