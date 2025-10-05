@@ -130,8 +130,17 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
               const SizedBox(height: 20),
               _isEditing ? DeleteButton(
                 title: 'Delete',
-                onTap: () {
-                  _showDeleteDialog(context);
+                onTap: () async {
+                  final delete = await _showDeleteDialog(context);
+                  if (delete == true) {
+                    await _firestoreService.deleteFriend(
+                      widget.argument.friendModel!.id!,
+                    );
+                  }
+
+                  if (context.mounted) {
+                    Navigator.of(context).pop(true);
+                  }
                 },
               ) : Container(),
             ],
