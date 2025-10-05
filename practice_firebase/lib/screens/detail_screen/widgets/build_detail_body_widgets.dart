@@ -71,7 +71,7 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
               ),
               const SizedBox(height: 20),
               InputDateTimeField(
-                selectedDate: DateTime.now(),
+                selectedDate: birthday,
                 onChanged: (DateTime? value) {
                   setState(() {
                     birthday = value;
