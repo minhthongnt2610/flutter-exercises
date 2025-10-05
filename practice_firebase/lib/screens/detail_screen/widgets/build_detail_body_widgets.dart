@@ -61,20 +61,32 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
               const SizedBox(height: 20),
               InputField(
                 hintText: 'Name',
-                onChanged: (value) {},
+                onChanged: (value) {
+                  setState(() {
+                    name = value;
+                  });
+                },
                 maxLines: 1,
                 initialValue: '',
               ),
               const SizedBox(height: 20),
               InputDateTimeField(
                 selectedDate: DateTime.now(),
-                onChanged: (DateTime? value) {},
+                onChanged: (DateTime? value) {
+                  setState(() {
+                    birthday = value;
+                  });
+                },
               ),
 
               const SizedBox(height: 20),
               InputField(
                 hintText: 'Email',
-                onChanged: (value) {},
+                onChanged: (value) {
+                  setState(() {
+                    email = value;
+                  });
+                },
                 maxLines: 1,
                 initialValue: '',
               ),
@@ -84,17 +96,6 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                 isColor: true,
                 onPressed: () async {
                   if (_isEditing) {
-                    final editFriend = FriendModel(
-                      name: name ?? '',
-                      birthday: birthday ?? DateTime.now(),
-                      email: email ?? '',
-                    );
-                    await _firestoreService.updateFriend(editFriend.toFbFriendModel());
-
-                    if (context.mounted) {
-                      Navigator.of(context).pop(true);
-                    }
-                  } else {
                     final createFriend = FriendModel(
                       id: _authEmailService.currentUser!.uid.hashCode,
                       name: name ?? '',
@@ -102,6 +103,17 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                       email: email ?? '',
                     );
                     await _firestoreService.addFriend(createFriend.toFbFriendModel());
+
+                    if (context.mounted) {
+                      Navigator.of(context).pop(true);
+                    }
+                  } else {
+                    final editFriend = FriendModel(
+                      name: name ?? '',
+                      birthday: birthday ?? DateTime.now(),
+                      email: email ?? '',
+                    );
+                    await _firestoreService.updateFriend(editFriend.toFbFriendModel());
 
                     if (context.mounted) {
                       Navigator.of(context).pop(true);
