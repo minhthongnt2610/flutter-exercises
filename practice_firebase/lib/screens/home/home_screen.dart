@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           floatingActionButton: FloatingActionButton(
             heroTag: 'fab_add',
-            onPressed: ()  {
+            onPressed: () async {
                _navigateToNewFriendScreen();
             },
             child: const Icon(Icons.add),
@@ -114,8 +114,8 @@ class _HomeScreenState extends State<HomeScreen> {
           final friend = friends[index];
           return FriendElement(
             friend: friend,
-            onTap: ()  async {
-              await _navigateToNewFriendScreen(friendModel: friend);
+            onTap: ()   {
+               _navigateToNewFriendScreen(friendModel: friend);
             },
           );
         },
