@@ -34,7 +34,7 @@ class FriendElement extends StatelessWidget {
                       width: 15,
                       child: Text(' :', style: TextStyle(color: Colors.black)),
                     ),
-                    InfoFriendWidgets(title: friend.name),
+                    Expanded(child: InfoFriendWidgets(title: friend.name)),
                   ],
                 ),
                 Row(
@@ -45,7 +45,7 @@ class FriendElement extends StatelessWidget {
                       width: 15,
                       child: Text(' :', style: TextStyle(color: Colors.black)),
                     ),
-                    InfoFriendWidgets(title: friend.displayDate),
+                    Expanded(child: InfoFriendWidgets(title: friend.displayDate)),
                   ],
                 ),
                 Row(
@@ -56,7 +56,7 @@ class FriendElement extends StatelessWidget {
                       width: 15,
                       child: Text(' :', style: TextStyle(color: Colors.black)),
                     ),
-                    InfoFriendWidgets(title: friend.email),
+                    Expanded(child: InfoFriendWidgets(title: friend.email)),
                   ],
                 ),
               ],
