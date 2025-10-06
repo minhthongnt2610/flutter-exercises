@@ -1,7 +1,7 @@
 import 'package:practice_firebase/models/friend_model.dart';
 
 class FbFriendModel {
-  int? id;
+  String? id;
   String name;
   int birthdate;
   String email;

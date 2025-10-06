@@ -110,9 +110,8 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                       Navigator.of(context).pop(true);
                     }
                   } else {
-                    final newId = DateTime.now().millisecondsSinceEpoch;
                     final createFriend = FriendModel(
-                      id: newId,
+                      id: _authEmailService.currentUser?.uid,
                       name: name ?? '',
                       birthday: birthday ?? DateTime.now(),
                       email: email ?? '',

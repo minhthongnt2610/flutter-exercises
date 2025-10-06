@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'firebase/fb_friend_model.dart';
 
 class FriendModel {
-  int? id;
+  String? id;
   String name;
   DateTime birthday;
   String email;
