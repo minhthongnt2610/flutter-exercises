@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_email_service.dart';
 import 'package:provider/provider.dart';
 
 import '../../common_widgets/primary_button.dart';
@@ -15,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileProvider = context.watch<UserProvider>();
+    final auth = Provider.of<AuthEmailService>(context);
     int height = MediaQuery.of(context).size.height.toInt();
 
     return Scaffold(
@@ -99,8 +101,9 @@ class ProfileScreen extends StatelessWidget {
                 PrimaryButton(
                   title: 'Sign Out',
                   isColor: true,
-                  onPressed: () {
-                    // TODO: logic đăng xuất
+                  onPressed: () async {
+                    await auth.signOut();
+                    Navigator.pop(context);
                   },
                 ),
               ],
