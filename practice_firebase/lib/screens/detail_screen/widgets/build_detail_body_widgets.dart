@@ -140,7 +140,6 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                       _authEmailService.currentUser!.uid,
                   );
 
-
                   }
 
                   if (context.mounted) {
