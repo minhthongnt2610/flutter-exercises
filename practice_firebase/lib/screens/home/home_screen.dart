@@ -31,7 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
       return Scaffold(body: Center(child: Text("No user found")));
     }
     return StreamBuilder(
-      stream: _firestoreService.getFriends(),
+      stream: _firestoreService.getFriends(
+        currentUser.uid,
+      ),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Scaffold(

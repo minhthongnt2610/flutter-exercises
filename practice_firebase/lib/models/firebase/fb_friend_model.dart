@@ -1,7 +1,7 @@
 import 'package:practice_firebase/models/friend_model.dart';
 
 class FbFriendModel {
-  int? id;
+  String? id;
   String name;
   int birthdate;
   String email;
@@ -13,8 +13,8 @@ class FbFriendModel {
     required this.email,
   });
 
-  factory FbFriendModel.fromJson(Map<String, dynamic> json) => FbFriendModel(
-    id: json["id"],
+  factory FbFriendModel.fromJson(Map<String, dynamic> json, String id) => FbFriendModel(
+    id: id,
     name: json["name"],
     birthdate: json["birthdate"],
     email: json["email"],

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_email_service.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/firestore_database/firestore_service.dart';
@@ -103,6 +102,7 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                       email: email ?? '',
                     );
                     await _firestoreService.updateFriend(
+                      _authEmailService.currentUser!.uid,
                       editFriend.toFbFriendModel(),
                     );
 
@@ -110,14 +110,14 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                       Navigator.of(context).pop(true);
                     }
                   } else {
-                    final newId = DateTime.now().millisecondsSinceEpoch;
                     final createFriend = FriendModel(
-                      id: newId,
+                      id: _authEmailService.currentUser!.uid,
                       name: name ?? '',
                       birthday: birthday ?? DateTime.now(),
                       email: email ?? '',
                     );
                     await _firestoreService.addFriend(
+                      _authEmailService.currentUser!.uid,
                       createFriend.toFbFriendModel(),
                     );
 
@@ -131,11 +131,15 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
               _isEditing ? DeleteButton(
                 title: 'Delete',
                 onTap: () async {
+                  print(_authEmailService.currentUser!.uid);
+                  print(widget.argument.friendModel!.id!);
                   final delete = await _showDeleteDialog(context);
                   if (delete == true) {
                     await _firestoreService.deleteFriend(
                       widget.argument.friendModel!.id!,
-                    );
+                      _authEmailService.currentUser!.uid,
+                  );
+
                   }
 
                   if (context.mounted) {

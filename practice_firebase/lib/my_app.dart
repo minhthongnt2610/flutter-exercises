@@ -17,16 +17,23 @@ import 'animations/screen_transitions/slide_transition_page.dart';
 import 'data/data_sources/remote/firebase/auths/auth_email_service.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  MyApp({super.key});
+  final _authEmailService = AuthEmailService();
   @override
   Widget build(BuildContext context) {
+    final isUserLoggedIn = _authEmailService.isSignedIn();
+    final isUpdateProfile = _authEmailService.isUpdateProfile();
+    final initialRoute = isUserLoggedIn
+        ? isUpdateProfile
+              ? HomeScreen.routeName
+              : CreateProfileScreen.routeName
+        : StartScreen.routeName;
     return ChangeNotifierProvider(
-      create: (_) => UserProvider( AuthEmailService()),
+      create: (_) => UserProvider(AuthEmailService()),
       child: MaterialApp(
         title: 'Practice_Firebase',
         debugShowCheckedModeBanner: false,
-        initialRoute: StartScreen.routeName,
+        initialRoute: initialRoute,
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case StartScreen.routeName:
@@ -44,7 +51,7 @@ class MyApp extends StatelessWidget {
             case DetailScreen.routeName:
               final arguments = settings.arguments as NewFriendScreenArgument;
               return MaterialPageRoute(
-                builder: (context) => DetailScreen(argument: arguments,),
+                builder: (context) => DetailScreen(argument: arguments),
               );
             case ForgotPasswordScreen.routeName:
               return MaterialPageRoute(
