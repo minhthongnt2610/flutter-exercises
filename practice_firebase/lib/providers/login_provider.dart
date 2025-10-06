@@ -23,11 +23,16 @@ class LoginProvider extends ChangeNotifier {
   }
 
   Future<String?> login() async {
+    if (_email == null || _password == null) {
+      return 'Please enter your email and password';
+    }
+    debugPrint("Login >> Email: $_email, Password: $_password");
     try {
       _authEmailService.signInWithEmailAnhPassword(
         email: _email!,
         password: _password!,
       );
+
       return null;
     } catch (e) {
       return e.toString();

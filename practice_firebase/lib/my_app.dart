@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     final initialRoute = isUserLoggedIn
         ? isUpdateProfile
               ? HomeScreen.routeName
-              : ProfileScreen.routeName
+              : CreateProfileScreen.routeName
         : StartScreen.routeName;
     return ChangeNotifierProvider(
       create: (_) => UserProvider(AuthEmailService()),
