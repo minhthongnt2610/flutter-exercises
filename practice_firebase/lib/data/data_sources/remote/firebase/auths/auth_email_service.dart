@@ -10,6 +10,11 @@ class AuthEmailService {
   bool isSignedIn() {
     return currentUser != null;
   }
+  bool isUpdateProfile(){
+    return (currentUser?.displayName?.isNotEmpty ?? false) &&(
+        currentUser?.photoURL?.isNotEmpty ?? false);
+
+  }
 
   //register with email and password
   Future<User?> signUpWithEmailAndPassword({
