@@ -1,7 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-
-import '../../../../../common_widgets/info_dialog.dart';
 import 'auth_shared_prefs.dart';
 
 class AuthEmailService {
