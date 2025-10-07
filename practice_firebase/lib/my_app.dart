@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
               : CreateProfileScreen.routeName
         : StartScreen.routeName;
     return ChangeNotifierProvider(
-      create: (_) => UserProvider(AuthEmailService()),
+      create: (_) => UserProvider(AuthEmailService())..fetchDataUser(),
       child: MaterialApp(
         title: 'Practice_Firebase',
         debugShowCheckedModeBanner: false,

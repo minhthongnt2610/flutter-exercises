@@ -74,8 +74,6 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
 
     try{
-      await _firebaseUser!.updatePhotoURL(_avatarUrl);
-      await _firebaseUser!.reload();
       if (_firebaseUser != null) {
         final updateUser = FbUserModel(
           id: _firebaseUser!.uid,
@@ -99,8 +97,8 @@ class UserProvider extends ChangeNotifier {
     }
     try
         {
-          // await _firebaseUser!.updateDisplayName(_nameUser);
-          // await _firebaseUser!.reload();
+          await fetchDataUser();
+
           if (_firebaseUser != null) {
             final updateUser = FbUserModel(
               id: _firebaseUser!.uid,
