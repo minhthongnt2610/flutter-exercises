@@ -86,6 +86,10 @@ class UserProvider extends ChangeNotifier {
   Future<void> setNameUser(String nameUser) async {
     _nameUser = nameUser;
     notifyListeners();
+    if (_firebaseUser == null) {
+      debugPrint('⚠️ setNameUser: _firebaseUser is null, skipping update.');
+      return;
+    }
     if (_firebaseUser != null) {
       final updateUser = FbUserModel(
         id: _firebaseUser!.uid,
@@ -105,7 +109,7 @@ class UserProvider extends ChangeNotifier {
   //khi khởi động lại app, hàm này tự động load từ firestore
   Future<void> fetchDataUser() async {
     //khi chua dang nhap
-    if (_firebaseUser != null) return;
+    if (_firebaseUser == null) return;
     //lay document
     final doc = await FirebaseFirestore.instance
         .collection("users")
