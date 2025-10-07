@@ -7,8 +7,8 @@ class FbUserModel {
 
   FbUserModel({required this.id, required this.nameUser, required this.photoUrl});
 
-  factory FbUserModel.fromJson(Map<String, dynamic> json) => FbUserModel(
-    id: json["id"],
+  factory FbUserModel.fromJson(Map<String, dynamic> json,String id) => FbUserModel(
+    id: id,
     nameUser: json["nameUser"],
     photoUrl: json["photoUrl"],
   );

@@ -52,11 +52,33 @@ class FirestoreService {
   }
 
   //add user
-  Future<void> addUser(String userid, FbUserModel addUser){}
+  Future<void> addUser(String userid, FbUserModel addUser) async {
+    await _firestore
+        .collection("users")
+        .doc(userid)
+        .set(addUser.toJson());
+  }
   //update user
-  Future<void> updateUser(String userid, FbUserModel updateUser){}
+  Future<void> updateUser(String userid, FbUserModel updateUser)async {
+    await _firestore
+        .collection("users")
+        .doc(userid)
+        .update(updateUser.toJson());
+  }
   //delete user
-  Future<void> deleteUser(String userid){}
+  Future<void> deleteUser(String userid)async {
+    await _firestore
+        .collection("users")
+        .doc(userid)
+        .delete();
+  }
   //get user
-  Future<FbUserModel> getUser(String userid){}
+  Stream<FbUserModel> getUser(String userid){
+    return _firestore
+        .collection("users")
+        .doc(userid)
+        .snapshots()
+        .map((doc) => FbUserModel.fromJson(doc.data()!, doc.id));
+
+  }
 }
