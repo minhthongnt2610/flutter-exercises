@@ -1,5 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:practice_firebase/models/firebase/fb_friend_model.dart';
+
 import 'package:practice_firebase/models/firebase/fb_user_model.dart';
 
 class UserModel {
@@ -9,8 +8,8 @@ class UserModel {
 
   UserModel({required this.id, required this.nameUser, required this.photoUrl});
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-    id: json["id"],
+  factory UserModel.fromJson(Map<String, dynamic> json,String id) => UserModel(
+    id: id,
     nameUser: json["nameUser"],
     photoUrl: json["photoUrl"],
   );

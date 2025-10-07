@@ -49,4 +49,10 @@ class FirestoreService {
         .doc(id)
         .delete();
   }
+
+  //add user
+  Future<void> addUser
+  //update user
+  //delete user
+  //get user
 }
