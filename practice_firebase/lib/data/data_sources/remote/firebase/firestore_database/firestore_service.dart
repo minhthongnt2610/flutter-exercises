@@ -5,9 +5,7 @@ import "../../../../../models/firebase/fb_friend_model.dart";
 
 class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // String get userid => _auth.currentUser!.uid;
 
   //create
   Future<void> addFriend(String userid, FbFriendModel addFriends) async {
