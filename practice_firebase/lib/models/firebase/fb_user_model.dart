@@ -1,3 +1,5 @@
+import '../user_model.dart';
+
 class FbUserModel {
   final String id;
   final String nameUser;
@@ -16,7 +18,11 @@ class FbUserModel {
     "nameUser": nameUser,
     "photoUrl": photoUrl,
   };
+}
 
-
+extension FbUserModelExtension on FbUserModel{
+  UserModel toUserModel(){
+    return UserModel(id: id, nameUser: nameUser, photoUrl: photoUrl);
+  }
 }
 
