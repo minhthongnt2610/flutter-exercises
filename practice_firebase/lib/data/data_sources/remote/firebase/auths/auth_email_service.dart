@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'auth_shared_prefs.dart';
 
 class AuthEmailService {
@@ -8,9 +9,7 @@ class AuthEmailService {
     return currentUser != null;
   }
   bool isUpdateProfile(){
-    return (currentUser?.displayName?.isNotEmpty ?? false) &&(
-        currentUser?.photoURL?.isNotEmpty ?? false);
-
+    return (currentUser?.displayName?.isNotEmpty ?? false) ;
   }
 
   //register with email and password

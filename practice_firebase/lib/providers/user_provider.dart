@@ -99,8 +99,8 @@ class UserProvider extends ChangeNotifier {
     }
     try
         {
-          await _firebaseUser!.updateDisplayName(_nameUser);
-          await _firebaseUser!.reload();
+          // await _firebaseUser!.updateDisplayName(_nameUser);
+          // await _firebaseUser!.reload();
           if (_firebaseUser != null) {
             final updateUser = FbUserModel(
               id: _firebaseUser!.uid,
@@ -109,6 +109,10 @@ class UserProvider extends ChangeNotifier {
             );
             await _firestore.updateUser(_firebaseUser!.uid, updateUser);
             debugPrint('NAME USER: '+ _nameUser!);
+            debugPrint('AVATAR URL: '+ _avatarUrl!);
+            debugPrint('NAME USER: '+ _authEmailService.currentUser!.displayName!);
+            debugPrint('AVATAR URL: '+ _authEmailService.currentUser!.photoURL!);
+
           }
         }
     catch(e){
