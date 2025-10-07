@@ -54,6 +54,8 @@ class FirestoreService {
   //add user
   Future<void> addUser(String id, FbUserModel addUser){}
   //update user
+  Future<void> updateUser(String id, FbUserModel updateUser){}
+
   //delete user
   //get user
 }
