@@ -40,19 +40,21 @@ class UserProvider extends ChangeNotifier {
             .collection("users")
             .doc(user.uid)
             .get();
+
         ///nếu document đã tồn tại trong firestore
-        if(snapshot.exists){
-            final fbUser = FbUserModel.fromJson(snapshot.data()!, snapshot.id);
-            _nameUser = fbUser.nameUser;
-            _avatarUrl = fbUser.photoUrl;
-        }else {
+        if (snapshot.exists) {
+          final fbUser = FbUserModel.fromJson(snapshot.data()!, snapshot.id);
+          _nameUser = fbUser.nameUser;
+          _avatarUrl = fbUser.photoUrl;
+        } else {
           ///nếu user chưa tồn tại trên firestore => tạo mới
           final newUser = FbUserModel(
             id: user.uid,
             nameUser: _nameUser ?? "Unknown User",
-            photoUrl:_avatarUrl ??  '',
+            photoUrl: _avatarUrl ?? '',
           );
-          // Gọi FirestoreService để thêm document mới vào "users"
+
+          /// Gọi FirestoreService để thêm document mới vào "users"
           await _firestore.addUser(user.uid, newUser);
         }
       }
@@ -66,15 +68,32 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setAvatarUrl(String url) {
+  Future<void> setAvatarUrl(String url) async {
     _avatarUrl = url;
     _avatarFile = null;
     notifyListeners();
+
+    if (_firebaseUser != null) {
+      final updateUser = FbUserModel(
+        id: _firebaseUser!.uid,
+        nameUser: _nameUser!,
+        photoUrl: _avatarUrl!,
+      );
+      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+    }
   }
 
-  void setNameUser(String nameUser) {
+  Future<void> setNameUser(String nameUser) async {
     _nameUser = nameUser;
     notifyListeners();
+    if (_firebaseUser != null) {
+      final updateUser = FbUserModel(
+        id: _firebaseUser!.uid,
+        nameUser: _nameUser!,
+        photoUrl: _avatarUrl!,
+      );
+      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+    }
   }
 
   void setEmailUser(String emailUser) {
