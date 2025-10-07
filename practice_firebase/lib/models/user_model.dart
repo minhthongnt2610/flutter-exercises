@@ -1,3 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:practice_firebase/models/firebase/fb_friend_model.dart';
+import 'package:practice_firebase/models/firebase/fb_user_model.dart';
+
 class UserModel {
   final String id;
   final String nameUser;
@@ -16,7 +20,10 @@ class UserModel {
     "nameUser": nameUser,
     "photoUrl": photoUrl,
   };
-
-
 }
 
+extension UserModelExtension on UserModel {
+  FbUserModel toFbUserModel() {
+    return FbUserModel(id: id, nameUser: nameUser, photoUrl: photoUrl);
+  }
+}
