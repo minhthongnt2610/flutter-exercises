@@ -73,13 +73,20 @@ class UserProvider extends ChangeNotifier {
     _avatarFile = null;
     notifyListeners();
 
-    if (_firebaseUser != null) {
-      final updateUser = FbUserModel(
-        id: _firebaseUser!.uid,
-        nameUser: _nameUser!,
-        photoUrl: _avatarUrl!,
-      );
-      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+    try{
+      await _firebaseUser!.updatePhotoURL(_avatarUrl);
+      await _firebaseUser!.reload();
+      if (_firebaseUser != null) {
+        final updateUser = FbUserModel(
+          id: _firebaseUser!.uid,
+          nameUser: _nameUser!,
+          photoUrl: _avatarUrl!,
+        );
+        await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+        debugPrint('AVATAR URL: '+ _avatarUrl!);
+      }
+    }catch(e){
+      debugPrint("❌ Error updating avatar: $e");
     }
   }
 
@@ -90,13 +97,26 @@ class UserProvider extends ChangeNotifier {
       debugPrint('⚠️ setNameUser: _firebaseUser is null, skipping update.');
       return;
     }
-    if (_firebaseUser != null) {
-      final updateUser = FbUserModel(
-        id: _firebaseUser!.uid,
-        nameUser: _nameUser!,
-        photoUrl: _avatarUrl!,
-      );
-      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+    try
+        {
+          // await _firebaseUser!.updateDisplayName(_nameUser);
+          // await _firebaseUser!.reload();
+          if (_firebaseUser != null) {
+            final updateUser = FbUserModel(
+              id: _firebaseUser!.uid,
+              nameUser: _nameUser!,
+              photoUrl: _avatarUrl!,
+            );
+            await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+            debugPrint('NAME USER: '+ _nameUser!);
+            debugPrint('AVATAR URL: '+ _avatarUrl!);
+            debugPrint('NAME USER: '+ _authEmailService.currentUser!.displayName!);
+            debugPrint('AVATAR URL: '+ _authEmailService.currentUser!.photoURL!);
+
+          }
+        }
+    catch(e){
+      debugPrint("❌ Error updating name: $e");
     }
   }
 
