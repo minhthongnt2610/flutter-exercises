@@ -2,6 +2,7 @@ import "package:cloud_firestore/cloud_firestore.dart";
 import "package:firebase_auth/firebase_auth.dart";
 
 import "../../../../../models/firebase/fb_friend_model.dart";
+import "../../../../../models/firebase/fb_user_model.dart";
 
 class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -51,7 +52,7 @@ class FirestoreService {
   }
 
   //add user
-  Future<void> addUser
+  Future<void> addUser(String id, FbUserModel addUser){}
   //update user
   //delete user
   //get user
