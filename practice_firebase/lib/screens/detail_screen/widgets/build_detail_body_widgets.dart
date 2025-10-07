@@ -111,7 +111,7 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                     }
                   } else {
                     final createFriend = FriendModel(
-                      id: _authEmailService.currentUser!.uid,
+                      id: null,
                       name: name ?? '',
                       birthday: birthday ?? DateTime.now(),
                       email: email ?? '',
