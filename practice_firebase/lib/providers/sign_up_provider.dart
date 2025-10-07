@@ -32,7 +32,7 @@ class SignUpProvider extends ChangeNotifier {
       return 'Password not match';
     }
     try {
-      _authEmailService.signUpWithEmailAndPassword(
+      await _authEmailService.signUpWithEmailAndPassword(
         email: _email!,
         password: _password!,
       );

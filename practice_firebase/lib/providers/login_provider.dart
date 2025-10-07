@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_email_service.dart';
 
-import '../common_widgets/info_dialog.dart';
 
 class LoginProvider extends ChangeNotifier {
   final _authEmailService = AuthEmailService();
@@ -28,7 +27,7 @@ class LoginProvider extends ChangeNotifier {
     }
     debugPrint("Login >> Email: $_email, Password: $_password");
     try {
-      _authEmailService.signInWithEmailAnhPassword(
+      await _authEmailService.signInWithEmailAndPassword(
         email: _email!,
         password: _password!,
       );

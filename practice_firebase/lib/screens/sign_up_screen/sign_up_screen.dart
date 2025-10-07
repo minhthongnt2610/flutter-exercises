@@ -159,10 +159,11 @@ class SignUpBody extends StatelessWidget {
                         if (_formKey.currentState!.validate()) {
                           // tất cả field hợp lệ
                           final error = await signUpProvider.signUp();
-                          Navigator.pushNamed(context, CreateProfileScreen.routeName);
+
                           if (error != null) {
                             _showErrorDialog(context: context, error: error);
                           } else {
+                            Navigator.pushNamed(context, CreateProfileScreen.routeName);
                             debugPrint('Sign up success');
                           }
                         }

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_email_service.dart';
+import 'package:practice_firebase/screens/start_screen/start_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../common_widgets/primary_button.dart';
@@ -16,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileProvider = context.watch<UserProvider>();
-    final auth = Provider.of<AuthEmailService>(context);
+    final _auth = AuthEmailService();
     int height = MediaQuery.of(context).size.height.toInt();
 
     return Scaffold(
@@ -102,8 +103,17 @@ class ProfileScreen extends StatelessWidget {
                   title: 'Sign Out',
                   isColor: true,
                   onPressed: () async {
-                    await auth.signOut();
-                    Navigator.pop(context);
+                    final login = await _showLoginDialog(context);
+                    if (login == true) {
+                      await _auth.signOut();
+                    }
+                    if (context.mounted) {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        StartScreen.routeName,
+                        (route) => false,
+                      );
+                    }
                   },
                 ),
               ],
@@ -111,6 +121,28 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Future<bool?> _showLoginDialog(BuildContext context) {
+    return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Login'),
+          content: const Text('Are you sure you want to log out this account?'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: const Text('Log out'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
