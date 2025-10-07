@@ -100,4 +100,23 @@ class UserProvider extends ChangeNotifier {
     _emailUser = emailUser;
     notifyListeners();
   }
+
+  // ======== HÀM ĐỒNG BỘ FIRESTORE → PROVIDER ======== //
+  //khi khởi động lại app, hàm này tự động load từ firestore
+  Future<void> fetchDataUser() async {
+    //khi chua dang nhap
+    if (_firebaseUser != null) return;
+    //lay document
+    final doc = await FirebaseFirestore.instance
+        .collection("users")
+        .doc(_firebaseUser!.uid)
+        .get();
+    //nếu document đã tồn tại trong firestore
+    if (doc.exists) {
+      final fbUser = await FbUserModel.fromJson(doc.data()!, doc.id);
+      _nameUser = fbUser.nameUser;
+      _avatarUrl = fbUser.photoUrl;
+      notifyListeners();
+    }
+  }
 }
