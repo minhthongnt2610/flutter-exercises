@@ -28,7 +28,7 @@ class LoginProvider extends ChangeNotifier {
     }
     debugPrint("Login >> Email: $_email, Password: $_password");
     try {
-      await _authEmailService.signInWithEmailAnhPassword(
+      await _authEmailService.signInWithEmailAndPassword(
         email: _email!,
         password: _password!,
       );

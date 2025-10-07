@@ -39,7 +39,7 @@ class AuthEmailService {
   }
 
   //sign in with email and password
-  Future<User?> signInWithEmailAnhPassword({
+  Future<User?> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
