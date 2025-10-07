@@ -139,7 +139,6 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                       widget.argument.friendModel!.id!,
                       _authEmailService.currentUser!.uid,
                   );
-
                   }
 
                   if (context.mounted) {

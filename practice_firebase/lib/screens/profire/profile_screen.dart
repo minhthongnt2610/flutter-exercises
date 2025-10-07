@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileProvider = context.watch<UserProvider>();
-    final auth = Provider.of<AuthEmailService>(context);
+    final _auth = Provider.of<AuthEmailService>(context);
     int height = MediaQuery.of(context).size.height.toInt();
 
     return Scaffold(
@@ -102,8 +102,13 @@ class ProfileScreen extends StatelessWidget {
                   title: 'Sign Out',
                   isColor: true,
                   onPressed: () async {
-                    await auth.signOut();
-                    Navigator.pop(context);
+                    final login = await _showLoginDialog(context);
+                    if (login == true) {
+                      await _auth.signOut();
+                    }
+                    if(context.mounted){
+                      Navigator.of(context).pop(true);
+                    }
                   },
                 ),
               ],
@@ -111,6 +116,27 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+  Future<bool?> _showLoginDialog(BuildContext context) {
+    return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Login'),
+          content: const Text('Are you sure you want to login this account?'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: const Text('Login'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
