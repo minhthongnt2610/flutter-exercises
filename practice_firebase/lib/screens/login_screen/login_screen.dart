@@ -29,6 +29,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
 class LoginBody extends StatelessWidget {
   LoginBody({super.key});
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
     int height = MediaQuery.of(context).size.height.toInt();
@@ -94,7 +96,7 @@ class LoginBody extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: TextEditingController(),
+                      controller: emailController,
                     ),
                     SizedBox(height: 20 * height / 928),
                     FieldWidget(
@@ -118,7 +120,7 @@ class LoginBody extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: TextEditingController(),
+                      controller: passwordController,
                     ),
                     Container(
                       alignment: Alignment.centerRight,
