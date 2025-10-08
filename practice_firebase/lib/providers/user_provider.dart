@@ -73,10 +73,8 @@ class UserProvider extends ChangeNotifier {
       );
       await _firestore.updateUser(_firebaseUser!.uid, updateUser);
       debugPrint("✅ Avatar updated successfully: $_avatarUrl");
-
     } catch (e) {
       debugPrint("❌ Error updating avatar: $e");
-
     }
   }
 
@@ -124,8 +122,7 @@ class UserProvider extends ChangeNotifier {
       // ✅ Cập nhật Firestore
       final updateUser = FbUserModel(
         id: _firebaseUser!.uid,
-        nameUser: _nameUser!,
-        photoUrl: _avatarUrl ?? '',
+        nameUser: _nameUser ?? 'Unknown User',
       );
       await _firestore.updateUser(_firebaseUser!.uid, updateUser);
 
@@ -153,6 +150,7 @@ class UserProvider extends ChangeNotifier {
       final fbUser = FbUserModel.fromJson(doc.data()!, doc.id);
       _nameUser = fbUser.nameUser;
       _avatarUrl = fbUser.photoUrl;
+
       notifyListeners();
     }
   }
