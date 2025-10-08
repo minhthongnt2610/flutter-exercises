@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/firestore_database/firestore_service.dart';
 import 'package:practice_firebase/models/firebase/fb_user_model.dart';
-
 import '../data/data_sources/remote/firebase/auths/auth_email_service.dart';
 
 class UserProvider extends ChangeNotifier {
@@ -24,7 +22,6 @@ class UserProvider extends ChangeNotifier {
   String? get emailUser => _emailUser;
 
   UserProvider(this._authEmailService) {
-    // Khởi tạo user ngay lần đầu
     _firebaseUser = _authEmailService.currentUser;
 
     // Lắng nghe sự thay đổi đăng nhập
@@ -35,26 +32,22 @@ class UserProvider extends ChangeNotifier {
       _avatarUrl = user?.photoURL;
 
       if (user != null) {
-        ///lấy dữ liệu tương ứng từ firestore
         final snapshot = await FirebaseFirestore.instance
             .collection("users")
             .doc(user.uid)
             .get();
 
-        ///nếu document đã tồn tại trong firestore
         if (snapshot.exists) {
           final fbUser = FbUserModel.fromJson(snapshot.data()!, snapshot.id);
           _nameUser = fbUser.nameUser;
           _avatarUrl = fbUser.photoUrl;
         } else {
-          ///nếu user chưa tồn tại trên firestore => tạo mới
+          // Tạo document mới nếu chưa có
           final newUser = FbUserModel(
             id: user.uid,
             nameUser: _nameUser ?? "Unknown User",
             photoUrl: _avatarUrl ?? '',
           );
-
-          /// Gọi FirestoreService để thêm document mới vào "users"
           await _firestore.addUser(user.uid, newUser);
         }
       }
@@ -62,58 +55,82 @@ class UserProvider extends ChangeNotifier {
     });
   }
 
-  void setAvatarFile(File file) {
+  // Cập nhật ảnh từ file cục bộ (chưa upload)
+  Future<void> setAvatarFile(File file) async {
+    if (_firebaseUser == null) return;
     _avatarFile = file;
     _avatarUrl = null;
     notifyListeners();
+
+    try {
+      await _firebaseUser!.updatePhotoURL(_avatarFile.toString());
+      await _firebaseUser!.reload();
+
+      final updateUser = FbUserModel(
+        id: _firebaseUser!.uid,
+        nameUser: _nameUser ?? 'Unknown User',
+        photoUrl: _avatarFile.toString(),
+      );
+      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+      debugPrint("✅ Avatar updated successfully: $_avatarUrl");
+
+    } catch (e) {
+      debugPrint("❌ Error updating avatar: $e");
+
+    }
   }
 
+  // Cập nhật URL ảnh đã upload lên Firebase Storage
   Future<void> setAvatarUrl(String url) async {
+    if (_firebaseUser == null) return;
+
     _avatarUrl = url;
     _avatarFile = null;
     notifyListeners();
 
-    try{
-      if (_firebaseUser != null) {
-        final updateUser = FbUserModel(
-          id: _firebaseUser!.uid,
-          nameUser: _nameUser!,
-          photoUrl: _avatarUrl!,
-        );
-        await _firestore.updateUser(_firebaseUser!.uid, updateUser);
-        debugPrint('AVATAR URL: '+ _avatarUrl!);
-      }
-    }catch(e){
+    try {
+      // ✅ Cập nhật FirebaseAuth profile
+      await _firebaseUser!.updatePhotoURL(url);
+      await _firebaseUser!.reload();
+      _firebaseUser = FirebaseAuth.instance.currentUser;
+
+      // ✅ Cập nhật Firestore
+      final updateUser = FbUserModel(
+        id: _firebaseUser!.uid,
+        nameUser: _nameUser ?? "Unknown User",
+        photoUrl: _avatarUrl ?? '',
+      );
+      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+
+      debugPrint("✅ Avatar updated successfully: $_avatarUrl");
+    } catch (e) {
       debugPrint("❌ Error updating avatar: $e");
     }
   }
 
+  // Cập nhật tên người dùng
   Future<void> setNameUser(String nameUser) async {
+    if (_firebaseUser == null) return;
+
     _nameUser = nameUser;
     notifyListeners();
-    if (_firebaseUser == null) {
-      debugPrint('⚠️ setNameUser: _firebaseUser is null, skipping update.');
-      return;
-    }
-    try
-        {
-          await fetchDataUser();
 
-          if (_firebaseUser != null) {
-            final updateUser = FbUserModel(
-              id: _firebaseUser!.uid,
-              nameUser: _nameUser!,
-              photoUrl: _avatarUrl!,
-            );
-            await _firestore.updateUser(_firebaseUser!.uid, updateUser);
-            debugPrint('NAME USER: '+ _nameUser!);
-            debugPrint('AVATAR URL: '+ _avatarUrl!);
-            debugPrint('NAME USER: '+ _authEmailService.currentUser!.displayName!);
-            debugPrint('AVATAR URL: '+ _authEmailService.currentUser!.photoURL!);
+    try {
+      // ✅ Cập nhật FirebaseAuth displayName
+      await _firebaseUser!.updateDisplayName(nameUser);
+      await _firebaseUser!.reload();
+      _firebaseUser = FirebaseAuth.instance.currentUser;
 
-          }
-        }
-    catch(e){
+      // ✅ Cập nhật Firestore
+      final updateUser = FbUserModel(
+        id: _firebaseUser!.uid,
+        nameUser: _nameUser!,
+        photoUrl: _avatarUrl ?? '',
+      );
+      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+
+      debugPrint("✅ Name updated successfully: $_nameUser");
+    } catch (e) {
       debugPrint("❌ Error updating name: $e");
     }
   }
@@ -123,19 +140,17 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ======== HÀM ĐỒNG BỘ FIRESTORE → PROVIDER ======== //
-  //khi khởi động lại app, hàm này tự động load từ firestore
+  // ======== Load dữ liệu Firestore → Provider ======== //
   Future<void> fetchDataUser() async {
-    //khi chua dang nhap
     if (_firebaseUser == null) return;
-    //lay document
+
     final doc = await FirebaseFirestore.instance
         .collection("users")
         .doc(_firebaseUser!.uid)
         .get();
-    //nếu document đã tồn tại trong firestore
+
     if (doc.exists) {
-      final fbUser = await FbUserModel.fromJson(doc.data()!, doc.id);
+      final fbUser = FbUserModel.fromJson(doc.data()!, doc.id);
       _nameUser = fbUser.nameUser;
       _avatarUrl = fbUser.photoUrl;
       notifyListeners();
