@@ -59,20 +59,20 @@ class UserProvider extends ChangeNotifier {
   Future<void> setAvatarFile(File file) async {
     if (_firebaseUser == null) return;
     _avatarFile = file;
-    _avatarUrl = null;
+    _avatarUrl = file.path;
     notifyListeners();
 
     try {
-      await _firebaseUser!.updatePhotoURL(_avatarFile.toString());
-      await _firebaseUser!.reload();
+
 
       final updateUser = FbUserModel(
         id: _firebaseUser!.uid,
         nameUser: _nameUser ?? 'Unknown User',
-        photoUrl: _avatarFile.toString(),
+        photoUrl: _avatarUrl!,
       );
       await _firestore.updateUser(_firebaseUser!.uid, updateUser);
       debugPrint("✅ Avatar updated successfully: $_avatarUrl");
+
     } catch (e) {
       debugPrint("❌ Error updating avatar: $e");
     }

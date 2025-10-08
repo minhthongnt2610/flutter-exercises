@@ -19,7 +19,7 @@ class UserModel {
     id: id,
     nameUser: json["nameUser"],
     photoUrl: json["photoUrl"],
-    photoFile: File(json["photoUrl"]),
+    photoFile: File(json["photoFile"]),
   );
 
   Map<String, dynamic> toJson() => {
