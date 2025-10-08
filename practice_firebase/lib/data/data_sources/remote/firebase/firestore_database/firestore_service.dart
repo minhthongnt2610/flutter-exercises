@@ -79,4 +79,5 @@ class FirestoreService {
         .snapshots()
         .map((doc) => FbUserModel.fromJson(doc.data()!, doc.id));
   }
+
 }
