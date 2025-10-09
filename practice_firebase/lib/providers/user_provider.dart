@@ -31,7 +31,6 @@ class UserProvider extends ChangeNotifier {
       _nameUser = user?.displayName;
       _avatarUrl = user?.photoURL;
 
-
       if (user != null) {
         final snapshot = await FirebaseFirestore.instance
             .collection("users")
@@ -58,20 +57,21 @@ class UserProvider extends ChangeNotifier {
 
   // Cập nhật ảnh từ file cục bộ (chưa upload)
   Future<void> setAvatarFile(File file) async {
-    if (_firebaseUser == null) return;
-    _avatarFile = file;
-    _avatarUrl = file.path;
-    notifyListeners();
+    // if (_firebaseUser == null) return;
+    // _avatarFile = file;
+    // _avatarUrl = file.path;
+    // notifyListeners();
+    // try {
+    //   await _firestore.updateUser(_firebaseUser!.uid, {
+    //     'photoUrl': _avatarUrl,
+    //   });
+    //   debugPrint("✅ Avatar updated successfully: $_avatarUrl");
+    //
+    // } catch (e) {
+    //   debugPrint("❌ Error updating avatar: $e");
+    // }
 
-    try {
-      await _firestore.updateUser(_firebaseUser!.uid, {
-        'photoUrl': _avatarUrl,
-      });
-      debugPrint("✅ Avatar updated successfully: $_avatarUrl");
-
-    } catch (e) {
-      debugPrint("❌ Error updating avatar: $e");
-    }
+    debugPrint("HÀM NÀY ĐƯỢC GỌI");
   }
 
   // Cập nhật URL ảnh đã upload lên Firebase Storage
@@ -83,12 +83,10 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      await _firestore.updateUser(_firebaseUser!.uid, {
-        'photoUrl': _avatarUrl,
-      }
-      );
+      await _firestore.updateUser(_firebaseUser!.uid, {'photoUrl': _avatarUrl});
 
       debugPrint("✅ Avatar updated successfully: $_avatarUrl");
+      debugPrint("HÀM NÀY ĐƯỢC GỌI");
     } catch (e) {
       debugPrint("❌ Error updating avatar: $e");
     }
@@ -107,9 +105,7 @@ class UserProvider extends ChangeNotifier {
       await _firebaseUser!.reload();
       _firebaseUser = FirebaseAuth.instance.currentUser;
 
-      await _firestore.updateUser(_firebaseUser!.uid, {
-        'nameUser': _nameUser,
-      });
+      await _firestore.updateUser(_firebaseUser!.uid, {'nameUser': _nameUser});
 
       debugPrint("✅ Name updated successfully: $_nameUser");
     } catch (e) {
