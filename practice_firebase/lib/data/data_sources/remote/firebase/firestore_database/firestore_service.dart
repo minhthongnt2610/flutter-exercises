@@ -6,7 +6,6 @@ import "../../../../../models/firebase/fb_user_model.dart";
 class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-
   //create
   Future<void> addFriend(String userid, FbFriendModel addFriends) async {
     await _firestore
@@ -52,32 +51,25 @@ class FirestoreService {
 
   //add user
   Future<void> addUser(String userid, FbUserModel addUser) async {
-    await _firestore
-        .collection("users")
-        .doc(userid)
-        .set(addUser.toJson());
+    await _firestore.collection("users").doc(userid).set(addUser.toJson());
   }
+
   //update user
-  Future<void> updateUser(String userid, FbUserModel updateUser)async {
-    await _firestore
-        .collection("users")
-        .doc(userid)
-        .update(updateUser.toJson());
+  Future<void> updateUser(String userid, Map<String, dynamic> data) async {
+    await _firestore.collection("users").doc(userid).update(data);
   }
+
   //delete user
-  Future<void> deleteUser(String userid)async {
-    await _firestore
-        .collection("users")
-        .doc(userid)
-        .delete();
+  Future<void> deleteUser(String userid) async {
+    await _firestore.collection("users").doc(userid).delete();
   }
+
   //get user
-  Stream<FbUserModel> getUser(String userid){
+  Stream<FbUserModel> getUser(String userid) {
     return _firestore
         .collection("users")
         .doc(userid)
         .snapshots()
         .map((doc) => FbUserModel.fromJson(doc.data()!, doc.id));
   }
-
 }

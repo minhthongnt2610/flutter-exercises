@@ -71,7 +71,9 @@ class UserProvider extends ChangeNotifier {
         nameUser: _nameUser ?? 'Unknown User',
         photoUrl: _avatarUrl!,
       );
-      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+      await _firestore.updateUser(_firebaseUser!.uid, {
+        'photoUrl': _avatarUrl,
+      });
       debugPrint("✅ Avatar updated successfully: $_avatarUrl");
 
     } catch (e) {
@@ -99,7 +101,10 @@ class UserProvider extends ChangeNotifier {
         nameUser: _nameUser ?? "Unknown User",
         photoUrl: _avatarUrl ?? '',
       );
-      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+      await _firestore.updateUser(_firebaseUser!.uid, {
+        'photoUrl': _avatarUrl,
+      }
+      );
 
       debugPrint("✅ Avatar updated successfully: $_avatarUrl");
     } catch (e) {
@@ -125,7 +130,9 @@ class UserProvider extends ChangeNotifier {
         id: _firebaseUser!.uid,
         nameUser: _nameUser ?? 'Unknown User',
       );
-      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+      await _firestore.updateUser(_firebaseUser!.uid, {
+        'nameUser': _nameUser,
+      });
 
       debugPrint("✅ Name updated successfully: $_nameUser");
     } catch (e) {
