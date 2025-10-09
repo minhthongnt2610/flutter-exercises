@@ -31,6 +31,7 @@ class UserProvider extends ChangeNotifier {
       _nameUser = user?.displayName;
       _avatarUrl = user?.photoURL;
 
+
       if (user != null) {
         final snapshot = await FirebaseFirestore.instance
             .collection("users")

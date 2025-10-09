@@ -14,6 +14,7 @@ class AvatarSelectionScreen extends StatelessWidget {
     "https://i.pravatar.cc/150?img=6",
     "https://i.pravatar.cc/150?img=7",
     "https://i.pravatar.cc/150?img=8",
+    "https://i.pravatar.cc/150?img=9",
   ];
 
   AvatarSelectionScreen({super.key});
