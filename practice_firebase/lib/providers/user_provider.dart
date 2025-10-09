@@ -57,25 +57,21 @@ class UserProvider extends ChangeNotifier {
 
   // Cập nhật ảnh từ file cục bộ (chưa upload)
   Future<void> setAvatarFile(File file) async {
-    if (_firebaseUser == null) return;
-    _avatarFile = file;
-    _avatarUrl = file.path;
-    notifyListeners();
+    // if (_firebaseUser == null) return;
+    // _avatarFile = file;
+    // _avatarUrl = file.path;
+    // notifyListeners();
+    // try {
+    //   await _firestore.updateUser(_firebaseUser!.uid, {
+    //     'photoUrl': _avatarUrl,
+    //   });
+    //   debugPrint("✅ Avatar updated successfully: $_avatarUrl");
+    //
+    // } catch (e) {
+    //   debugPrint("❌ Error updating avatar: $e");
+    // }
 
-    try {
-
-
-      final updateUser = FbUserModel(
-        id: _firebaseUser!.uid,
-        nameUser: _nameUser ?? 'Unknown User',
-        photoUrl: _avatarUrl!,
-      );
-      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
-      debugPrint("✅ Avatar updated successfully: $_avatarUrl");
-
-    } catch (e) {
-      debugPrint("❌ Error updating avatar: $e");
-    }
+    debugPrint("HÀM NÀY ĐƯỢC GỌI");
   }
 
   // Cập nhật URL ảnh đã upload lên Firebase Storage
@@ -87,20 +83,10 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      // ✅ Cập nhật FirebaseAuth profile
-      await _firebaseUser!.updatePhotoURL(url);
-      await _firebaseUser!.reload();
-      _firebaseUser = FirebaseAuth.instance.currentUser;
-
-      // ✅ Cập nhật Firestore
-      final updateUser = FbUserModel(
-        id: _firebaseUser!.uid,
-        nameUser: _nameUser ?? "Unknown User",
-        photoUrl: _avatarUrl ?? '',
-      );
-      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+      await _firestore.updateUser(_firebaseUser!.uid, {'photoUrl': _avatarUrl});
 
       debugPrint("✅ Avatar updated successfully: $_avatarUrl");
+      debugPrint("HÀM NÀY ĐƯỢC GỌI");
     } catch (e) {
       debugPrint("❌ Error updating avatar: $e");
     }
@@ -119,12 +105,7 @@ class UserProvider extends ChangeNotifier {
       await _firebaseUser!.reload();
       _firebaseUser = FirebaseAuth.instance.currentUser;
 
-      // ✅ Cập nhật Firestore
-      final updateUser = FbUserModel(
-        id: _firebaseUser!.uid,
-        nameUser: _nameUser ?? 'Unknown User',
-      );
-      await _firestore.updateUser(_firebaseUser!.uid, updateUser);
+      await _firestore.updateUser(_firebaseUser!.uid, {'nameUser': _nameUser});
 
       debugPrint("✅ Name updated successfully: $_nameUser");
     } catch (e) {

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/data/data_sources/local/image_picker_service.dart';
 import '../../contains/app_colors.dart';
@@ -14,6 +16,7 @@ class AvatarSelectionScreen extends StatelessWidget {
     "https://i.pravatar.cc/150?img=6",
     "https://i.pravatar.cc/150?img=7",
     "https://i.pravatar.cc/150?img=8",
+    "https://i.pravatar.cc/150?img=9",
   ];
 
   AvatarSelectionScreen({super.key});

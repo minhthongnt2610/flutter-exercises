@@ -4,8 +4,8 @@ import '../user_model.dart';
 class FbUserModel {
   final String id;
   final String nameUser;
-  final String? photoUrl;     // URL online (lưu trong Firestore)
-  final File? photoFile;      // File local (không lưu trong Firestore)
+  final String? photoUrl;
+  final File? photoFile;
 
   FbUserModel({
     required this.id,
