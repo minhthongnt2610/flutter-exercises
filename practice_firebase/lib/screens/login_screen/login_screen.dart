@@ -138,7 +138,7 @@ class LoginBody extends StatelessWidget {
                       isColor: true,
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                           await   loginProvider.login();
+                          await loginProvider.login();
                           Navigator.pushNamed(context, HomeScreen.routeName);
                         }
                       },

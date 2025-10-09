@@ -128,24 +128,26 @@ class _BuildDetailBodyWidgetState extends State<BuildDetailBodyWidget> {
                 },
               ),
               const SizedBox(height: 20),
-              _isEditing ? DeleteButton(
-                title: 'Delete',
-                onTap: () async {
-                  print(_authEmailService.currentUser!.uid);
-                  print(widget.argument.friendModel!.id!);
-                  final delete = await _showDeleteDialog(context);
-                  if (delete == true) {
-                    await _firestoreService.deleteFriend(
-                      widget.argument.friendModel!.id!,
-                      _authEmailService.currentUser!.uid,
-                  );
-                  }
+              _isEditing
+                  ? DeleteButton(
+                      title: 'Delete',
+                      onTap: () async {
+                        print(_authEmailService.currentUser!.uid);
+                        print(widget.argument.friendModel!.id!);
+                        final delete = await _showDeleteDialog(context);
+                        if (delete == true) {
+                          await _firestoreService.deleteFriend(
+                            widget.argument.friendModel!.id!,
+                            _authEmailService.currentUser!.uid,
+                          );
+                        }
 
-                  if (context.mounted) {
-                    Navigator.of(context).pop(true);
-                  }
-                },
-              ) : Container(),
+                        if (context.mounted) {
+                          Navigator.of(context).pop(true);
+                        }
+                      },
+                    )
+                  : Container(),
             ],
           ),
         ),

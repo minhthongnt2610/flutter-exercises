@@ -44,7 +44,9 @@ class FriendElement extends StatelessWidget {
                       width: 15,
                       child: Text(' :', style: TextStyle(color: Colors.black)),
                     ),
-                    Expanded(child: InfoFriendWidgets(title: friend.displayDate)),
+                    Expanded(
+                      child: InfoFriendWidgets(title: friend.displayDate),
+                    ),
                   ],
                 ),
                 Row(

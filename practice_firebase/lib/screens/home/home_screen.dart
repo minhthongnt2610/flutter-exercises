@@ -31,9 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
       return Scaffold(body: Center(child: Text("No user found")));
     }
     return StreamBuilder(
-      stream: _firestoreService.getFriends(
-        currentUser.uid,
-      ),
+      stream: _firestoreService.getFriends(currentUser.uid),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Scaffold(
@@ -72,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
           floatingActionButton: FloatingActionButton(
             heroTag: 'fab_add',
             onPressed: () async {
-               _navigateToNewFriendScreen();
+              _navigateToNewFriendScreen();
             },
             child: const Icon(Icons.add),
           ),
@@ -99,13 +97,17 @@ class _HomeScreenState extends State<HomeScreen> {
       return;
     }
   }
+
   Widget _buildFriendListWidget(List<FriendModel> friends) {
     if (friends.isEmpty) {
       return Center(
         child: Container(
           child: Text(
             'You have no friend to complete.',
-            style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 16),
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.8),
+              fontSize: 16,
+            ),
             textAlign: TextAlign.center,
           ),
         ),
@@ -116,8 +118,8 @@ class _HomeScreenState extends State<HomeScreen> {
           final friend = friends[index];
           return FriendElement(
             friend: friend,
-            onTap: ()   {
-               _navigateToNewFriendScreen(friendModel: friend);
+            onTap: () {
+              _navigateToNewFriendScreen(friendModel: friend);
             },
           );
         },
@@ -125,6 +127,4 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
   }
-
 }
-

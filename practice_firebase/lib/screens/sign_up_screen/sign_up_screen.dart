@@ -34,7 +34,9 @@ class SignUpBody extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
   ///Khi user nhấn Sign up, hàm _formKey.currentState!.validate() sẽ gọi validator của tất cả FiledWidget
 
   @override
@@ -163,7 +165,10 @@ class SignUpBody extends StatelessWidget {
                           if (error != null) {
                             _showErrorDialog(context: context, error: error);
                           } else {
-                            Navigator.pushNamed(context, CreateProfileScreen.routeName);
+                            Navigator.pushNamed(
+                              context,
+                              CreateProfileScreen.routeName,
+                            );
                             debugPrint('Sign up success');
                           }
                         }

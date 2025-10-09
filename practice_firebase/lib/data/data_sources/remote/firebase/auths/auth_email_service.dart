@@ -8,8 +8,9 @@ class AuthEmailService {
   bool isSignedIn() {
     return currentUser != null;
   }
-  bool isUpdateProfile(){
-    return (currentUser?.displayName?.isNotEmpty ?? false) ;
+
+  bool isUpdateProfile() {
+    return (currentUser?.displayName?.isNotEmpty ?? false);
   }
 
   //register with email and password

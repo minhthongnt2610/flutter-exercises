@@ -6,6 +6,10 @@ class InfoFriendWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title, style: TextStyle(fontSize: 16, color: Colors.black),overflow: TextOverflow.ellipsis,);
+    return Text(
+      title,
+      style: TextStyle(fontSize: 16, color: Colors.black),
+      overflow: TextOverflow.ellipsis,
+    );
   }
 }
