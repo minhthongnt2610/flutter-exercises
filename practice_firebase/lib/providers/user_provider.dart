@@ -64,13 +64,6 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-
-
-      final updateUser = FbUserModel(
-        id: _firebaseUser!.uid,
-        nameUser: _nameUser ?? 'Unknown User',
-        photoUrl: _avatarUrl!,
-      );
       await _firestore.updateUser(_firebaseUser!.uid, {
         'photoUrl': _avatarUrl,
       });
@@ -90,17 +83,6 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      // ✅ Cập nhật FirebaseAuth profile
-      await _firebaseUser!.updatePhotoURL(url);
-      await _firebaseUser!.reload();
-      _firebaseUser = FirebaseAuth.instance.currentUser;
-
-      // ✅ Cập nhật Firestore
-      final updateUser = FbUserModel(
-        id: _firebaseUser!.uid,
-        nameUser: _nameUser ?? "Unknown User",
-        photoUrl: _avatarUrl ?? '',
-      );
       await _firestore.updateUser(_firebaseUser!.uid, {
         'photoUrl': _avatarUrl,
       }
@@ -125,11 +107,6 @@ class UserProvider extends ChangeNotifier {
       await _firebaseUser!.reload();
       _firebaseUser = FirebaseAuth.instance.currentUser;
 
-      // ✅ Cập nhật Firestore
-      final updateUser = FbUserModel(
-        id: _firebaseUser!.uid,
-        nameUser: _nameUser ?? 'Unknown User',
-      );
       await _firestore.updateUser(_firebaseUser!.uid, {
         'nameUser': _nameUser,
       });
