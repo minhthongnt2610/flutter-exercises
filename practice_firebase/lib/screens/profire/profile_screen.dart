@@ -56,13 +56,15 @@ class ProfileScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () async {
                     final selectedAvatar = await Navigator.pushNamed(
+
+                      
                       context,
                       AvatarSelectionScreen.routeName,
                     );
 
                     if (selectedAvatar is File) {
 
-                      
+
                       profileProvider.setAvatarFile(selectedAvatar);
                     }
                     if (selectedAvatar is String) {
