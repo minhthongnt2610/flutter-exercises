@@ -30,7 +30,7 @@ class DetailScreen extends StatelessWidget {
                 ),
               ),
             ),
-            BuildDetailBodyWidget(argument: argument,),
+            BuildDetailBodyWidget(argument: argument),
           ],
         ),
       ),

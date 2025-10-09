@@ -56,15 +56,11 @@ class ProfileScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () async {
                     final selectedAvatar = await Navigator.pushNamed(
-
-                      
                       context,
                       AvatarSelectionScreen.routeName,
                     );
 
                     if (selectedAvatar is File) {
-
-
                       profileProvider.setAvatarFile(selectedAvatar);
                     }
                     if (selectedAvatar is String) {
@@ -74,8 +70,7 @@ class ProfileScreen extends StatelessWidget {
                   },
                   child: CircleAvatar(
                     radius: 60,
-                    backgroundImage:
-                    profileProvider.avatarFile != null
+                    backgroundImage: profileProvider.avatarFile != null
                         ? FileImage(profileProvider.avatarFile!)
                         : (profileProvider.avatarUrl != null
                                   ? NetworkImage(profileProvider.avatarUrl!)

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_email_service.dart';
 
-
 class LoginProvider extends ChangeNotifier {
   final _authEmailService = AuthEmailService();
   String? _email;

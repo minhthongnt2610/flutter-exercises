@@ -115,10 +115,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
                             profileProvider.setNameUser(nameController.text);
-                            Navigator.pushNamed(
-                              context,
-                              HomeScreen.routeName,
-                            );
+                            Navigator.pushNamed(context, HomeScreen.routeName);
                           }
                         },
                       ),

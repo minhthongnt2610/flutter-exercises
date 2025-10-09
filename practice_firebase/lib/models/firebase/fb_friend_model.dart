@@ -13,12 +13,13 @@ class FbFriendModel {
     required this.email,
   });
 
-  factory FbFriendModel.fromJson(Map<String, dynamic> json, String id) => FbFriendModel(
-    id: id,
-    name: json["name"],
-    birthdate: json["birthdate"],
-    email: json["email"],
-  );
+  factory FbFriendModel.fromJson(Map<String, dynamic> json, String id) =>
+      FbFriendModel(
+        id: id,
+        name: json["name"],
+        birthdate: json["birthdate"],
+        email: json["email"],
+      );
 
   Map<String, dynamic> toJson() => {
     "id": id,
