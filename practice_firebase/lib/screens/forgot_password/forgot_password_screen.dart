@@ -7,13 +7,13 @@ import '../login_screen/widgets/filed_widget.dart';
 class ForgotPasswordScreen extends StatefulWidget {
   ForgotPasswordScreen({super.key});
   static const String routeName = '/forgot_password';
-  final TextEditingController emailController = TextEditingController();
 
   @override
   State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final TextEditingController emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         }
                         return null;
                       },
-                      controller: widget.emailController,
+                      controller: emailController,
                     ),
                     SizedBox(height: 50 * height / 928),
                     PrimaryButton(
