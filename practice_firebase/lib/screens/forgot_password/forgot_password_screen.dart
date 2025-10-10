@@ -5,8 +5,9 @@ import '../../contains/app_colors.dart';
 import '../login_screen/widgets/filed_widget.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
-  const ForgotPasswordScreen({super.key});
+  ForgotPasswordScreen({super.key});
   static const String routeName = '/forgot_password';
+  final TextEditingController emailController = TextEditingController();
 
   @override
   State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
@@ -74,7 +75,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         }
                         return null;
                       },
-                      controller: TextEditingController(),
+                      controller: widget.emailController,
                     ),
                     SizedBox(height: 50 * height / 928),
                     PrimaryButton(
