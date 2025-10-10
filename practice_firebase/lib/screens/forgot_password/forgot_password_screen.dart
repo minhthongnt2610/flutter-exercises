@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/common_widgets/primary_button.dart';
+import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_email_service.dart';
 
 import '../../contains/app_colors.dart';
 import '../login_screen/widgets/filed_widget.dart';
@@ -14,6 +15,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final TextEditingController emailController = TextEditingController();
+  final AuthEmailService _authEmailService = AuthEmailService();
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
