@@ -102,7 +102,7 @@ class SignUpBody extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: emailController,
+                      controller: emailController, initialValue: '',
                     ),
                     SizedBox(height: 20 * height / 928),
 
@@ -128,7 +128,7 @@ class SignUpBody extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: passwordController,
+                      controller: passwordController, initialValue: '',
                     ),
                     SizedBox(height: 20 * height / 928),
 
@@ -149,7 +149,7 @@ class SignUpBody extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: confirmPasswordController,
+                      controller: confirmPasswordController, initialValue: '',
                     ),
                     SizedBox(height: 50 * height / 928),
 

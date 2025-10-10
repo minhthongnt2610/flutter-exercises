@@ -104,7 +104,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                           }
                           return null;
                         },
-                        controller: nameController,
+                        controller: nameController, initialValue: '',
                       ),
 
                       SizedBox(height: 20 * height / 928),

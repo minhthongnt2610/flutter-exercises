@@ -86,7 +86,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         }
                         return null;
                       },
-                      controller: emailController,
+                      controller: emailController, initialValue: '',
                     ),
                     SizedBox(height: 50 * height / 928),
                     PrimaryButton(

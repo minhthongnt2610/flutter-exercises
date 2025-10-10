@@ -96,7 +96,7 @@ class LoginBody extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: emailController,
+                      controller: emailController, initialValue: '',
                     ),
                     SizedBox(height: 20 * height / 928),
                     FieldWidget(
@@ -120,7 +120,7 @@ class LoginBody extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: passwordController,
+                      controller: passwordController, initialValue: '',
                     ),
                     Container(
                       alignment: Alignment.centerRight,
