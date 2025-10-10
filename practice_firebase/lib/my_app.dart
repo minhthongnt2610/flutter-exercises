@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Practice_Firebase',
         debugShowCheckedModeBanner: false,
-        initialRoute: ForgotPasswordScreen.routeName,
+        initialRoute: initialRoute,
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case StartScreen.routeName:

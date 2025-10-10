@@ -9,7 +9,7 @@ class FieldWidget extends StatefulWidget {
     required this.suffixIcon,
     required this.onChange,
     required this.validator,
-    required this.controller, required this.initialValue,
+    required this.controller,  this.initialValue,
   });
   final String? initialValue;
   final TextEditingController controller;

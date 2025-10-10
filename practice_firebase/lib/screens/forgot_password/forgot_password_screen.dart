@@ -86,13 +86,21 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         }
                         return null;
                       },
-                      controller: emailController, initialValue: '',
+                      controller: emailController,
+                      initialValue: profileProvider.emailUser,
                     ),
                     SizedBox(height: 50 * height / 928),
                     PrimaryButton(
                       title: 'Reset Password',
                       isColor: true,
-                      onPressed: () {},
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _authEmailService.sendPasswordResetEmail(
+                            email: _email!,
+                          );
+                          Navigator.pop(context);
+                        }
+                      },
                     ),
                   ],
                 ),
