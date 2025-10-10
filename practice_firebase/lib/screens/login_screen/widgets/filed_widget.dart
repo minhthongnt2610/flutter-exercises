@@ -9,8 +9,9 @@ class FieldWidget extends StatefulWidget {
     required this.suffixIcon,
     required this.onChange,
     required this.validator,
-    required this.controller,
+    required this.controller,  this.initialValue,
   });
+  final String? initialValue;
   final TextEditingController controller;
   final String labelText;
   final String hintText;
@@ -29,6 +30,7 @@ class _FieldWidgetState extends State<FieldWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: widget.initialValue,
       controller: widget.controller,
       validator: widget.validator,
       onChanged: widget.onChange,

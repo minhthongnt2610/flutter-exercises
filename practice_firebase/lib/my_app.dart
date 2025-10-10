@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
               );
             case ForgotPasswordScreen.routeName:
               return MaterialPageRoute(
-                builder: (context) => const ForgotPasswordScreen(),
+                builder: (context) =>  ForgotPasswordScreen(),
               );
             case ProfileScreen.routeName:
               return MaterialPageRoute(builder: (context) => ProfileScreen());
@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(
                 builder: (context) => CreateProfileScreen(),
               );
-          }
+            }
           return null;
         },
       ),

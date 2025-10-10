@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/common_widgets/primary_button.dart';
+import 'package:practice_firebase/data/data_sources/remote/firebase/auths/auth_email_service.dart';
+import 'package:provider/provider.dart';
 
 import '../../contains/app_colors.dart';
+import '../../providers/user_provider.dart';
 import '../login_screen/widgets/filed_widget.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
-  const ForgotPasswordScreen({super.key});
+  ForgotPasswordScreen({super.key});
   static const String routeName = '/forgot_password';
 
   @override
@@ -13,9 +16,14 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  String? _email;
+  final TextEditingController emailController = TextEditingController();
+  final AuthEmailService _authEmailService = AuthEmailService();
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
+    final profileProvider = context.watch<UserProvider>();
     int height = MediaQuery.of(context).size.height.toInt();
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -64,7 +72,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       hintText: 'Enter your email',
                       isPassword: false,
                       suffixIcon: null,
-                      onChange: (String value) {},
+                      onChange: (String value) {
+                        setState(() {
+                          _email = value;
+                        });
+                      },
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your email';
@@ -74,13 +86,21 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         }
                         return null;
                       },
-                      controller: TextEditingController(),
+                      controller: emailController,
+                      initialValue: profileProvider.emailUser,
                     ),
                     SizedBox(height: 50 * height / 928),
                     PrimaryButton(
                       title: 'Reset Password',
                       isColor: true,
-                      onPressed: () {},
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _authEmailService.sendPasswordResetEmail(
+                            email: _email!,
+                          );
+                          Navigator.pop(context);
+                        }
+                      },
                     ),
                   ],
                 ),
