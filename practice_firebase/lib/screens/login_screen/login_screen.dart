@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../common_widgets/primary_button.dart';
 import '../../common_widgets/social_button.dart';
 import '../../contains/app_colors.dart';
+import '../forgot_password/forgot_password_screen.dart';
 import '../sign_up_screen/sign_up_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -125,7 +126,12 @@ class LoginBody extends StatelessWidget {
                     Container(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            ForgotPasswordScreen.routeName,
+                          );
+                        },
                         child: Text(
                           "Forgot Password?",
                           style: TextStyle(color: Colors.white, fontSize: 16),
