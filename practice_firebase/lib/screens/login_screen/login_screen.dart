@@ -145,6 +145,7 @@ class LoginBody extends StatelessWidget {
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           await loginProvider.login();
+
                           Navigator.pushNamed(context, HomeScreen.routeName);
                         }
                       },
