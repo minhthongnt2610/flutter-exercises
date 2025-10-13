@@ -4,5 +4,6 @@ class DialogService{
   ///hiển thị error dialog
   Future<void> showErrorDialog({required BuildContext context, required String error}) async{}
   ///hiển thị tiến trình
+  void showProcessDialog(){}
   ///ẩn tiến trình
 }
