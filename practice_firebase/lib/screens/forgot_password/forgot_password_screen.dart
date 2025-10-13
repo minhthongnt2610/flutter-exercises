@@ -153,5 +153,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
   ///Thực hiện toàn bộ quy trình reset mật khẩu (quên mật khẩu) cho người dùng.
-  Future<void> _resetPassword({required String email}) async {}
+  Future<void> _resetPassword({required String email}) async {
+
+  }
 }
