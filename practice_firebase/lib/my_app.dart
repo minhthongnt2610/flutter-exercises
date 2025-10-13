@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
                 builder: (context) => const StartScreen(),
               );
             case LoginScreen.routeName:
-              return SlideTransitionPage(page: const LoginScreen());
+              return SlideTransitionPage(page: LoginScreen());
             case SignUp.routeName:
               return SlideTransitionPage(page: const SignUp());
             case HomeScreen.routeName:
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
               );
             case ForgotPasswordScreen.routeName:
               return MaterialPageRoute(
-                builder: (context) =>  ForgotPasswordScreen(),
+                builder: (context) => ForgotPasswordScreen(),
               );
             case ProfileScreen.routeName:
               return MaterialPageRoute(builder: (context) => ProfileScreen());
@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(
                 builder: (context) => CreateProfileScreen(),
               );
-            }
+          }
           return null;
         },
       ),
