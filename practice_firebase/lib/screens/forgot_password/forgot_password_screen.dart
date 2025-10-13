@@ -117,4 +117,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   String? _checkCredentials({required String? email}){
     return null;
   }
+  ///Hiển thị hộp thoại thông báo sau khi gửi email reset mật khẩu thành công.
+  void _showResetPasswordDialog({required BuildContext context}){
+
+  }
 }
