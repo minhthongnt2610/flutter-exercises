@@ -121,7 +121,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     if(email!.isEmpty ?? true ){
       return 'Please enter your email';
     }
-    if(!Utilities.isValidEmail(email))
+    if(!Utilities.isValidEmail(email)){
+      return 'Please enter a valid email';
+    }
     return null;
   }
   ///Hiển thị hộp thoại thông báo sau khi gửi email reset mật khẩu thành công.
