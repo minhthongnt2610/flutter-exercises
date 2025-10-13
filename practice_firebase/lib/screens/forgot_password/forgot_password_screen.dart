@@ -144,9 +144,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               'Please check your email to reset your password. Then login again. Thank you!',
           confirmButtonTitle: "Ok",
           onConfirm: () {
-            Navigator.of(context).popUntil((route) {
-              return route.settings.name == LoginScreen.routeName;
-            });
+            Navigator.of(context).pop(); // đóng dialog
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              LoginScreen.routeName,
+                  (route) => false,
+            );
           },
         );
       },
