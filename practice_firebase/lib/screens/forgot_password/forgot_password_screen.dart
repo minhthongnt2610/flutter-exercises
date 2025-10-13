@@ -156,23 +156,32 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   ///Thực hiện toàn bộ quy trình reset mật khẩu (quên mật khẩu) cho người dùng.
   Future<void> _resetPassword({required String email}) async {
     final error = _checkCredentials(email: email);
+    ///bắt lỗi của email
     if (!mounted) {
       return;
     }
     if (error != null) {
+      ///nếu có lỗi thì hiển thị lỗi lên
       _dialogService.showErrorDialog(context: context, error: error);
     } else {
       try {
+        ///hiển thị tiến trình
         _dialogService.showProgressDialog(context);
+        ///nếu không có lỗi thì gửi email reset mật khẩu
         await _authEmailService.sendPasswordResetEmail(email: email);
         if (!mounted) {
           return;
         }
+        ///ẩn tiến trình
         _dialogService.hideProgressDialog(context);
+        ///ẩn bàn phím
         _hideKeyBoard();
+        ///hiển thị hộp thoại thông báo chuyển tới email
         _showResetPasswordDialog(context: context);
       } on FirebaseAuthException catch (error) {
+        ///ẩn tiến trình
         _dialogService.hideProgressDialog(context);
+        ///nếu có lỗi thì hiển thị lỗi lên
         _dialogService.showErrorDialog(
           context: context,
           error: Utilities.cleanErrorMessage(error),
