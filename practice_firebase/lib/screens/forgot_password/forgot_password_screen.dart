@@ -112,7 +112,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     );
   }
   ///ẩn bàn phím
-  void _hideKeyBoard(){}
+  void _hideKeyBoard(){
+    FocusManager.instance.primaryFocus?.unfocus();
+  }
   ///kiểm tra giá trị email hợp lệ trước khi gửi yêu cầu reset password
   String? _checkCredentials({required String? email}){
     return null;
