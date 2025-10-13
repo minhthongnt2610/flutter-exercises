@@ -102,10 +102,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       isColor: true,
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          _authEmailService.sendPasswordResetEmail(
-                            email: _email!,
-                          );
-                          Navigator.pop(context);
+                          _resetPassword(email: _email!);
                         }
                       },
                     ),
