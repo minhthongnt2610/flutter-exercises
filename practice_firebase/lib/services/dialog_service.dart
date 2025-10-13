@@ -36,5 +36,7 @@ class DialogService {
   }
 
   ///ẩn tiến trình
-  void hideProgressDialog(BuildContext context) {}
+  void hideProgressDialog(BuildContext context) {
+    Navigator.of(context).pop();
+  }
 }
