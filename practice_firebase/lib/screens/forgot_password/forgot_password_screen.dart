@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../contains/app_colors.dart';
 import '../../providers/user_provider.dart';
 import '../login_screen/widgets/filed_widget.dart';
+import '../../utilities/utilities.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   ForgotPasswordScreen({super.key});
@@ -117,6 +118,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
   ///kiểm tra giá trị email hợp lệ trước khi gửi yêu cầu reset password
   String? _checkCredentials({required String? email}){
+    if(email!.isEmpty ?? true ){
+      return 'Please enter your email';
+    }
+    if(!Utilities.isValidEmail(email))
     return null;
   }
   ///Hiển thị hộp thoại thông báo sau khi gửi email reset mật khẩu thành công.
