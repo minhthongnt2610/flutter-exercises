@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/common_widgets/info_dialog.dart';
 import 'package:practice_firebase/common_widgets/primary_button.dart';
@@ -6,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../contains/app_colors.dart';
 import '../../providers/user_provider.dart';
+import '../../services/dialog_service.dart';
 import '../login_screen/login_screen.dart';
 import '../login_screen/widgets/filed_widget.dart';
 import '../../utilities/utilities.dart';
@@ -23,11 +25,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final TextEditingController emailController = TextEditingController();
   final AuthEmailService _authEmailService = AuthEmailService();
   final _formKey = GlobalKey<FormState>();
+  final _dialogService = DialogService();
 
   @override
   Widget build(BuildContext context) {
     final profileProvider = context.watch<UserProvider>();
     int height = MediaQuery.of(context).size.height.toInt();
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
@@ -143,7 +147,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               'Please check your email to reset your password. Then login again. Thank you!',
           confirmButtonTitle: "Ok",
           onConfirm: () {
-            Navigator.of(context).popUntil((route){
+            Navigator.of(context).popUntil((route) {
               return route.settings.name == LoginScreen.routeName;
             });
           },
@@ -154,6 +158,29 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   ///Thực hiện toàn bộ quy trình reset mật khẩu (quên mật khẩu) cho người dùng.
   Future<void> _resetPassword({required String email}) async {
-
+    final error = _checkCredentials(email: email);
+    if (!mounted) {
+      return;
+    }
+    if (error != null) {
+      _dialogService.showErrorDialog(context: context, error: error);
+    } else {
+      try {
+        _dialogService.showProgressDialog(context);
+        await _authEmailService.sendPasswordResetEmail(email: email);
+        if (!mounted) {
+          return;
+        }
+        _dialogService.hideProgressDialog(context);
+        _hideKeyBoard();
+        _showResetPasswordDialog(context: context);
+      } on FirebaseAuthException catch (error) {
+        _dialogService.hideProgressDialog(context);
+        _dialogService.showErrorDialog(
+          context: context,
+          error: Utilities.cleanErrorMessage(error),
+        );
+      }
+    }
   }
 }
