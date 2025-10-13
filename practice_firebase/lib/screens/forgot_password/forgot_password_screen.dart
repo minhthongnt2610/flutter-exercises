@@ -111,4 +111,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       ),
     );
   }
+  ///ẩn bàn phím
+  void _hideKeyBoard(){}
 }
