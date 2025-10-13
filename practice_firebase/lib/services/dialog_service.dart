@@ -23,8 +23,12 @@ class DialogService {
   }
 
   ///hiển thị tiến trình
-  void showProcessDialog() {}
+  void showProgressDialog(BuildContext context) {
+    showDialog(context: context,barrierDismissible: false, builder: (BuildContext context){
+      return ProgressDialog();
+    });
+  }
 
   ///ẩn tiến trình
-  void hideProcessDialog() {}
+  void hideProgressDialog(BuildContext context) {}
 }
