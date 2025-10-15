@@ -6,7 +6,18 @@ import 'firebase_options.dart';
 import 'my_app.dart';
 
 Future<void> main() async {
+  // Đảm bảo Flutter đã được khởi tạo
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MyApp());
+
+  // Khởi tạo Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  // KÍCH HOẠT APP CHECK
+  await FirebaseAppCheck.instance.activate(
+
+  );
+
+  runApp( MyApp());
 }
