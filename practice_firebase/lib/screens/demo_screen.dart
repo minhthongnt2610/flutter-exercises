@@ -76,13 +76,15 @@ class _SimpleCheckInScreenState extends State<SimpleCheckInScreen>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-            '${newRecord.isCheckIn ? 'Checked in' : 'Checked out'} at ${DateFormat('HH:mm:ss, dd MMM yyyy').format(now)}'),
+          '${newRecord.isCheckIn ? 'Checked in' : 'Checked out'} at ${DateFormat('HH:mm:ss, dd MMM yyyy').format(now)}',
+        ),
         duration: const Duration(seconds: 2),
       ),
     );
   }
 
-  String _formatDate(DateTime dt) => DateFormat('EEEE, dd MMMM yyyy', 'en_US').format(dt);
+  String _formatDate(DateTime dt) =>
+      DateFormat('EEEE, dd MMMM yyyy', 'en_US').format(dt);
   String _formatTime(DateTime dt) => DateFormat('HH:mm:ss').format(dt);
 
   @override
@@ -103,7 +105,9 @@ class _SimpleCheckInScreenState extends State<SimpleCheckInScreen>
             children: [
               // Date & Time
               Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 elevation: 2,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -115,16 +119,13 @@ class _SimpleCheckInScreenState extends State<SimpleCheckInScreen>
                         children: [
                           Text(
                             _formatDate(_now),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
+                            style: Theme.of(context).textTheme.bodyMedium
                                 ?.copyWith(fontWeight: FontWeight.w600),
                           ),
                           const SizedBox(height: 6),
                           Text(
                             _formatTime(_now),
-                            style: Theme.of(context)
-                                .textTheme.bodyMedium
+                            style: Theme.of(context).textTheme.bodyMedium
                                 ?.copyWith(fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -144,8 +145,12 @@ class _SimpleCheckInScreenState extends State<SimpleCheckInScreen>
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       ScaleTransition(
-                        scale: Tween(begin: 1.0, end: 1.08)
-                            .animate(CurvedAnimation(parent: _animController, curve: Curves.easeOut)),
+                        scale: Tween(begin: 1.0, end: 1.08).animate(
+                          CurvedAnimation(
+                            parent: _animController,
+                            curve: Curves.easeOut,
+                          ),
+                        ),
                         child: GestureDetector(
                           onTap: _handleToggle,
                           child: AnimatedContainer(
@@ -155,22 +160,28 @@ class _SimpleCheckInScreenState extends State<SimpleCheckInScreen>
                             decoration: BoxDecoration(
                               gradient: _isCheckedIn
                                   ? const LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [Color(0xFF6DD3FF), Color(0xFF4CB1FF)],
-                              )
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color(0xFF6DD3FF),
+                                        Color(0xFF4CB1FF),
+                                      ],
+                                    )
                                   : const LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [Color(0xFFB7E1A9), Color(0xFF7ED957)],
-                              ),
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color(0xFFB7E1A9),
+                                        Color(0xFF7ED957),
+                                      ],
+                                    ),
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.12),
                                   blurRadius: 12,
                                   offset: const Offset(0, 6),
-                                )
+                                ),
                               ],
                             ),
                             child: Center(
@@ -186,10 +197,11 @@ class _SimpleCheckInScreenState extends State<SimpleCheckInScreen>
                                   Text(
                                     _isCheckedIn ? 'CHECK-OUT' : 'CHECK-IN',
                                     style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 1.2),
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 1.2,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -206,14 +218,20 @@ class _SimpleCheckInScreenState extends State<SimpleCheckInScreen>
                           Text(
                             lastRecord == null
                                 ? 'Chưa có thao tác nào'
-                                : (lastRecord.isCheckIn ? 'Đã vào lúc' : 'Đã ra lúc') +
-                                ' ${DateFormat('HH:mm, dd/MM/yyyy').format(lastRecord.time)}',
+                                : (lastRecord.isCheckIn
+                                          ? 'Đã vào lúc'
+                                          : 'Đã ra lúc') +
+                                      ' ${DateFormat('HH:mm, dd/MM/yyyy').format(lastRecord.time)}',
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            _isCheckedIn ? 'Bạn đang trong ca' : 'Bạn đang ngoài ca',
-                            style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 13),
+                            _isCheckedIn
+                                ? 'Bạn đang trong ca'
+                                : 'Bạn đang ngoài ca',
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodySmall?.copyWith(fontSize: 13),
                           ),
                         ],
                       ),
@@ -227,31 +245,39 @@ class _SimpleCheckInScreenState extends State<SimpleCheckInScreen>
               // History list
               Text(
                 'Lịch sử',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 8),
               Expanded(
                 child: _records.isEmpty
                     ? Center(
-                  child: Text(
-                    'Không có bản ghi nào',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                )
+                        child: Text(
+                          'Không có bản ghi nào',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      )
                     : ListView.separated(
-                  itemCount: _records.length,
-                  separatorBuilder: (_, __) => const Divider(height: 0),
-                  itemBuilder: (context, index) {
-                    final r = _records[index];
-                    return ListTile(
-                      leading: CircleAvatar(
-                        child: Icon(r.isCheckIn ? Icons.login : Icons.logout),
+                        itemCount: _records.length,
+                        separatorBuilder: (_, __) => const Divider(height: 0),
+                        itemBuilder: (context, index) {
+                          final r = _records[index];
+                          return ListTile(
+                            leading: CircleAvatar(
+                              child: Icon(
+                                r.isCheckIn ? Icons.login : Icons.logout,
+                              ),
+                            ),
+                            title: Text(r.isCheckIn ? 'Check-in' : 'Check-out'),
+                            subtitle: Text(
+                              DateFormat(
+                                'HH:mm:ss - dd/MM/yyyy',
+                              ).format(r.time),
+                            ),
+                          );
+                        },
                       ),
-                      title: Text(r.isCheckIn ? 'Check-in' : 'Check-out'),
-                      subtitle: Text(DateFormat('HH:mm:ss - dd/MM/yyyy').format(r.time)),
-                    );
-                  },
-                ),
               ),
             ],
           ),

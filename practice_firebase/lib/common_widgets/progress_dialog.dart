@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 class ProgressDialog extends StatelessWidget {
   final String message;
 
-  const ProgressDialog({
-    super.key,
-    this.message = "Please wait...",
-  });
+  const ProgressDialog({super.key, this.message = "Please wait..."});
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(

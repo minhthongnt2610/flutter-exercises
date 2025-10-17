@@ -10,14 +10,13 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Khởi tạo Firebase
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // KÍCH HOẠT APP CHECK
   await FirebaseAppCheck.instance.activate(
-
+    androidProvider: AndroidProvider.debug,
+    appleProvider: AppleProvider.debug,
   );
 
-  runApp( MyApp());
+  runApp(MyApp());
 }
