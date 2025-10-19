@@ -68,7 +68,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                           );
 
                           if (selectedAvatar is File) {
-                            profileProvider.setAvatarFile(selectedAvatar);
+                            profileProvider.setAvatarUrl(selectedAvatar.toString());
                           }
                           if (selectedAvatar is String) {
                             profileProvider.setAvatarUrl(selectedAvatar);
