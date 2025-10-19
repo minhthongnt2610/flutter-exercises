@@ -61,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                     );
 
                     if (selectedAvatar is File) {
-                      profileProvider.setAvatarFile(selectedAvatar);
+                      profileProvider.setAvatarUrl(selectedAvatar.toString());
                     }
                     if (selectedAvatar is String) {
                       profileProvider.setAvatarUrl(selectedAvatar);

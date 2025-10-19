@@ -37,7 +37,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             );
 
             if (selectedAvatar is File) {
-              profileProvider.setAvatarFile(selectedAvatar);
+              profileProvider.setAvatarUrl(selectedAvatar.toString());
             }
             if (selectedAvatar is String) {
               profileProvider.setAvatarUrl(selectedAvatar);
